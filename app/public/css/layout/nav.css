@@ -1,0 +1,21 @@
+.nav-item img {
+    width: 22px;
+    border-radius: 2px;
+}
+
+.nav-item i {
+    font-size: 22px;
+    color: black;
+}
+
+.nav-link a {
+    color: black;
+}
+
+#actual-user-options {
+    padding-left: 0;
+}
+
+#the-navbar-brand {
+
+}

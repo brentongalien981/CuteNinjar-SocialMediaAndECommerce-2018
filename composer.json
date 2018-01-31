@@ -1,0 +1,16 @@
+{
+  "autoload": {
+    "files": [
+      "./app/core/include/initialization/initializations.php",
+      "./app/core/external-api/carbon/vendor/autoload.php"
+    ],
+    "classmap": [
+      "./app/core/main/",
+      "./app/core/middleware/",
+      "./app/controller/",
+      "./app/model/",
+      "./app/ajax-handler/",
+      "./app/core/external-api/"
+    ]
+  }
+}

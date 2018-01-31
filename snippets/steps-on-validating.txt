@@ -1,0 +1,43 @@
+// STEPS on validating things.
+/*
+  // NOTE: Only use POST requests when making changes.
+  //       Don't ever use GET changing things. Only use it to read things from the server.
+
+
+
+    I) Make sure the user is logged-in and an actual/viewed/of-type user.
+
+
+  // 1) Avoid CSRF by using csrf tokens as hidden field in your forms.
+  //
+  //
+  // 2) Use only allowable GET and POST variables.
+  //    Maybe put an array like: $allowed_gets = array();
+  //
+  //
+  // 3) Validate inputs.
+  //      - presence
+  //      - type (string, number, etc.)
+  //      - format
+  //      - within set of values/length (ex. between 2 and 8 etc)
+  //      - uniqueness (TODO:REMINDER: Get back on this later. Maybe modify the db for many-to-many...
+  //                                   For ex, the address used by User "OneTimeUserForOneTimeAddress"
+  //                                   that is used whenever checking out for the PayPal address...)
+  //
+  //
+  // 4) * TO-LEARN: Strip tags.
+  // TODO: Sanitize against html, js, url, mysql, php, cmd.
+  //
+  //
+  //
+  // 5) * TO-LEARN: Avoid XSS by escaping inputs using functions h() j() u() and maybe s() for sql for output.
+  //
+  //
+  // 6) Make 2 versions of variables: "dirty" and "sanitized".
+  //    Strip html and script tags. Escape single quotes. Strip php tags.
+  // 7) * TO-LEARN: Sessions on Cookies.
+  // 8) Check if that username exists in the db.
+  // 9) Hash the password.
+  // 10) Store it in db.
+ *
+ */
