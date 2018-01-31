@@ -29,7 +29,7 @@ function show_user_home_icon($user_id = 0, $icon_class, $menu, $label = "")
 
     $src = b_get_profile_pic_src($user_id);
 
-    if (isset($src)) {
+    if (isset($src) && ($src != "0")) {
         echo "<img id='profile_pic' src=\"{$src}\" class=\"{$icon_class}\">{$label}";
     } else {
         show_default_user_home_icon($icon_class, $menu, $label);

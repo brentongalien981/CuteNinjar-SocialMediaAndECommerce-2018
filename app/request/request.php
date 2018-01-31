@@ -34,5 +34,3 @@ $menu_controller = new $class();
 //if (isRequestAjax()) { $menu_controller->doAjaxAction(); }
 //else { $menu_controller->$action(); }
 $menu_controller->doAction();
-
-?>

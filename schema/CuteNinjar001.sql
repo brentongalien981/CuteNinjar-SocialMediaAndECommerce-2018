@@ -1,3 +1,4 @@
+-- I just added the file ".gitignore".
 --
 -- Table structure for table `Users`
 --

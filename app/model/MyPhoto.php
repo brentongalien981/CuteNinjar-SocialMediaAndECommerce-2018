@@ -24,7 +24,7 @@ class MyPhoto extends MainModel
         "src",
         "width",
         "height",
-        "rate_value",
+//        "rate_value",
         "private",
         "created_at",
         "updated_at"
@@ -38,7 +38,7 @@ class MyPhoto extends MainModel
     public $src;
     public $width;
     public $height;
-    public $rate_value;
+//    public $rate_value;
     public $private;
     public $created_at;
     public $updated_at;

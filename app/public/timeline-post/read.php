@@ -16,7 +16,11 @@
 
 
         <div id="cn-center-col" class="col-xl cn-col">
-            center col
+
+            <div class="post_background" style="display: none;">
+                default reference for fetching first timeline-post.
+            </div>
+
         </div>
 
 

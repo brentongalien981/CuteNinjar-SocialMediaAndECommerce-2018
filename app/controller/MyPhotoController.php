@@ -180,7 +180,7 @@ class MyPhotoController extends MainController implements AjaxCrudHandlerInterfa
                 $this->menuObj->src = $this->sanitizedFields['src'];
                 $this->menuObj->width = $this->sanitizedFields['width'];
                 $this->menuObj->height = $this->sanitizedFields['height'];
-                $this->menuObj->rate_value = 0;
+//                $this->menuObj->rate_value = 0;
                 $this->menuObj->private = 0;
 
                 $this->menuObj->created_at = 'CURRENT_TIMESTAMP';

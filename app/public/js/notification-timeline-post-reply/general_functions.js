@@ -7,10 +7,6 @@ function do_notification_timeline_post_replies_after_effects(className, crudType
 
             populateXNotificationContent(xNotifications, className, crudType);
 
-            //
-            if (!getHasNotificationTimelinePostReplyFetched()) {
-                setNotificationTimelinePostReplyFetcher();
-            }
             break;
         case "create":
             cnLog("SUCCESS on notifying all subscribers on that post about that comment.");
@@ -42,6 +38,12 @@ function doNotificationTimelinePostRepliesPreAfterEffects(className, crudType, j
             if (!isCnAjaxResultOk(json)) {
                 var numOfFailedNotificationTimelinePostReplyAjaxRead = parseInt(getNumOfFailedNotificationTimelinePostReplyAjaxRead())
                 setNumOfFailedNotificationTimelinePostReplyAjaxRead(numOfFailedNotificationTimelinePostReplyAjaxRead + 1);
+            }
+
+            //
+            //
+            if (!getHasNotificationTimelinePostReplyFetched()) {
+                setNotificationTimelinePostReplyFetcher();
             }
             
             break;

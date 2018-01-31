@@ -1,0 +1,5 @@
+regex: \(\d\d
+meaning: select stuffs like this "(55"
+regex meaning:
+    \( => escape a open parend char
+    \d => any digit

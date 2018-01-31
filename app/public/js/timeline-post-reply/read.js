@@ -1,5 +1,6 @@
 function read_timeline_post_replies(post_id) {
 
+
     //
     if (getIsTimelinePostReplyReading(post_id)) { return; }
     disableViewMoreCommentsBtnForThisPost(post_id);

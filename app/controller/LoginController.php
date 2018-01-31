@@ -77,7 +77,7 @@ class LoginController extends MainController
             if ($do_passwords_match) {
                 $this->session->login($logging_user);
 
-                redirect_to(PUBLIC_LOCAL . "timeline-post/index.php");
+                redirect_to(PUBLIC_LOCAL . "index.php");
             } else {
                 $log_in_error_comment = "Username/password can not be authenticated.";
                 redirect_to(PUBLIC_LOCAL . "log-in/index.php?log_in_error_comment={$log_in_error_comment}");

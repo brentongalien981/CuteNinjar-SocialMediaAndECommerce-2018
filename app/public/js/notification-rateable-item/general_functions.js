@@ -7,10 +7,6 @@ function doNotificationRateableItemsAfterEffects(className, crudType, json, xObj
 
             populateXNotificationContent(xNotifications, className, crudType);
 
-            if (!getHasNotificationRateableItemFetched()) {
-                setNotificationRateableItemFetcher();
-            }
-
             break;
         case "create":
             break;
@@ -67,6 +63,11 @@ function doNotificationRateableItemsPreAfterEffects(className, crudType, json, x
             if (!isCnAjaxResultOk(json)) {
                 var numOfFailedNotificationRateableItemAjaxRead = parseInt(getNumOfFailedNotificationRateableItemAjaxRead())
                 setNumOfFailedNotificationRateableItemAjaxRead(numOfFailedNotificationRateableItemAjaxRead + 1);
+            }
+
+            //
+            if (!getHasNotificationRateableItemFetched()) {
+                setNotificationRateableItemFetcher();
             }
             break;
         case "create":

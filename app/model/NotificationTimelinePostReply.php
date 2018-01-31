@@ -14,7 +14,10 @@ class NotificationTimelinePostReply extends MainModel
 {
     protected static $table_name = "NotificationsTimelinePostReply";
     protected static $className = "NotificationTimelinePostReply";
-    protected static $db_fields = array("notification_id", "timeline_post_reply_id");
+    protected static $db_fields = array(
+        "notification_id",
+        "timeline_post_reply_id"
+    );
     public $primary_key_id_name = "notification_id";
 
     public $notification_id;

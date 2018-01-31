@@ -21,9 +21,6 @@ function do_timeline_post_after_effects(class_name, crud_type, json, x_obj) {
         case "read":
             display_timeline_post(crud_type, json);
 
-            if (!getHasTimelinePostFetched()) {
-                set_timeline_posts_fetcher();
-            }
             break;
         case "create":
 
@@ -169,6 +166,13 @@ function doTimelinePostPreAfterEffects(class_name, crud_type, json, x_obj) {
             setIsTimelinePostReading(false);
 
 
+            //
+            if (!getHasTimelinePostFetched()) {
+                set_timeline_posts_fetcher();
+            }
+
+
+            //
             if (!isCnAjaxResultOk(json)) {
                 setNumOfFailedAjaxRead(parseInt(getNummOfFailedAjaxRead()) + 1);
             }

@@ -495,6 +495,9 @@ function isFormResetSuccessful(crud_type, caller_class_name) {
 
                 if (crud_type == "create") { formIdToBeReset = "my-photo-form"; }
                 else if (crud_type == "update") { formIdToBeReset = "my-photo-update-form"; }
+                break;
+            default:
+                return false;
 
         }
 
@@ -630,7 +633,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "MyPhoto":
+        case "NotificationTimelinePostReply":
             return true;
             break;
     }
