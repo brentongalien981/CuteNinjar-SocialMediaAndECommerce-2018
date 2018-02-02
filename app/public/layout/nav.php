@@ -61,10 +61,11 @@
             <li class="nav-item"
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="Beta-Profile">
+                title="Profile">
                 <?php if ($session->is_logged_in()) { ?>
-                    <a id="menu_profile" class='menus nav-link'
-                       href="<?= LOCAL . "/public/__view/profile2/index.php" ?>">
+                    <a id="menu_profile"
+                       class='menus nav-link'
+                       href="<?= PUBLIC_LOCAL . 'profile/index.php' ?>">
                         <?php show_user_home_icon(-69, "icon", "profile") ?>
                         <span class="sr-only">(current)</span>
                     </a>

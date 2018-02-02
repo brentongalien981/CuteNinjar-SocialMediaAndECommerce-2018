@@ -23,6 +23,7 @@ class MainMiddleware extends CNMain
     const AJAX_REQUEST_NOTIFICATION_TYPES_OF_ACTIONS = 5;
     const AJAX_REQUEST_PHOTO_TYPES_OF_ACTIONS = 6;
     const REGULAR_REQUEST_MY_PHOTO_TYPES_OF_ACTIONS = 7;
+    const LOGGED_IN_TYPES_OF_ACTIONS = 8;
 
 
 
@@ -115,6 +116,24 @@ class MainMiddleware extends CNMain
                     case "create":
                     case "update":
                     case "delete":
+                        $allowedUserTypes = array("logged-in", "admin");
+                        break;
+
+                }
+
+
+                break;
+
+            case self::LOGGED_IN_TYPES_OF_ACTIONS:
+
+                switch ($action) {
+                    case "index":
+                    case "read":
+                    case "fetch":
+                    case "create":
+                    case "update":
+                    case "delete":
+                    case "patch":
                         $allowedUserTypes = array("logged-in", "admin");
                         break;
 
@@ -241,6 +260,9 @@ class MainMiddleware extends CNMain
             case "my-photo":
             case "MyPhoto":
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_REQUEST_MY_PHOTO_TYPES_OF_ACTIONS, $action);
+                break;
+            case "profile":
+                $allowedUserTypes = self::getAllowedUserTypes(self::LOGGED_IN_TYPES_OF_ACTIONS, $action);
                 break;
             default:
                 $allowedUserTypes = array("unauthorized-user");
