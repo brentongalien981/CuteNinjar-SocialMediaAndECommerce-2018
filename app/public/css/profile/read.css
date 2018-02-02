@@ -3,7 +3,9 @@
 }
 
 .cn-col {
-    height: 100%;
+    height: fit-content;
+    width: fit-content;
+    min-height: 700px;
     display: block;
     padding: 0;
 }
@@ -11,12 +13,15 @@
 
 #cn-left-col {
     background-color: yellow;
+    position: fixed;
 }
 
 #cn-center-col {
-    background-color: red;
+    background-color: whitesmoke;
 }
 
 #cn-right-col {
     background-color: azure;
+    position: fixed;
+    right: 0;
 }

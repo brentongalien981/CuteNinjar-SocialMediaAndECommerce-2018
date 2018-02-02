@@ -3,15 +3,15 @@
 
         <div id="view-toggle-btns-section" class="mr-auto">
 
-            <button id="left-col-toggle-btn" type="button" class="btn btn-primary col-toggle-btn">
+            <button id="left-col-toggle-btn" type="button" is-activated="yes" class="btn btn-success col-toggle-btn">
                 <i class="fa fa-align-left"></i>
             </button>
 
-            <button id="center-col-toggle-btn" type="button" class="btn btn-success col-toggle-btn">
+            <button id="center-col-toggle-btn" type="button" is-activated="yes" class="btn btn-success col-toggle-btn">
                 <i class="fa fa-align-center"></i>
             </button>
 
-            <button id="right-col-toggle-btn" type="button" class="btn btn-primary col-toggle-btn">
+            <button id="right-col-toggle-btn" type="button" is-activated="yes" class="btn btn-success col-toggle-btn">
                 <i class="fa fa-align-right"></i>
             </button>
 
@@ -51,7 +51,7 @@
 
     #view-toggle-btns-section {
         /*display: none;*/
-        visibility: hidden;
+        /*visibility: hidden;*/
 
     }
 
@@ -63,9 +63,9 @@
     /*Hide the #toggle-view-section on sm breakpoint*/
     @media screen and (max-width: 1199px) {
         #view-toggle-btns-section {
-            min-width: 150px;
+            /*min-width: 150px;*/
             /*display: block;*/
-            visibility: visible;
+            /*visibility: visible;*/
 
         }
     }

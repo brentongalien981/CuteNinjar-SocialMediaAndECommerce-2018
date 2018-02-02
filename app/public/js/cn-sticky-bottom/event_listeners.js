@@ -1,11 +1,16 @@
 $(".col-toggle-btn").click(function () {
 
-    resetColToggleBtns();
+    // resetColToggleBtns();
 
     var toggleBtnId = $(this).attr("id");
 
-    activateColToggleBtn(toggleBtnId);
 
-    activateCnCol(toggleBtnId);
+    // activateColToggleBtn(toggleBtnId);
+
+    toggleBtn(toggleBtnId);
+
+    // activateCnCol(toggleBtnId);
+
+    toggleCnCol(toggleBtnId);
 
 });

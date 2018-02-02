@@ -1,24 +1,20 @@
-<div id="main-content"  class="container-fluid">
+<div id="main-content"  class="">
 
 
-    <div class="cn-row">
+    <div class="">
 
-
-        <div id="cn-left-col" class="cn-col">
+        <div id="cn-left-col" class="cn-col animated">
             left col
         </div>
 
+        <div id="cn-right-col" class="cn-col animated">
+            right col
+        </div>
 
         <div id="cn-center-col" class="cn-col">
             center col
 
         </div>
-
-
-        <div id="cn-right-col" class="cn-col">
-            right col
-        </div>
-
 
     </div>
 

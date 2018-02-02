@@ -13,6 +13,7 @@
 
 <!--Main extras-->
 <?php require_once(PUBLIC_PATH . "profile/page-outline.php"); ?>
+<?php require_once(PUBLIC_PATH . "profile/summary.php"); ?>
 
 
 <!--Templates-->
@@ -23,6 +24,10 @@
 <?php require_once(PUBLIC_PATH . "user-top-activity/read.php"); ?>
 
 <?php require_once(PUBLIC_PATH . "contact-information/read.php"); ?>
+
+<?php require_once(PUBLIC_PATH . "work/read.php"); ?>
+
+<?php require_once(PUBLIC_PATH . "friend/read.php"); ?>
 
 
 
