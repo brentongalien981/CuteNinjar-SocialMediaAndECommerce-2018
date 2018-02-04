@@ -30,4 +30,16 @@ class Profile extends MainModel
     {
         parent::__construct();
     }
+
+    public function getAddress() {
+
+        $fkUserId = $this->user_id;
+        return $this->newHasOne("Address", ['user_id' => $fkUserId]);
+    }
+
+    public function getUserAccount() {
+
+        $fkUserId = $this->user_id;
+        return $this->newHasOne("User", ['user_id' => $fkUserId]);
+    }
 }

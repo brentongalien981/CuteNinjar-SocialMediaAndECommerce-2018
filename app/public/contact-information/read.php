@@ -18,7 +18,24 @@
 
         <h6 id="profile-email">profile-email</h6>
 
-        <h6 id="profile-address">profile-address</h6>
+        <div>
+            <span id="profile-street1" class="profile-address">profile-address</span>
+        </div>
+
+        <div>
+            <span id="profile-street2" class="profile-address"></span>
+        </div>
+
+        <div>
+            <span id="profile-city" class="profile-address">profile-address</span>
+            <span id="profile-state" class="profile-address">profile-address</span>
+            <span id="profile-country" class="profile-address">TODO: Country</span>
+        </div>
+
+        <div>
+            <span id="profile-zip" class="profile-address">profile-address</span>
+        </div>
+
 
     </div>
 

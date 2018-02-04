@@ -597,12 +597,29 @@ class MainModel extends CNMain
     }
 
     /** TODO: Rename newHasOne(). */
-    public function newHasOne($class, $pk) {
+    public function newHasOne($class, $fk) {
+
 
         $path = "\\App\\Model\\" . $class;
         $extentionalObj = new $path;
 
-        $data['id'] = $pk;
+        $data = null;
+
+        // If the sent argument $fk is an array, that means
+        // we would like to read a table record using other key (probably a fk)
+        // instead of reading by the pk id.
+        if (is_array($fk)) {
+
+            foreach ($fk as $field => $value) {
+                $data['where_clause'] = "WHERE {$field} = {$value}";
+                break;
+            }
+
+        }
+        else {
+            $data['id'] = $fk;
+        }
+
         $data['limit'] = 1;
 
         $obj = $extentionalObj->read($data)[0];

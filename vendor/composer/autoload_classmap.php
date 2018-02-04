@@ -29,6 +29,7 @@ return array(
     'App\\Core\\Main\\CNMain' => $baseDir . '/app/core/main/CNMain.php',
     'App\\Core\\Main\\MainController' => $baseDir . '/app/core/main/MainController.php',
     'App\\Core\\Middleware\\MainMiddleware' => $baseDir . '/app/core/middleware/MainMiddleware.php',
+    'App\\Model\\Address' => $baseDir . '/app/model/Address.php',
     'App\\Model\\FilterableFieldInterface' => $baseDir . '/app/model/FilterableFieldInterface.php',
     'App\\Model\\MyDebugMessenger' => $baseDir . '/app/model/MyDebugMessenger.php',
     'App\\Model\\MyPhoto' => $baseDir . '/app/model/MyPhoto.php',

@@ -13,6 +13,13 @@ function doProfilePreAfterEffects(className, crudType, json, xObj) {
                 removeClonedLoaderEl(loaderEl);
 
             }
+            else if (sectionToDoPreAfterEffectsWith == "contactInformation") {
+
+                // Unset loader el.
+                var loaderEl = $("#loader-for-profile-contact-info-xxx");
+                removeClonedLoaderEl(loaderEl);
+
+            }
 
             break;
 
@@ -33,6 +40,10 @@ function doProfileAfterEffects(className, crudType, json, xObj) {
 
             if (sectionToDoAfterEffectsWith == "summary") {
                 displayProfileSummary(json);
+            }
+            else if (sectionToDoAfterEffectsWith == "contactInformation") {
+                displayContactInformation(json);
+                displaySocialMediaContacts();
             }
 
             break;

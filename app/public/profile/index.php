@@ -36,3 +36,4 @@
 <!-- *** SCRIPTS ***-->
 <!--Main Scripts-->
 <?php tryLoadingJsFilesFor("profile"); ?>
+<?php tryLoadingJsFilesFor("contact-information"); ?>

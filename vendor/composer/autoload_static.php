@@ -35,6 +35,7 @@ class ComposerStaticInit44c0e09186ec1e1a634b2e23952d00eb
         'App\\Core\\Main\\CNMain' => __DIR__ . '/../..' . '/app/core/main/CNMain.php',
         'App\\Core\\Main\\MainController' => __DIR__ . '/../..' . '/app/core/main/MainController.php',
         'App\\Core\\Middleware\\MainMiddleware' => __DIR__ . '/../..' . '/app/core/middleware/MainMiddleware.php',
+        'App\\Model\\Address' => __DIR__ . '/../..' . '/app/model/Address.php',
         'App\\Model\\FilterableFieldInterface' => __DIR__ . '/../..' . '/app/model/FilterableFieldInterface.php',
         'App\\Model\\MyDebugMessenger' => __DIR__ . '/../..' . '/app/model/MyDebugMessenger.php',
         'App\\Model\\MyPhoto' => __DIR__ . '/../..' . '/app/model/MyPhoto.php',

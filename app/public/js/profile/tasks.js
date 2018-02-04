@@ -1,8 +1,13 @@
-setPageTitle("Profile | CuteNinjar");
+$(document).ready(function(){
 
-initPage();
+    setPageTitle("Profile | CuteNinjar");
 
-readProfileSummary();
+    initPage();
+
+    readProfileSummary();
+
+    readContactInformation();
+});
 
 
 
