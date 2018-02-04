@@ -16,6 +16,7 @@ return array(
     'App\\Controller\\NotificationRateableItemController' => $baseDir . '/app/controller/NotificationRateableItemController.php',
     'App\\Controller\\NotificationTimelinePostReplyController' => $baseDir . '/app/controller/NotificationTimelinePostReplyController.php',
     'App\\Controller\\PhotoController' => $baseDir . '/app/controller/PhotoController.php',
+    'App\\Controller\\ProfileController' => $baseDir . '/app/controller/ProfileController.php',
     'App\\Controller\\RateableItemController' => $baseDir . '/app/controller/RateableItemController.php',
     'App\\Controller\\RateableItemUserController' => $baseDir . '/app/controller/RateableItemUserController.php',
     'App\\Controller\\Search' => $baseDir . '/app/controller/SearchController.php',

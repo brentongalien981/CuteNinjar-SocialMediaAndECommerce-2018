@@ -70,6 +70,10 @@ class MainMiddleware extends CNMain
         $session_user_type = User::get_user_type($this->session->actual_user_type_id);
 
 
+        // TODO: DEBUG
+        if ($requestedMenu == "Profile") {
+            $x = 0;
+        }
         //
         self::performAuthorization($requestedMenu, $requestedAction, $session_user_type);
 
@@ -262,6 +266,7 @@ class MainMiddleware extends CNMain
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_REQUEST_MY_PHOTO_TYPES_OF_ACTIONS, $action);
                 break;
             case "profile":
+            case "Profile":
                 $allowedUserTypes = self::getAllowedUserTypes(self::LOGGED_IN_TYPES_OF_ACTIONS, $action);
                 break;
             default:

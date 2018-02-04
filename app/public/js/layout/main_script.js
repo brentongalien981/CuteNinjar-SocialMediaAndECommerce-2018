@@ -193,6 +193,10 @@ function decide_ajax_pre_after_effects(xObj, json) {
         case "MyPhoto":
             doMyPhotoPreAfterEffects(className, crudType, json, xObj);
             break;
+        case "Profile":
+            doProfilePreAfterEffects(className, crudType, json, xObj)
+            break;
+
     }
 }
 
@@ -300,7 +304,7 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
             do_my_video_after_effects(className, crudType, json, xObj);
             break;
         case "Profile":
-            do_profile_after_effects(className, crudType, json, xObj);
+            doProfileAfterEffects(className, crudType, json, xObj);
             break;
     }
 }
@@ -633,7 +637,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "NotificationTimelinePostReply":
+        case "Profile":
             return true;
             break;
     }

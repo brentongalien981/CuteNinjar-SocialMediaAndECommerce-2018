@@ -22,6 +22,7 @@ class ComposerStaticInit44c0e09186ec1e1a634b2e23952d00eb
         'App\\Controller\\NotificationRateableItemController' => __DIR__ . '/../..' . '/app/controller/NotificationRateableItemController.php',
         'App\\Controller\\NotificationTimelinePostReplyController' => __DIR__ . '/../..' . '/app/controller/NotificationTimelinePostReplyController.php',
         'App\\Controller\\PhotoController' => __DIR__ . '/../..' . '/app/controller/PhotoController.php',
+        'App\\Controller\\ProfileController' => __DIR__ . '/../..' . '/app/controller/ProfileController.php',
         'App\\Controller\\RateableItemController' => __DIR__ . '/../..' . '/app/controller/RateableItemController.php',
         'App\\Controller\\RateableItemUserController' => __DIR__ . '/../..' . '/app/controller/RateableItemUserController.php',
         'App\\Controller\\Search' => __DIR__ . '/../..' . '/app/controller/SearchController.php',
