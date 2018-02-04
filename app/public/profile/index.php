@@ -25,6 +25,7 @@
 
 <?php require_once(PUBLIC_PATH . "contact-information/read.php"); ?>
 
+
 <?php require_once(PUBLIC_PATH . "work/read.php"); ?>
 
 <?php require_once(PUBLIC_PATH . "friend/read.php"); ?>
@@ -37,3 +38,5 @@
 <!--Main Scripts-->
 <?php tryLoadingJsFilesFor("profile"); ?>
 <?php tryLoadingJsFilesFor("contact-information"); ?>
+<?php tryLoadingJsFilesFor("user-social-media-account"); ?>
+

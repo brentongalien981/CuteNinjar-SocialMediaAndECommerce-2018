@@ -144,6 +144,9 @@ function getSpecificJsPseudoObjFileName($currentDir)
         case 'my-photo';
             $specificJsPseudoObjFileName = "MyPhoto";
             break;
+        case 'user-social-media-account';
+            $specificJsPseudoObjFileName = "UserSocialMediaAccount";
+            break;
 
     }
 

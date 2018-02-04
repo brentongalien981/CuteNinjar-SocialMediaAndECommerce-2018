@@ -19,6 +19,8 @@ function doProfilePreAfterEffects(className, crudType, json, xObj) {
                 var loaderEl = $("#loader-for-profile-contact-info-xxx");
                 removeClonedLoaderEl(loaderEl);
 
+                readUserSocialMediaAccount();
+
             }
 
             break;
@@ -43,7 +45,6 @@ function doProfileAfterEffects(className, crudType, json, xObj) {
             }
             else if (sectionToDoAfterEffectsWith == "contactInformation") {
                 displayContactInformation(json);
-                displaySocialMediaContacts();
             }
 
             break;

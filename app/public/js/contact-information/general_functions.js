@@ -31,14 +31,3 @@ function displayContactInformation(json) {
     }
 }
 
-// TODO: displaySocialMediaContacts().
-function displaySocialMediaContacts() {
-
-    var socialMediaItem = $(".social-media-entry").clone();
-    $(socialMediaItem).removeClass("cn-template");
-
-    $(socialMediaItem).find(".social-media-icon").addClass("fa fa-twitter");
-    $(socialMediaItem).find(".social-media-user-link").html("@bren");
-
-    $("#profile-social-media-info-section").append($(socialMediaItem));
-}
