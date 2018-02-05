@@ -268,6 +268,7 @@ class MainMiddleware extends CNMain
             case "profile":
             case "Profile":
             case "UserSocialMediaAccount":
+            case "UserTopActivity":
                 $allowedUserTypes = self::getAllowedUserTypes(self::LOGGED_IN_TYPES_OF_ACTIONS, $action);
                 break;
             default:

@@ -3,18 +3,11 @@
 
     <div class="">
 
-        <div id="cn-left-col" class="cn-col animated">
-            left col
-        </div>
+        <div id="cn-left-col" class="cn-col animated"></div>
 
-        <div id="cn-right-col" class="cn-col animated">
-            right col
-        </div>
+        <div id="cn-right-col" class="cn-col animated"></div>
 
-        <div id="cn-center-col" class="cn-col">
-            center col
-
-        </div>
+        <div id="cn-center-col" class="cn-col"></div>
 
     </div>
 

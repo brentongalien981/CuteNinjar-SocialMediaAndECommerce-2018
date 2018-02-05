@@ -147,6 +147,9 @@ function getSpecificJsPseudoObjFileName($currentDir)
         case 'user-social-media-account';
             $specificJsPseudoObjFileName = "UserSocialMediaAccount";
             break;
+        case 'user-top-activity';
+            $specificJsPseudoObjFileName = "UserTopActivity";
+            break;
 
     }
 

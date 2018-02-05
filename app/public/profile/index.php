@@ -40,3 +40,6 @@
 <?php tryLoadingJsFilesFor("contact-information"); ?>
 <?php tryLoadingJsFilesFor("user-social-media-account"); ?>
 
+<?php require_once(JS_PATH . "github/lukaszfiszer-drag-n-crop/cn-depency-scripts-loader.php"); ?>
+<?php tryLoadingJsFilesFor("user-top-activity"); ?>
+
