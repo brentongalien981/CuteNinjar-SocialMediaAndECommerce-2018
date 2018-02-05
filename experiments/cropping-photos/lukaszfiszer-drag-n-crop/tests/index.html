@@ -1,0 +1,66 @@
+<!doctype>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Mocha Tests</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1561.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 19.0px; font: 13.6px Menlo; color: #24292e; -webkit-text-stroke: #24292e; background-color: #f6f8fa}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+
+    .cn-photo-container {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/eventEmitter/EventEmitter.js"></script>
+<script src="../bower_components/ev-emitter/ev-emitter.js"></script>
+<script src="../bower_components/eventie/eventie.js"></script>
+<script src="../bower_components/jquery-ui-draggable/dist/jquery-ui-draggable.js"></script>
+<script src="../bower_components/imagesloaded/imagesloaded.js"></script>
+<script src="../jquery.drag-n-crop.js"></script>
+<link rel="stylesheet" href="../jquery.drag-n-crop.css">
+
+
+<div id="user-top-activities-container"></div>
+
+
+<div id="user-top-activity-photo-holder" class="cn-photo-container" style="width: 100px; height:500px"><img src="../images/amg.jpg" id="photo" class="cn-photo"></div>
+<div class="cn-photo-container" style="width: 100px; height:500px"><img src="../images/kobe.jpg" id="photo2" class="cn-photo"></div>
+<div class="cn-photo-container" style="width: 100px; height:500px"><img src="https://farm5.staticflickr.com/4331/36248325990_3e9f1255b0_h.jpg" id="photo2" class="cn-photo"></div>
+
+<!--<a data-flickr-embed="true"  href="https://www.flickr.com/photos/151625521@N05/36248325990/in/dateposted-public/" title="jet2"><img src="https://farm5.staticflickr.com/4331/36248325990_3e9f1255b0_h.jpg" width="1600" height="900" alt="jet2"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
+
+<script src="js-user-top-activity/tasks.js"></script>
+
+<script>
+    $('.cn-photo').dragncrop({
+        overflow: true,
+        overlay: true
+    });
+
+
+    $('.cn-photo').dragncrop({
+        stop: function() {
+            console.log("#############################");
+            console.log("#############################");
+            console.log('Dragging stopped!!');
+
+            var position = $(this).dragncrop('getPosition');
+            console.log("position.offset: " + position.offset);
+            console.log("position.dimension: " + position.dimension);
+            console.log("#############################");
+            console.log("#############################");
+        }
+    });
+
+</script>
+
+<h1>shit</h1>
+</body>
+</html>
