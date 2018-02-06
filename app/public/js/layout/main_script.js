@@ -202,6 +202,12 @@ function decide_ajax_pre_after_effects(xObj, json) {
         case "UserTopActivity":
             doUserTopActivityPreAfterEffects(className, crudType, json, xObj)
             break;
+        case "Work":
+            doWorkPreAfterEffects(className, crudType, json, xObj)
+            break;
+        case "Friendship":
+            doFriendshipPreAfterEffects(className, crudType, json, xObj)
+            break;
 
 
     }
@@ -227,9 +233,6 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
             break;
         case "FriendshipMuse":
             do_friendship_muses_after_effects(className, crudType, json, xObj);
-            break;
-        case "Friendship":
-            do_friendships_after_effects(className, crudType, json, xObj);
             break;
         case "NotificationFriendship":
             do_notification_friendships_after_effects(className, crudType, json, xObj);
@@ -318,6 +321,12 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
             break;
         case "UserTopActivity":
             doUserTopActivityAfterEffects(className, crudType, json, xObj);
+            break;
+        case "Work":
+            doWorkAfterEffects(className, crudType, json, xObj);
+            break;
+        case "Friendship":
+            doFriendshipAfterEffects(className, crudType, json, xObj);
             break;
 
     }
@@ -651,7 +660,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "UserTopActivity":
+        case "Friendship":
             return true;
             break;
     }

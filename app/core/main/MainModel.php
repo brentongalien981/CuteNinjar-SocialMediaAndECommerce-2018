@@ -627,6 +627,34 @@ class MainModel extends CNMain
         return $obj;
     }
 
+    public function hasMany($class, $fk, $data) {
+
+
+        $path = "\\App\\Model\\" . $class;
+        $extentionalObj = new $path;
+
+
+        // If the sent argument $fk is an array, that means
+        // we would like to read a table record using other key (probably a fk)
+        // instead of reading by the pk id.
+        if (is_array($fk)) {
+
+            foreach ($fk as $field => $value) {
+                $data['where_clause'] = "WHERE {$field} = {$value}";
+                break;
+            }
+
+        }
+        else {
+            $data['id'] = $fk;
+        }
+
+
+        $objs = $extentionalObj->read($data);
+
+        return $objs;
+    }
+
     public function belongsTo($class, $pk) {
 
         return $this->newHasOne($class, $pk);
@@ -668,7 +696,7 @@ class MainModel extends CNMain
         $this->human_date = $carbonDate;
     }
 
-    public function filterInclude($includedFields) {
+    public function filterInclude($includedFields = []) {
 
         foreach ($this as $field => $value) {
 

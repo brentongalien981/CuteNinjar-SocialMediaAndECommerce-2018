@@ -22,7 +22,7 @@ function initContainers() {
     $("#cn-center-col").append($("#user-top-activities-container"));
     $("#cn-center-col").append($("#user-summary-container"));
     $("#cn-center-col").append($("#work-container"));
-    $("#cn-center-col").append($("#friend-container"));
+    $("#cn-center-col").append($("#connections-container"));
 
     $("#cn-left-col").append($("#contact-information-container"));
     $("#cn-right-col").append($("#profile-page-outline-container"));

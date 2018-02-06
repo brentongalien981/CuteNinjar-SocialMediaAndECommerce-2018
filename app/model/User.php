@@ -81,6 +81,19 @@ class User extends MainModel
         }
     }
 
+    public function getUserSocialMediaAccounts() {
+
+        $fk = ['user_id' => $this->user_id];
+        $data['limit'] = 7;
+        return $this->hasMany("UserSocialMediaAccount", $fk, $data);
+    }
+
+    public function getProfile() {
+
+        $fkUserId = $this->user_id;
+        return $this->newHasOne("Profile", ['user_id' => $fkUserId]);
+    }
+
 
 
 

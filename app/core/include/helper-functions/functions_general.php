@@ -150,6 +150,12 @@ function getSpecificJsPseudoObjFileName($currentDir)
         case 'user-top-activity';
             $specificJsPseudoObjFileName = "UserTopActivity";
             break;
+        case 'work';
+            $specificJsPseudoObjFileName = "Work";
+            break;
+        case 'friendship';
+            $specificJsPseudoObjFileName = "Friendship";
+            break;
 
     }
 

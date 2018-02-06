@@ -25,6 +25,8 @@ class UserSocialMediaAccount extends MainModel
     public $user_id;
     public $social_media_account_id;
 
+    public $primary_key_id_name = null;
+
 
     public function getSocialMediaAccount() {
 

@@ -1,7 +1,73 @@
 <div id="work-container">
-    <h2>Employment</h2>
-    <hr>
-    <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
+
+    <div>
+        <h4 id="work-container-title">Employment</h4>
+        <i class="fa fa-sliders work-edit-icon"></i>
+    </div>
+
+
+
+    <div id="work-item-template" class="cn-template m-5">
+
+        <div>
+            <i class="fa fa-black-tie"></i>
+            <h5 class="work-position-title work-labels"></h5>
+        </div>
+
+        <div>
+            <i class="fa fa-building-o"></i>
+            <h5 class="work-employer work-labels">work-employer</h5>
+        </div>
+
+        <div>
+            <i class="fa fa-calendar"></i>
+            <h6 class="work-calendar work-labels">work-year</h6>
+        </div>
+
+
+
+        <div class="work-descriptions">
+
+            <div id="work-description-template" class="cn-template">
+                <i class="fa fa-check-circle-o"></i>
+                <h6 class="work-description work-labels"></h6>
+            </div>
+
+        </div>
+
+
+    </div>
+
 </div>
+
+
+
+<style>
+    .work-labels {
+        display: inline-block;
+    }
+
+    .work-edit-icon {
+        float: right;
+    }
+
+    #work-container-title {
+        display: inline-block;
+    }
+
+    .work-item {
+        background-color: white;
+        border-left: 5px solid deepskyblue;
+        padding: 2%;
+        border-radius: 5px;
+    }
+
+    .work-descriptions {
+        margin-top: 15px;
+    }
+
+    .work-description {
+        width: 90%;
+        vertical-align: top;
+    }
+</style>

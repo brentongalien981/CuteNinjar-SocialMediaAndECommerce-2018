@@ -44,7 +44,7 @@ function displayUserTopActivities(json) {
     var numOfUserTopActivities = userTopActivities.length;
 
     // setUserTopActivityContainerParameters();
-    setUserTopActivityPhotoHolderTemplateWidth (numOfUserTopActivities);
+    setUserTopActivityPhotoHolderTemplateWidth(numOfUserTopActivities);
     // setUserTopActivityPhotoHolderTemplateHeight (numOfUserTopActivities);
 
 
@@ -70,12 +70,12 @@ function displayUserTopActivities(json) {
 
 
         //
-        enableDragAndDropFeature(userTopActivityPhoto);
+        enableDragAndCropFeature(userTopActivityPhoto);
     }
 
 }
 
-function enableDragAndDropFeature(userTopActivityPhoto) {
+function enableDragAndCropFeature(userTopActivityPhoto) {
 
     $(userTopActivityPhoto).dragncrop({
         overflow: true,

@@ -153,6 +153,7 @@ class NotificationTimelinePostReplyController extends MainController implements 
         return $this->read();
     }
 
+    /** @override */
     protected function read() {
 
         $this->setSpecificQueryClauses();

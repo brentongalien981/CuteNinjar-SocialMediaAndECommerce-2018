@@ -40,6 +40,6 @@ class Profile extends MainModel
     public function getUserAccount() {
 
         $fkUserId = $this->user_id;
-        return $this->newHasOne("User", ['user_id' => $fkUserId]);
+        return $this->belongsTo("User", ['user_id' => $fkUserId]);
     }
 }
