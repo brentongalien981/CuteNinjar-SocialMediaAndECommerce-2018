@@ -156,6 +156,9 @@ function getSpecificJsPseudoObjFileName($currentDir)
         case 'friendship';
             $specificJsPseudoObjFileName = "Friendship";
             break;
+        case 'friend';
+            $specificJsPseudoObjFileName = "Friend";
+            break;
 
     }
 

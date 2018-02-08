@@ -208,6 +208,9 @@ function decide_ajax_pre_after_effects(xObj, json) {
         case "Friendship":
             doFriendshipPreAfterEffects(className, crudType, json, xObj)
             break;
+        case "Friend":
+            doFriendPreAfterEffects(className, crudType, json, xObj)
+            break;
 
 
     }
@@ -327,6 +330,9 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
             break;
         case "Friendship":
             doFriendshipAfterEffects(className, crudType, json, xObj);
+            break;
+        case "Friend":
+            doFriendAfterEffects(className, crudType, json, xObj);
             break;
 
     }
@@ -660,7 +666,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "Friendship":
+        case "Friend":
             return true;
             break;
     }

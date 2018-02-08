@@ -115,7 +115,12 @@ class MainController extends CNMain
         }
 
         $class = "App\\Model\\{$this->menu}";
-        $this->menuObj = new $class();
+        try {
+            $this->menuObj = new $class();
+        } catch (Exception $e) {
+            $cnError = $e->getMessage();
+        }
+
     }
 
 

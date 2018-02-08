@@ -13,18 +13,26 @@ use App\Core\MainModel;
 
 class Profile extends MainModel
 {
+    protected static $table_name = "Profile";
+    protected static $className = "Profile";
+    protected static $db_fields = array("user_id", "description", "pic_url");
+
     public $user_id;
     public $description;
     public $pic_url;
 
-    public function init()
-    {
-        self::$table_name = "Profile";
-        self::$className = "Profile";
-        self::$db_fields = array("user_id", "description", "pic_url");
-        $this->primary_key_id_name = "user_id";
+    protected $pk = [];
+    public $primary_key_id_name = "user_id";
+    protected static $primaryKeyName = "user_id";
 
-    }
+//    public function init()
+//    {
+//        self::$table_name = "Profile";
+//        self::$className = "Profile";
+//        self::$db_fields = array("user_id", "description", "pic_url");
+//        $this->primary_key_id_name = "user_id";
+//
+//    }
 
     public function __construct()
     {

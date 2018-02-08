@@ -17,8 +17,18 @@ class User extends MainModel
     const LOGGED_IN_USER_TYPE = 1;
     const ADMIN_USER_TYPE = 3;
 
-//    protected static $table_name = "Users";
-//    protected static $db_fields = array("user_id", "user_name", "email", "hashed_password", "user_type_id", "signup_token", "private", "account_status_id");
+    protected static $table_name = "Users";
+    protected static $className = "User";
+    protected static $db_fields = array(
+        "user_id",
+        "user_name",
+        "email",
+        "hashed_password",
+        "user_type_id",
+        "signup_token",
+        "private",
+        "account_status_id"
+    );
 //    public static $searchable_fields = array("user_name", "email");
     public $user_id;
     public $user_name;
@@ -28,21 +38,24 @@ class User extends MainModel
     public $signup_token;
     public $private;
     public $account_status_id;
+
+    protected $pk = [];
     public $primary_key_id_name = "user_id";
+    protected static $primaryKeyName = "user_id";
 
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function init() {
-        self::$table_name = "Users";
-        self::$className = "User";
-        self::$db_fields = array("user_id", "user_name", "email", "hashed_password", "user_type_id", "signup_token", "private", "account_status_id");
-        self::$searchable_fields = array("user_name", "email");
-        $this->primary_key_id_name = "user_id";
-
-    }
+//    public function init() {
+//        self::$table_name = "Users";
+//        self::$className = "User";
+//        self::$db_fields = array("user_id", "user_name", "email", "hashed_password", "user_type_id", "signup_token", "private", "account_status_id");
+//        self::$searchable_fields = array("user_name", "email");
+//        $this->primary_key_id_name = "user_id";
+//
+//    }
 
 
     /**
@@ -90,8 +103,34 @@ class User extends MainModel
 
     public function getProfile() {
 
-        $fkUserId = $this->user_id;
-        return $this->newHasOne("Profile", ['user_id' => $fkUserId]);
+        return $this->hasOne2("Profile");
+    }
+
+    public function getFriends() {
+        return $this->hasMany2("Friend");
+    }
+
+    public function getSocialMediaAccounts() {
+
+        $socialMediaAccounts = $this->hasMany2("SocialMediaAccount");
+
+        foreach ($socialMediaAccounts as $socialMediaAccount) {
+            $socialMediaCompany = $socialMediaAccount->belongsTo2("SocialMediaCompany");
+
+            // filter
+            $socialMediaAccount->filterExclude(['id', 'social_media_company_id']);
+            $socialMediaCompany->filterInclude(['name']);
+
+            // refine
+            $socialMediaAccount->replaceFieldNamesForAjax(['username' => 'social_media_username']);
+            $socialMediaCompany->replaceFieldNamesForAjax(['name' => 'social_media_company_name']);
+
+            // combine
+            $socialMediaAccount->combineWithObj($socialMediaCompany);
+        }
+
+        //
+        return $socialMediaAccounts;
     }
 
 

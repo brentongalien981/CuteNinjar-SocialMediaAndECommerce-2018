@@ -38,6 +38,7 @@ class FriendshipController extends MainController implements AjaxCrudHandlerInte
         }
     }
 
+
     /** @override */
     protected function read()
     {
