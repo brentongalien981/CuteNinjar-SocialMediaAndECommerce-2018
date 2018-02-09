@@ -1,8 +1,6 @@
-<div id="profile-page-outline-container">
-    <h5>Page Outline</h5>
-    <hr>
-    <h6>My Top Activities</h6>
-    <h6>Summary</h6>
-    <h6>Employment</h6>
-    <h6>Connections</h6>
+<div id="profile-page-outline-container" class="list-group">
+    <a class="list-group-item list-group-item-action" href="#user-top-activities-container">Banner</a>
+    <a class="list-group-item list-group-item-action" href="#user-summary-container">Summary</a>
+    <a class="list-group-item list-group-item-action" href="#work-container">Employment</a>
+    <a class="list-group-item list-group-item-action" href="#connections-container">Connections</a>
 </div>

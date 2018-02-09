@@ -1,3 +1,14 @@
+<div id="user-top-activities-container">
+    <div id="user-top-activity-photo-holder-template" class="cn-template">
+        <img class="user-top-activity-photo">
+    </div>
+
+</div>
+
+
+
+
+
 <style>
     #user-top-activities-container {
 
@@ -11,12 +22,3 @@
         /*padding: 0 30px;*/
     }
 </style>
-
-
-
-<div id="user-top-activities-container">
-    <div id="user-top-activity-photo-holder-template" class="cn-template">
-        <img class="user-top-activity-photo">
-    </div>
-
-</div>

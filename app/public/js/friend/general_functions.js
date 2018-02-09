@@ -28,8 +28,6 @@ function doFriendAfterEffects(className, crudType, json, xObj) {
     switch (crudType) {
         case "read":
 
-            // TODO: return;
-            return;
             displayFriends(json);
 
             break;
@@ -48,16 +46,16 @@ function doFriendAfterEffects(className, crudType, json, xObj) {
 
 function displayFriends(json) {
 
-    var friendships = json.objs;
+    var friends = json.objs;
 
 
     //
-    for (var i = 0; i < friendships.length; i++) {
+    for (var i = 0; i < friends.length; i++) {
 
-        var friendship = friendships[i];
+        var friend = friends[i];
 
         //
-        var friendItem = getFriendItem(friendship);
+        var friendItem = getFriendItem(friend);
 
         //
         $("#friend-item-holder").append($(friendItem));
@@ -66,7 +64,7 @@ function displayFriends(json) {
 
 }
 
-function getFriendItem(friendship) {
+function getFriendItem(friend) {
 
     // Clone a friend-item-template.
     var friendItem = $("#friend-item-template").clone(true);
@@ -76,11 +74,10 @@ function getFriendItem(friendship) {
 
 
     // Set the friend-photo.
-    var picUrl = friendship.friend.profile.pic_url;
+    var picUrl = friend.profile.pic_url;
     setFriendItemPhoto(friendItem, picUrl)
 
     // Set the friend-details.
-    var friend = friendship.friend;
     setFriendItemDetails(friendItem, friend);
 
     // Return the friend-item.
@@ -126,7 +123,7 @@ function setFriendItemSocialMediaEntries(friendItem, socialMediaAccounts) {
 
 
         //
-        addClickListenerTo(socialMediaItem, socialMediaCompanyName);
+        addClickListenerToSocialMediaItem(socialMediaItem, socialMediaCompanyName);
 
 
         // Append.

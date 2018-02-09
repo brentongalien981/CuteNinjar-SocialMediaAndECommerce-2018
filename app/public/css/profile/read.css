@@ -19,10 +19,15 @@
 
 #cn-center-col {
     background-color: whitesmoke;
+    /*position: relative;*/
 }
 
 #cn-right-col {
     background-color: azure;
     position: fixed;
     right: 0;
+}
+
+body {
+    position: relative;
 }
