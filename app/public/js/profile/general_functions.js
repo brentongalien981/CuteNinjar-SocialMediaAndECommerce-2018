@@ -45,6 +45,8 @@ function doProfileAfterEffects(className, crudType, json, xObj) {
             }
             else if (sectionToDoAfterEffectsWith == "contactInformation") {
                 displayContactInformation(json);
+
+                hideSideColumns();
             }
 
             break;
@@ -76,4 +78,13 @@ function displayProfileSummary(json) {
         }
         $("#profile-summary").html(profile["description"]);
     }
+}
+
+function hideSideColumns() {
+
+    setTimeout(function () {
+
+        $("#left-col-toggle-btn").trigger("click");
+        $("#right-col-toggle-btn").trigger("click");
+    }, 5000);
 }

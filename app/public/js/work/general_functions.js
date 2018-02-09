@@ -71,7 +71,7 @@ function displayWorks(json) {
 
 
         //
-        $("#work-container").append($(workItem));
+        $("#work-container").find(".actual-content").append($(workItem));
 
     }
 

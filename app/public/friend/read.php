@@ -4,9 +4,14 @@
 
 <div id="connections-container">
 
-    <div>
+
+    <div id="connections-header">
+
         <h3>Connections</h3>
+        <hr>
+
     </div>
+
 
 
     <div id="connections-scrollbar">
@@ -70,12 +75,18 @@
 
     #connections-container {
         background-color: white;
+        padding-top: 50px;
+    }
+
+    #connections-header {
+        margin: 0 48px;
     }
 
     #connections-scrollbar {
         /*background-color: yellow;*/
         /*max-width: 1000px;*/
         overflow-x: auto;
+        padding-bottom: 70px;
     }
 
     #friend-item-holder {

@@ -43,10 +43,6 @@ function displayUserTopActivities(json) {
     var userTopActivities = json.objs;
     var numOfUserTopActivities = userTopActivities.length;
 
-    // setUserTopActivityContainerParameters();
-    setUserTopActivityPhotoHolderTemplateWidth(numOfUserTopActivities);
-    // setUserTopActivityPhotoHolderTemplateHeight (numOfUserTopActivities);
-
 
     //
     for (i = 0; i < numOfUserTopActivities; i++) {
@@ -66,13 +62,17 @@ function displayUserTopActivities(json) {
         var userTopActivityPhoto = $(userTopActivityHolder).find("img");
         $(userTopActivityPhoto).attr("src", userTopActivity["photo_link"]);
 
-        $("#user-top-activities-container").append($(userTopActivityHolder));
+        $("#user-top-activities-container-slot").append($(userTopActivityHolder));
 
 
         //
         enableDragAndCropFeature(userTopActivityPhoto);
     }
 
+
+    //
+    setUserTopActivityPhotoHolderTemplateWidth(numOfUserTopActivities);
+    setUserTopActivityPhotoHolderTemplateHeight();
 }
 
 function enableDragAndCropFeature(userTopActivityPhoto) {
