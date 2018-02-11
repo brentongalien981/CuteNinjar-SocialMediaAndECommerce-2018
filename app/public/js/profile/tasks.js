@@ -15,9 +15,17 @@ function initPage() {
 
     $("#center-col-toggle-btn").remove();
 
+    setSideColumns();
+
     initBootstrapScrollSpy();
 
     addSmoothScrollingToLinks();
+}
+
+function setSideColumns() {
+
+    $("#cn-right-col").height($(this).height());
+    $("#cn-left-col").height($(this).height());
 }
 
 function initContainers() {

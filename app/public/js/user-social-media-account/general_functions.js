@@ -50,15 +50,39 @@ function displayUserSocialMediaAccounts(json) {
     for (i = 0; i < socialMediaAccounts.length; i++) {
         var socialMediaAccount = socialMediaAccounts[i];
 
+        var socialMediaUserName = socialMediaAccount["social_media_username"];
+        var socialMediaCompanyName = socialMediaAccount["social_media_company_name"];
+
         //
-        var socialMediaItem = $("#social-media-entry-template").clone();
-        $(socialMediaItem).removeAttr("id");
-        $(socialMediaItem).removeClass("cn-template");
+        var contactDetailItem = cnCloneTemplate("#contact-detail-template");
+        $(contactDetailItem).addClass("contact-detail-item-social-meida");
 
-        $(socialMediaItem).find(".social-media-icon").addClass("fa fa-" + socialMediaAccount["social_media_company_name"]);
-        $(socialMediaItem).find(".social-media-user-link").html("@" + socialMediaAccount["social_media_username"]);
+        var socialMediaLogoName = getSocialMediaLogoName(socialMediaAccount);
 
-        $("#profile-social-media-info-section").append($(socialMediaItem));
+        $(contactDetailItem).find(".contact-detail-icon").addClass("fa fa-" + socialMediaLogoName);
+
+        $(contactDetailItem).find(".contact-detail-label").html("@" + socialMediaUserName);
+
+        $("#profile-social-media-section").append($(contactDetailItem));
+
+
+        //
+
+        addClickListenerToSocialMediaItem(contactDetailItem, socialMediaCompanyName, socialMediaUserName);
     }
 
+}
+
+
+function getSocialMediaLogoName(socialMediaAccount) {
+
+    var socialMediaLogoName = socialMediaAccount["social_media_company_name"];
+
+    switch (socialMediaAccount["social_media_company_name"]) {
+        case "facebook":
+            socialMediaLogoName = "facebook-square";
+            break;
+    }
+
+    return socialMediaLogoName;
 }

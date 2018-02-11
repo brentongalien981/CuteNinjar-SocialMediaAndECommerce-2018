@@ -268,3 +268,12 @@ function isCnAjaxResultOk(json) {
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function cnCloneTemplate(id) {
+    var template = $(id).clone(true);
+    $(template).removeClass("cn-template");
+    $(template).removeAttr("id");
+
+    $(template).addClass("contact-detail-item");
+    return template;
+}

@@ -108,6 +108,8 @@ function setFriendItemSocialMediaEntries(friendItem, socialMediaAccounts) {
         // Set the icon.
         var socialMediaItemIcon = $(socialMediaItem).find("i");
         var socialMediaCompanyName = socialMediaAccount.social_media_company_name;
+        var socialMediaUserName = socialMediaAccount.social_media_username;
+
         
         switch (socialMediaCompanyName) {
             case "facebook":
@@ -123,7 +125,7 @@ function setFriendItemSocialMediaEntries(friendItem, socialMediaAccounts) {
 
 
         //
-        addClickListenerToSocialMediaItem(socialMediaItem, socialMediaCompanyName);
+        addClickListenerToSocialMediaItem(socialMediaItem, socialMediaCompanyName, socialMediaUserName);
 
 
         // Append.

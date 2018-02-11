@@ -1,86 +1,58 @@
 <div id="contact-information-container">
 
-    <div id="profile-basic-info-section">
+    <div id="contact-information-holder">
 
-        <div><img id="profile-photo" alt="profile-photo"></div>
+        <div id="profile-photo-section">
+            <img>
+        </div>
 
-        <h5 id="profile-full-name">profile-full-name</h5>
+        <div id="profile-names-section" class="profile-detail-sections"></div>
+        <hr>
 
-        <h6 id="profile-user-name">profile-user-name</h6>
+        <div id="profile-contacts-actual-section" class="profile-detail-sections"></div>
+        <hr>
+
+        <div id="profile-social-media-section" class="profile-detail-sections"></div>
 
     </div>
-    <hr>
-
-
-
-    <div id="profile-contact-info-section">
-
-        <h6 id="profile-phone-number">profile-phone-number</h6>
-
-        <h6 id="profile-email">profile-email</h6>
-
-        <div>
-            <span id="profile-street1" class="profile-address">profile-address</span>
-        </div>
-
-        <div>
-            <span id="profile-street2" class="profile-address"></span>
-        </div>
-
-        <div>
-            <span id="profile-city" class="profile-address">profile-address</span>
-            <span id="profile-state" class="profile-address">profile-address</span>
-            <span id="profile-country" class="profile-address">TODO: Country</span>
-        </div>
-
-        <div>
-            <span id="profile-zip" class="profile-address">profile-address</span>
-        </div>
-
-
-    </div>
-    <hr>
-
-    <div id="profile-social-media-info-section"></div>
 
 </div>
 
 
-<?php require_once(PUBLIC_PATH . "contact-information/social-media-entry-template.php"); ?>
-
+<?php //require_once(PUBLIC_PATH . "contact-information/social-media-entry-template.php"); ?>
+<?php require_once(PUBLIC_PATH . "contact-information/contact-detail-template.php"); ?>
 
 
 
 <style>
-    #contact-information-container hr {
-        margin: 10px;
+    #contact-information-container {
+        margin-bottom: 150px;
     }
 
-    #profile-full-name,
-    #profile-user-name {
-        /*pading: 10px;*/
-        margin-left: 10px;
-        max-width: 80%;
+    .profile-detail-sections {
+        margin: 20px 10px;
+        margin-bottom: 30px;
+        margin-left: 15px;
     }
 
-    #profile-full-name {
-        margin-top: 20px;
+    #profile-names-section {
         font-size: 18px;
-        font-weight: 500;
-    }
-
-    #profile-user-name {
-        font-size: 17px;
-        font-weight: 400;
-
-    }
-
-
-    #profile-contact-info-section,
-    #profile-social-media-info-section {
-        margin: 60px 10px;
-        font-size: 12px;
         font-weight: 100;
+    }
+
+    #profile-contacts-actual-section {
+        font-size: 13px;
+        font-weight: 100;
+    }
+
+    #profile-social-media-section {
+        font-size: 13px;
+        font-weight: 100;
+    }
+
+    #contact-information-container hr {
+        margin: 0 10px;
+        opacity: 0.7;
     }
 
 </style>
