@@ -66,7 +66,7 @@ function displayUserTopActivities(json) {
 
 
         //
-        enableDragAndCropFeature(userTopActivityPhoto);
+        enableDragAndCropFeature(userTopActivityPhoto, userTopActivity);
     }
 
 
@@ -75,10 +75,11 @@ function displayUserTopActivities(json) {
     setUserTopActivityPhotoHolderTemplateHeight();
 }
 
-function enableDragAndCropFeature(userTopActivityPhoto) {
+function enableDragAndCropFeature(userTopActivityPhoto, userTopActivity) {
 
     $(userTopActivityPhoto).dragncrop({
         overflow: true,
-        overlay: true
+        overlay: true,
+        position: {offset: [userTopActivity["x_offset"], 0]} // position image on the right
     });
 }

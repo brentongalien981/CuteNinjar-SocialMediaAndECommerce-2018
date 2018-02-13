@@ -15,9 +15,11 @@ class Profile extends MainModel
 {
     protected static $table_name = "Profile";
     protected static $className = "Profile";
-    protected static $db_fields = array("user_id", "description", "pic_url");
+    protected static $db_fields = array("user_id", "first_name", "last_name", "description", "pic_url");
 
     public $user_id;
+    public $first_name;
+    public $last_name;
     public $description;
     public $pic_url;
 

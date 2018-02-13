@@ -59,7 +59,13 @@ function setProfileNamesSection(profile) {
 
 
     $(contactDetailItemFullName).find(".contact-detail-icon").addClass("fa fa-user");
-    $(contactDetailItemFullName).find(".contact-detail-label").html("TODO: Juan dela Cruz");
+
+    //
+    var fullName = profile["first_name"] + " " + profile["last_name"];
+    if (fullName == "") {
+        fullName = "add your full name..";
+    }
+    $(contactDetailItemFullName).find(".contact-detail-label").html(fullName);
 
 
 
