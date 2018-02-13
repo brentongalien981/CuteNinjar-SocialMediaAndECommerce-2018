@@ -86,5 +86,5 @@ function hideSideColumns() {
 
         $("#left-col-toggle-btn").trigger("click");
         $("#right-col-toggle-btn").trigger("click");
-    }, 5000);
+    }, 100); // TODO: Change the animation time in method hideSideColumns().
 }

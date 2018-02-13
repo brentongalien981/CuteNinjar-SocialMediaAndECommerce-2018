@@ -2,7 +2,8 @@
 <?php require_once(PUBLIC_PATH . "friend/friend-social-media-item.php"); ?>
 
 
-<div id="connections-container">
+<!--<div id="connections-container">-->
+<div id="connections-container" class="profile-main-item">
 
 
     <div id="connections-header">
@@ -12,17 +13,31 @@
 
     </div>
 
+<!--    <div class="row justify-content-center">-->
+<!---->
+<!--        <div class="col-10">-->
+<!---->
+<!--            <h2 class="profile-header-title">Connections</h2>-->
+<!---->
+<!--            <a href="#TODO"><i class="fa fa-eye profile-header-icon"></i></a>-->
+<!---->
+<!--            <hr>-->
+<!---->
+<!--        </div>-->
+<!---->
+<!--    </div>-->
+
 
 
     <div id="connections-scrollbar">
 
         <div id="friend-item-holder">
 
-            <div id="friend-item-template" class="cn-template m-5">
+            <div id="friend-item-template" class="cn-template">
 
 
                 <div class="friend-photo-container">
-                    <img src="https://www.touristisrael.com/wp-content/uploads/justin-300x300.jpg">
+                    <img src="">
                 </div>
 
 
@@ -75,18 +90,18 @@
 
     #connections-container {
         background-color: white;
-        padding-top: 50px;
+        /*padding-top: 50px;*/
     }
 
     #connections-header {
-        margin: 0 48px;
+        /*margin: 0 48px;*/
     }
 
     #connections-scrollbar {
         /*background-color: yellow;*/
         /*max-width: 1000px;*/
         overflow-x: auto;
-        padding-bottom: 70px;
+        /*padding-bottom: 70px;*/
     }
 
     #friend-item-holder {
@@ -95,7 +110,7 @@
 
     .friend-item {
         display: inline-block;
-        box-shadow: 0 0 25px rgb(170, 170, 170);
+        box-shadow: 0 0 130px rgb(150, 150, 150);
     }
 
     .friend-item {

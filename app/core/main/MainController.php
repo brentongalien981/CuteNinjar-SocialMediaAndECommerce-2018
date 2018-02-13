@@ -94,6 +94,7 @@ class MainController extends CNMain
 
         //
         $this->json['errors'] = $this->validator->errors;
+        $this->json['is_viewing_own_account'] = $this->session->is_viewing_own_account();
 
         //
         echo json_encode($this->json);
