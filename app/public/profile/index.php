@@ -29,7 +29,7 @@
 <?php require_once(PUBLIC_PATH . "work/read.php"); ?>
 
 <?php //require_once(PUBLIC_PATH . "friendship/read.php"); ?>
-<?php //require_once(PUBLIC_PATH . "friend/read.php"); ?>
+<?php require_once(PUBLIC_PATH . "friend/read.php"); ?>
 
 
 
@@ -45,4 +45,4 @@
 
 <?php tryLoadingJsFilesFor("work"); ?>
 <?php //tryLoadingJsFilesFor("friendship"); ?>
-<?php //tryLoadingJsFilesFor("friend"); ?>
+<?php tryLoadingJsFilesFor("friend"); ?>

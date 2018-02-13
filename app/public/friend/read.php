@@ -6,30 +6,32 @@
 <div id="connections-container" class="profile-main-item">
 
 
-    <div id="connections-header">
-
-        <h3>Connections</h3>
-        <hr>
-
-    </div>
-
-<!--    <div class="row justify-content-center">-->
+<!--    <div id="connections-header">-->
 <!---->
-<!--        <div class="col-10">-->
-<!---->
-<!--            <h2 class="profile-header-title">Connections</h2>-->
-<!---->
-<!--            <a href="#TODO"><i class="fa fa-eye profile-header-icon"></i></a>-->
-<!---->
-<!--            <hr>-->
-<!---->
-<!--        </div>-->
+<!--        <h3>Connections</h3>-->
+<!--        <hr>-->
 <!---->
 <!--    </div>-->
 
 
 
-    <div id="connections-scrollbar">
+    <div class="row justify-content-center">
+
+        <div class="col-11">
+
+            <h2 class="profile-header-title">Connections</h2>
+
+            <a href="#TODO"><i class="fa fa-eye profile-header-icon"></i></a>
+
+            <hr>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="connections-scrollbar" class="actual-content">
 
         <div id="friend-item-holder">
 
@@ -91,6 +93,7 @@
     #connections-container {
         background-color: white;
         /*padding-top: 50px;*/
+        padding-bottom: 0;
     }
 
     #connections-header {
@@ -101,19 +104,19 @@
         /*background-color: yellow;*/
         /*max-width: 1000px;*/
         overflow-x: auto;
-        /*padding-bottom: 70px;*/
+        padding-bottom: 150px;
     }
 
     #friend-item-holder {
         white-space: nowrap;
     }
 
-    .friend-item {
-        display: inline-block;
-        box-shadow: 0 0 130px rgb(150, 150, 150);
-    }
 
     .friend-item {
+        display: inline-block;
+        margin-left: 80px;
+        margin-right: 40px;
+        box-shadow: 0 0 30px rgb(150, 150, 150);
         background-color: white;
         /*padding: 1%;*/
         border-radius: 5px;
