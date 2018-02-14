@@ -47,9 +47,18 @@ class Profile extends MainModel
         return $this->newHasOne("Address", ['user_id' => $fkUserId]);
     }
 
+
     public function getUserAccount() {
 
         $fkUserId = $this->user_id;
         return $this->belongsTo("User", ['user_id' => $fkUserId]);
+    }
+
+    public static function isTryingToViewOwnProfile($otherUserId) {
+        global $session;
+
+        if ($session->actual_user_id == $otherUserId) { return true; }
+
+        return false;
     }
 }

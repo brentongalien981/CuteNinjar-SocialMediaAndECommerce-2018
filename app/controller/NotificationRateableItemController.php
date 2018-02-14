@@ -17,10 +17,9 @@ class NotificationRateableItemController extends MainController implements AjaxC
 
     private $parentAdditionalData;
 
-    public function __construct()
+    public function __construct($menu, $action)
     {
-//        $this->parentNotification = new Notification();
-        parent::__construct();
+        parent::__construct($menu, $action);
     }
 
 

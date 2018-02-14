@@ -7,6 +7,12 @@ function doUserTopActivityPreAfterEffects(className, crudType, json, xObj) {
             // Unset loader el.
             var loaderEl = $("#loader-for-user-top-activity-xxx");
             removeClonedLoaderEl(loaderEl);
+
+
+            //
+            if (!isCnAjaxResultOk(json)) {
+                displayDefaultUserTopActivities();
+            }
             break;
 
         case "create":
@@ -43,6 +49,12 @@ function displayUserTopActivities(json) {
     var userTopActivities = json.objs;
     var numOfUserTopActivities = userTopActivities.length;
 
+    //
+    if (numOfUserTopActivities == 0) {
+        displayDefaultUserTopActivities();
+        return;
+    }
+
 
     //
     for (i = 0; i < numOfUserTopActivities; i++) {
@@ -66,7 +78,7 @@ function displayUserTopActivities(json) {
 
 
         //
-        enableDragAndCropFeature(userTopActivityPhoto, userTopActivity);
+        enableDragAndCropFeature(userTopActivityPhoto, userTopActivity["x_offset"]);
     }
 
 
@@ -75,11 +87,49 @@ function displayUserTopActivities(json) {
     setUserTopActivityPhotoHolderTemplateHeight();
 }
 
-function enableDragAndCropFeature(userTopActivityPhoto, userTopActivity) {
+function displayDefaultUserTopActivities() {
+
+    var numOfUserTopActivities = 7;
+
+    //
+    for (i = 0; i < numOfUserTopActivities; i++) {
+
+        //
+        var userTopActivityHolder = $("#user-top-activity-photo-holder-template").clone(true);
+        $(userTopActivityHolder).removeAttr("id");
+        $(userTopActivityHolder).removeClass("cn-template");
+        $(userTopActivityHolder).addClass("user-top-activity-photo-holder-templates");
+
+        // Add margin to the holder.
+        if (i > 0) {
+            $(userTopActivityHolder).css("margin-left", getUserTopActivityContainerGapWidth() + "px");
+        }
+
+        var userTopActivityPhoto = $(userTopActivityHolder).find("img");
+
+        // TODO
+        var defaultPhotoLink = "https://farm5.staticflickr.com/4678/38426678350_5c4891997f_o.jpg";
+        $(userTopActivityPhoto).attr("src", defaultPhotoLink);
+
+        $("#user-top-activities-container-slot").append($(userTopActivityHolder));
+
+
+        //
+        var xOffset = 0.56;
+        enableDragAndCropFeature(userTopActivityPhoto, xOffset);
+    }
+
+
+    //
+    setUserTopActivityPhotoHolderTemplateWidth(numOfUserTopActivities);
+    setUserTopActivityPhotoHolderTemplateHeight();
+}
+
+function enableDragAndCropFeature(userTopActivityPhoto, xOffset) {
 
     $(userTopActivityPhoto).dragncrop({
         overflow: true,
         overlay: true,
-        position: {offset: [userTopActivity["x_offset"], 0]} // position image on the right
+        position: {offset: [xOffset, 0]} // position image on the right
     });
 }

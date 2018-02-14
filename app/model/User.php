@@ -133,6 +133,14 @@ class User extends MainModel
         return $socialMediaAccounts;
     }
 
+    public static function readByUserName($user_name) {
+        $data['user_name'] = $user_name;
+
+        return static::readByWhereClause($data)[0];
+    }
+
+
+
 
 
 

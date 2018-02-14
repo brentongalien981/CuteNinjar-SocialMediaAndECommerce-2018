@@ -14,7 +14,9 @@ class Search {
     private $suggested_objs_array = array();
     public $the_query = array();
 
-    function __construct() {
+    public function __construct($menu, $action)
+    {
+        parent::__construct($menu, $action);
 //        $this->set_suggested_objs_array($search_value);
         // Reset the session search query every instantiation.
         $_SESSION['search_query'] = null;

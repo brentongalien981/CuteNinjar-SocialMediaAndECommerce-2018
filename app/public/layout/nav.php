@@ -7,7 +7,7 @@
        data-toggle="tooltip"
        data-placement="bottom"
        title="Go to My Timeline"
-       href="<?= PUBLIC_LOCAL . 'timeline-post/index.php' ?>">
+       href="<?= PUBLIC_LOCAL . 'user/index.php' ?>">
 
         <img id="home-profile-img" src="https://farm5.staticflickr.com/4557/24004359337_33f64e5a90_q.jpg"
              class="rounded">

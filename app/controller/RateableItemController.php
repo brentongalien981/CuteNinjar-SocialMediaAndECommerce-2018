@@ -14,9 +14,9 @@ use App\Controller\AjaxCrudHandlerInterface;
 
 class RateableItemController extends MainController implements AjaxCrudHandlerInterface
 {
-    public function __construct()
+    public function __construct($menu, $action)
     {
-        parent::__construct();
+        parent::__construct($menu, $action);
     }
 
     /** @override */

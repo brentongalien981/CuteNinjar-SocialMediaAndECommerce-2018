@@ -13,9 +13,9 @@ use App\Core\Main\MainController;
 
 class SessionController extends MainController
 {
-    public function __construct()
+    public function __construct($menu, $action)
     {
-        parent::__construct();
+        parent::__construct($menu, $action);
     }
 
     public function update($data)

@@ -25,6 +25,11 @@
 
 
 <style>
+
+    #profile-photo-section img {
+        width: 256px;
+    }
+
     #contact-information-container {
         margin-bottom: 150px;
     }

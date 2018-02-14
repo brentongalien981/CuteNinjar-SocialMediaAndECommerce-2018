@@ -87,6 +87,9 @@ function getFriendItem(friend) {
 function setFriendItemDetails(friendItem, friend) {
 
     $(friendItem).find(".friend-name").html("@" + friend.user_name);
+    var userProfilePageLink = $(friendItem).find(".friend-name").attr("href");
+    userProfilePageLink += friend.user_name;
+    $(friendItem).find(".friend-name").attr("href", userProfilePageLink);
 
     //
     setFriendItemSocialMediaEntries(friendItem, friend.socialMediaAccounts);

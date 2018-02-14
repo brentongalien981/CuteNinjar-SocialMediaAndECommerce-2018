@@ -6,10 +6,10 @@ use App\Controller\AjaxCrudHandlerInterface;
 
 class TimelinePostController extends MainController implements AjaxCrudHandlerInterface
 {
-    public function __construct()
+    public function __construct($menu, $action)
     {
 //         TODO: sleep(3);
-        parent::__construct();
+        parent::__construct($menu, $action);
     }
 
 

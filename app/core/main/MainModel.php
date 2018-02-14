@@ -266,6 +266,7 @@ class MainModel extends CNMain
 
             //
             if ($field == "limit" ||
+                $field == "tableName" ||
                 $field == "orderBy") {
                 continue;
             }
@@ -273,9 +274,9 @@ class MainModel extends CNMain
 
             //
             if ($count != 0) {
-                $data['whereClause'] = " AND {$field} = {$value}";
+                $data['whereClause'] .= " AND {$field} = '{$value}'";
             } else {
-                $data['whereClause'] = "WHERE {$field} = {$value}";
+                $data['whereClause'] = "WHERE {$field} = '{$value}'";
             }
 
 
@@ -320,6 +321,7 @@ class MainModel extends CNMain
 
         $id = null;
         $pkName = null;
+        $tableName = (isset($data['tableName']) ? $data['tableName'] : static::$table_name);
         $id = (isset($data['id']) ? $data['id'] : null);
         $pkName = static::$primaryKeyName;
 
@@ -332,7 +334,7 @@ class MainModel extends CNMain
 
 
         //
-        $q = "SELECT {$fields} FROM " . static::$table_name;
+        $q = "SELECT {$fields} FROM " . $tableName;
 
 
         // Additional query with id.

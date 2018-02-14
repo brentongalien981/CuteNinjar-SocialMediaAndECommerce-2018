@@ -12,10 +12,9 @@ use App\Core\Main\MainController;
 
 class FriendshipController extends MainController implements AjaxCrudHandlerInterface
 {
-    public function __construct()
+    public function __construct($menu, $action)
     {
-//        sleep(2);
-        parent::__construct();
+        parent::__construct($menu, $action);
     }
 
     /**

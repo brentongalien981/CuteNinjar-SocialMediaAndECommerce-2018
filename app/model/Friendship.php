@@ -30,4 +30,22 @@ class Friendship extends MainModel
         $pkId = $this->friend_id;
         return $this->newHasOne("User", $pkId);
     }
+
+    public static function isFollowing($friendId) {
+
+        global $session;
+        global $database;
+
+        $data['user_id'] = $session->actual_user_id;
+        $data['friend_id'] = $friendId;
+
+        $friendship = static::readByWhereClause($data)[0];
+
+
+        $isFollowing = false;
+
+        if (isset($friendship)) { $isFollowing = true; }
+
+        return $isFollowing;
+    }
 }

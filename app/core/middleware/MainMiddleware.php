@@ -26,7 +26,6 @@ class MainMiddleware extends CNMain
     const LOGGED_IN_TYPES_OF_ACTIONS = 8;
 
 
-
     /**
      * MainMiddleware constructor.
      */
@@ -45,7 +44,7 @@ class MainMiddleware extends CNMain
         $strLenOfActualAction = null;
 
         // If it's in debug mode, remove the "DEBUG_SESSION" suffix.
-        $index_of_xdebug_mode_url_suffix = strpos($requestedActionRaw,".");
+        $index_of_xdebug_mode_url_suffix = strpos($requestedActionRaw, ".");
         $strLenOfActualAction = $index_of_xdebug_mode_url_suffix;
 
         $requestedAction = substr($requestedActionRaw, 0, $strLenOfActualAction);
@@ -57,8 +56,7 @@ class MainMiddleware extends CNMain
             if (is_request_post()) {
                 $requestedMenu = $_POST['menu'];
                 $requestedAction = $_POST['action'];
-            }
-            else {
+            } else {
                 $requestedMenu = $_GET['menu'];
                 $requestedAction = $_GET['action'];
             }
@@ -77,13 +75,13 @@ class MainMiddleware extends CNMain
         //
         self::performAuthorization($requestedMenu, $requestedAction, $session_user_type);
 
+
     }
 
     public static function showServerInfo()
     {
         var_dump($_SERVER);
     }
-
 
 
     private static function getAllowedUserTypes($typesOfActionsCode, $action)
@@ -115,6 +113,7 @@ class MainMiddleware extends CNMain
                     case "index":
                     case "read":
                     case "fetch":
+                    case "patch":
                         $allowedUserTypes = array("guest", "logged-in", "admin");
                         break;
                     case "create":
@@ -239,13 +238,23 @@ class MainMiddleware extends CNMain
         // Lower cases are for direct-url-views requests.
         switch ($menu) {
             case "public":
+            case "user":
             case "log-in":
+//            case "timeline-post":
             case "TimelinePost":
             case "TimelinePostReply":
             case "RateableItem":
             case "RateableItemUser":
             case "TimelinePostUserSubscription":
             case "photo":
+
+            case "profile":
+            case "Profile":
+            case "UserSocialMediaAccount":
+            case "UserTopActivity":
+            case "Work":
+            case "Friendship":
+            case "Friend":
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_TYPES_OF_ACTIONS, $action);
                 break;
             case "timeline-post":
@@ -265,20 +274,10 @@ class MainMiddleware extends CNMain
             case "MyPhoto":
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_REQUEST_MY_PHOTO_TYPES_OF_ACTIONS, $action);
                 break;
-            case "profile":
-            case "Profile":
-            case "UserSocialMediaAccount":
-            case "UserTopActivity":
-            case "Work":
-            case "Friendship":
-            case "Friend":
-                $allowedUserTypes = self::getAllowedUserTypes(self::LOGGED_IN_TYPES_OF_ACTIONS, $action);
-                break;
             default:
                 $allowedUserTypes = array("unauthorized-user");
 
         }
-
 
 
         //
@@ -296,8 +295,7 @@ class MainMiddleware extends CNMain
 //            $url = LOCAL . "app/public/failedauthorization/index.php";
             redirect_to(PUBLIC_LOCAL . "failed-authorization/index.php");
 //            redirect_to($url);
-        }
-        else {
+        } else {
 //            echo "AUTHORIZATION SUCCESS!<br>";
         }
     }
@@ -312,4 +310,5 @@ class MainMiddleware extends CNMain
 
     }
 }
+
 ?>

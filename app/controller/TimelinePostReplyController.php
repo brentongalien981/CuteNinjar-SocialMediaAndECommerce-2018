@@ -37,11 +37,9 @@ class TimelinePostReplyController extends MainController implements AjaxCrudHand
         }
     }
 
-    public function __construct()
+    public function __construct($menu, $action)
     {
-        // TODO: DEBUG
-//        sleep(3);
-        parent::__construct();
+        parent::__construct($menu, $action);
     }
 
     /** @override */

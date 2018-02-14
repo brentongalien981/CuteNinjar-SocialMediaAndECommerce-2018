@@ -33,9 +33,9 @@ class TimelinePostUserSubscriptionController extends MainController implements A
         }
     }
 
-    public function __construct()
+    public function __construct($menu, $action)
     {
-        parent::__construct();
+        parent::__construct($menu, $action);
     }
 
     protected function setFieldsToBeValidated() {

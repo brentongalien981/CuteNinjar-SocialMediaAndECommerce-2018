@@ -13,10 +13,9 @@ use App\Core\Main\MainController;
 
 class UserSocialMediaAccountController extends MainController implements AjaxCrudHandlerInterface
 {
-    public function __construct()
+    public function __construct($menu, $action)
     {
-//        sleep(3);
-        parent::__construct();
+        parent::__construct($menu, $action);
     }
 
     /** @override */

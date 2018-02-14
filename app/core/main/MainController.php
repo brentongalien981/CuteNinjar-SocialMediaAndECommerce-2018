@@ -20,27 +20,28 @@ class MainController extends CNMain
     protected $menuObj;
     protected $sanitizedFields = [];
     protected $json = [];
+    private $isRequestShow = false;
 //    protected $crudAction;
+
+
+    protected function setIsRequestShow($value) {
+        $this->setAction('show');
+    }
 
 
     /**
      * MainController constructor.
      */
-    public function __construct()
+    public function __construct($menu = null, $action = null)
     {
         parent::__construct();
 
         $this->validator = new Validator();
 
-        $this->setMenu();
-        $this->setAction();
+        $this->setMenu($menu);
+        $this->setAction($action);
 
-//        // TODO: DEBUG: Remove this later.
-//        if ($this->action == "create" && $this->menu == "NotificationRateableItem") {
-//            $this->kobe = "shit";
-//        }
-
-        $this->setMenuObject();
+        $this->setMenuObject($menu);
         $this->initJson();
     }
 
@@ -108,12 +109,20 @@ class MainController extends CNMain
      *      $menuObj = new TimelinePost()
      * ...
      */
-    protected function setMenuObject()
+    protected function setMenuObject($menu = null)
     {
 
         if (!$this->hasModel()) {
             return;
         }
+
+
+//        //
+//        if (isset($menu)) {
+//            $class = "App\\Model\\{$this->menu}";
+//            $this->menuObj = new $class();
+//            return;
+//        }
 
         $class = "App\\Model\\{$this->menu}";
         try {
@@ -139,8 +148,13 @@ class MainController extends CNMain
 
 
 
-    protected function setMenu()
+    protected function setMenu($menu = null)
     {
+        if (isset($menu)) {
+            $this->menu = $menu;
+            return;
+        }
+
         if (is_request_post()) {
             $this->menu = $_POST['menu'];
         } else {
@@ -151,10 +165,10 @@ class MainController extends CNMain
 
     public function setAction($value = null)
     {
-//        if (isset($value)) {
-//            $this->action = $value;
-//            return;
-//        }
+        if (isset($value)) {
+            $this->action = $value;
+            return;
+        }
 
         if (is_request_post()) {
             $this->action = $_POST['action'];
@@ -196,6 +210,10 @@ class MainController extends CNMain
         if (isRequestAjax()) {
             $this->doRequestFinalization($isCrudOk);
         }
+    }
+
+    public function index() {
+
     }
 
     protected function read() {

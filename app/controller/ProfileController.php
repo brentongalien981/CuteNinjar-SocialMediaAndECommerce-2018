@@ -12,11 +12,21 @@ use App\Core\Main\MainController;
 
 class ProfileController extends MainController implements AjaxCrudHandlerInterface
 {
-    public function __construct()
+
+
+    public function __construct($menu, $action)
     {
-//        sleep(3);
-        parent::__construct();
+        parent::__construct($menu, $action);
+
+
+        //
+        if (isset($_GET['user_name'])) {
+            $this->setIsRequestShow(true);
+        }
+
+
     }
+
 
     /** @override */
     protected function setFieldsToBeValidated()
@@ -39,6 +49,18 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
                     'required' => 1,
                     'min' => 7,
                     'max' => 18,
+                    'blank' => 1
+                ];
+
+                break;
+
+            case 'show':
+
+                //
+                $this->validator->fieldsToBeValidated['user_name'] = [
+                    'required' => 1,
+                    'min' => 1,
+                    'max' => 50,
                     'blank' => 1
                 ];
 
@@ -84,7 +106,9 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
 
 
         //
-        if ($this->sanitizedFields['for_section'] == "summary") { return $profiles; }
+        if ($this->sanitizedFields['for_section'] == "summary") {
+            return $profiles;
+        }
 
 
         /*
@@ -115,7 +139,6 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
         }
 
 
-
         /* Remove all the static fields of the newly morphed profile obj. */
         foreach ($profiles as $userProfile) {
             $userProfile->removeStaticFields();
@@ -123,6 +146,50 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
 
         //
         return $profiles;
+    }
+
+
+
+
+
+    protected function show()
+    {
+
+        $usernameToView = $this->sanitizedFields['user_name'];
+        $userToView = \App\Model\User::readByUserName($usernameToView);
+        $isAllowedToView = false;
+
+        // Does user exist?
+        if (isset($userToView)) {
+
+            if ($userToView->private) {
+
+                $friendId = $userToView->user_id;
+
+                if (\App\Model\Friendship::isFollowing($friendId) ||
+                    \App\Model\Profile::isTryingToViewOwnProfile($friendId)) {
+
+                    $isAllowedToView = true;
+                } else {
+                    redirect_to(PUBLIC_LOCAL . "profile/profile-private.php");
+                }
+
+            }
+            else {
+                $isAllowedToView = true;
+            }
+        }
+        else {
+            redirect_to(PUBLIC_LOCAL . "profile/profile-non-existent.php");
+        }
+
+
+
+        //
+        if ($isAllowedToView) {
+
+            $this->session->set_currently_viewed_user($userToView->user_id, $userToView->user_name);
+        }
     }
 
 }

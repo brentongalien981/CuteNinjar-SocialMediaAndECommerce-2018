@@ -47,7 +47,7 @@
 
 
                     <div class="friend-name-holder">
-                        <h5 class="friend-name">Russel Westbrook @russ0</h5>
+                        <a class="friend-name" href="<?= PUBLIC_LOCAL . "profile/index.php?user_name="?>">Russel Westbrook @russ0</a>
                     </div>
 
 
