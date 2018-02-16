@@ -49,7 +49,7 @@ function initBootstrapScrollSpy() {
     $("#the_body").addClass("scrollspy-example");
     $("#the_body").attr("data-spy", "scroll");
     $("#the_body").attr("data-target", "#profile-page-outline-container");
-    $("#the_body").attr("data-offset", "0");
+    $("#the_body").attr("data-offset", "50");
 }
 
 function addSmoothScrollingToLinks() {

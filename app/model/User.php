@@ -115,6 +115,8 @@ class User extends MainModel
         $socialMediaAccounts = $this->hasMany2("SocialMediaAccount");
 
         foreach ($socialMediaAccounts as $socialMediaAccount) {
+
+            // find
             $socialMediaCompany = $socialMediaAccount->belongsTo2("SocialMediaCompany");
 
             // filter

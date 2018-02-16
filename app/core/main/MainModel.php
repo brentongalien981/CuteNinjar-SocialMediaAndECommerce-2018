@@ -779,7 +779,7 @@ class MainModel extends CNMain
 
 
     /**
-     * This is called by methods hasOne() and hasMany().
+     * This is called by methods hasOne2() and hasMany2().
      * @param $class
      * @param $path
      * @return mixed
@@ -830,6 +830,7 @@ class MainModel extends CNMain
 //        else if ($pivotPath == "\\App\\Model\\Friend") { $pivotPath =  "\\App\\Model\\Friendship"; }
     }
 
+    /** @deprecated  */
     public function hasMany($class, $fk, $data)
     {
 
@@ -887,6 +888,7 @@ class MainModel extends CNMain
 
     }
 
+    /** @deprecated  */
     public function belongsTo($class, $pk)
     {
 
