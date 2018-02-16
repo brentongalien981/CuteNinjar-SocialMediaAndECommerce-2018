@@ -17,9 +17,10 @@ class MainModel extends CNMain
     protected static $db_fields = array();
     protected static $table_name = "DEFAULT_TABLE_NAME";
     protected static $className = "DEFAULT_CLASS_NAME";
-    protected $pk = [];
 
     // Override this if the pk-field is not named "id". Ex. "user_id", "product_id", etc...
+    protected $pk = [];
+
     public static $searchable_fields = array();
     public $primary_key_id_name = "id";
     protected static $primaryKeyName = "id";
@@ -812,7 +813,7 @@ class MainModel extends CNMain
 
         // Dynamically figure out the name of the field of the extentional
         // obj based on this obj's class name and then appending the string "_id".
-        $fkName = self::getPascalCasedNameOf($class) . "_id";
+        $fkName = static::getPascalCasedNameOf($class) . "_id";
         $fkValue = $this->$fkName;
         $data['id'] = $fkValue;
 

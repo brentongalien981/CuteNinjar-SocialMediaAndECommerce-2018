@@ -180,6 +180,14 @@ class MainController extends CNMain
 
 
     /**
+     * This is almost like the method setSpecificQueryClauses(), but for 6th iteration.
+     */
+    public static function setQueryData() {
+
+    }
+
+
+    /**
      * Handle the action for both a regular request
      * and ajax request..
      */
@@ -193,6 +201,10 @@ class MainController extends CNMain
 
         if ($isValidationOk) {
             $this->setSanitizedFields();
+
+
+//            // This is almost like the method setSpecificQueryClauses(), but for 6th iteration.
+//            $this->setQueryData();
 
             // Execute the crud action.
             if (isRequestAjax()) {

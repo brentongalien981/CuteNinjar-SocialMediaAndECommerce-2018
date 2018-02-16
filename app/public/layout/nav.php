@@ -9,7 +9,7 @@
        title="Go to My Timeline"
        href="<?= PUBLIC_LOCAL . 'user/index.php' ?>">
 
-        <img id="home-profile-img" src="https://farm5.staticflickr.com/4557/24004359337_33f64e5a90_q.jpg"
+        <img id="home-profile-img" src="<?= b_get_profile_pic_src($session->currently_viewed_user_id); ?>"
              class="rounded">
     </a>
 
@@ -34,58 +34,39 @@
         <ul class="nav navbar-nav ml-auto justify-content-end">
 
             <!--    For the timeline icon.-->
-            <li class="nav-item active"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="TODO: Remove this menu">
+            <?php if ($session->is_logged_in()) { ?>
+                <li class="nav-item active"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Timeline">
 
-                <?php if ($session->is_logged_in()) { ?>
+
                     <a id="menu_wall" class='menus nav-link' href="<?= PUBLIC_LOCAL . "timeline-post/index.php" ?>">
-                        <?php show_user_home_icon($session->currently_viewed_user_id, "icon", "wall") ?>
-                        <span class="sr-only">(current)</span>
+                        <i class="fa fa-thumb-tack"></i>
                     </a>
-                <?php } else { ?>
-                    <a id="menu_wall" class='menus nav-link' href="#">
-                        <?php show_user_home_icon(-69, "icon", "wall", "Guest") ?>
-                        <span class="sr-only">(current)</span>
-                    </a>
-                <?php } ?>
 
-                <!--                <a class="nav-link" href="#"><img src="https://farm5.staticflickr.com/4557/24004359337_33f64e5a90_q.jpg"><span class="sr-only">(current)</span></a>-->
-            </li>
+                </li>
+            <?php } ?>
 
 
             <!--#######################################-->
             <!--    Beta-Profile    -->
             <!--#######################################-->
-            <li class="nav-item"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Profile">
-                <?php if ($session->is_logged_in()) { ?>
+            <?php if ($session->is_logged_in()) { ?>
+                <li class="nav-item"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Profile">
+
                     <a id="menu_profile"
                        class='menus nav-link'
                        href="<?= PUBLIC_LOCAL . 'profile/index.php' ?>">
-                        <?php show_user_home_icon(-69, "icon", "profile") ?>
+                        <?php show_user_home_icon($session->currently_viewed_user_id, "icon", "profile") ?>
                         <span class="sr-only">(current)</span>
                     </a>
-                <?php } ?>
-            </li>
 
-
-            <!--Friends-->
-            <li class="nav-item"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Friends">
-                <?php if ($session->is_logged_in()) { ?>
-                    <a id="menu_friends" class='menus nav-link'
-                       href="<?= LOCAL . "/public/__view/friends/index.php" ?>">
-                        <i class="fa fa-users"></i>
-                        <span class="sr-only">(current)</span>
-                    </a>
-                <?php } ?>
-            </li>
+                </li>
+            <?php } ?>
 
 
             <!--Photos-->
@@ -245,6 +226,7 @@
         </ul>
 
     </div>
+
 </nav>
 
 

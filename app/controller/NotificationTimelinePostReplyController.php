@@ -221,7 +221,7 @@ class NotificationTimelinePostReplyController extends MainController implements 
             }
 
 
-            /**/
+            /* NOTE: Returning a JSON obj automatically remove static fields. */
             foreach ($parentNotifications as $parentNotification) {
                 $parentNotification->removeStaticFields();
             }

@@ -51,24 +51,6 @@ function getPhotoCaptionContent(photo, isViewingOwnAccount) {
     var content = document.createElement("div");
     content.classList.add("caption_action_bar");
 
-    //
-    if (isViewingOwnAccount != null && isViewingOwnAccount == true) {
-        // Create the CRUD action icons.
-        var edit_icon = document.createElement("i");
-        edit_icon.className = "fa fa-sliders my-photo-icons my-photo-icons-edit";
-
-        var delete_icon = document.createElement("i");
-        delete_icon.className = "fa fa-trash my-photo-icons my-photo-icons-delete";
-
-        // Add event listeners to the icons.
-        add_click_listener_to_edit_icon(edit_icon);
-        add_click_listener_to_delete_icon(delete_icon);
-
-        // Append the icons.
-        content.appendChild(edit_icon);
-        content.appendChild(delete_icon);
-    }
-
 
     // Append the photo title to the caption content.
     var photoTitleEl = document.createElement("h6");

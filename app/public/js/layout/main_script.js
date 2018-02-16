@@ -666,7 +666,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "Profile":
+        case "TimelinePostReply":
             return true;
             break;
     }

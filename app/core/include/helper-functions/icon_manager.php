@@ -19,6 +19,9 @@ function b_get_profile_pic_src($user_id = 0)
         $src = $profile_obj->pic_url;
 //        $src = $profile_obj['pic_url'];
     }
+    else {
+//        $src = getDefaultUserPhotoUrl();
+    }
 
 
     return $src;
@@ -74,6 +77,14 @@ function show_default_user_home_icon($icon_class, $menu, $label = "")
 
     echo "{$label}";
 
+}
+
+function getSiteLogoPhotoUrl() {
+    return "https://farm5.staticflickr.com/4557/24004359337_33f64e5a90_q.jpg";
+}
+
+function getDefaultUserPhotoUrl() {
+    return "https://farm5.staticflickr.com/4619/39405776315_325e642287_q.jpg";
 }
 
 ?>

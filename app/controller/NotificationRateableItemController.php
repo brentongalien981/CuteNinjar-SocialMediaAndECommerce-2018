@@ -91,7 +91,29 @@ class NotificationRateableItemController extends MainController implements AjaxC
         }
     }
 
-    protected function setSpecificQueryClauses()
+    protected function setSpecificQueryClauses() {
+
+        $this->sanitizedFields['where_clause'] = "WHERE notified_user_id = {$this->session->actual_user_id}";
+        $this->sanitizedFields['where_clause'] .= " AND notification_msg_id = 4";
+
+        $this->sanitizedFields['order_by_field'] = "initiation_date";
+
+        switch ($this->action) {
+
+            case 'read':
+
+                $this->sanitizedFields['where_clause'] .= " AND initiation_date < '{$this->sanitizedFields['earliestNotificationDate']}'";
+                break;
+
+            case 'fetch':
+
+                $this->sanitizedFields['where_clause'] .= " AND initiation_date > '{$this->sanitizedFields['latestNotificationRateableItemElDate']}'";
+                break;
+
+        }
+    }
+
+    protected function setSpecificQueryClausesOld()
     {
 
         $this->parentAdditionalData['where_clause'] = "AND notification_msg_id = 4";
@@ -121,9 +143,66 @@ class NotificationRateableItemController extends MainController implements AjaxC
         }
     }
 
+    /** @override */
+    public static function setQueryData() {
+
+    }
+
 
     /** @override */
-    protected function read()
+    protected function read() {
+
+        //
+        $this->setSpecificQueryClauses();
+
+
+        /* Read pseudo-parent-notification objs. */
+        $parentNotifications = $this->menuObj->getParentNotifications($this->sanitizedFields);
+
+
+        /* Loop through all notification objs.*/
+        foreach ($parentNotifications as $parentNotification) {
+
+            // 1) find
+            $notification = $parentNotification->getChildNotification($this->menu);
+            $notifier = $parentNotification->getNotifier();
+            $rate = $notification->getRate();
+            $rateableItem = $notification->getRateableItem();
+            $xRateableItem = $rateableItem->getXRateableItem();
+
+
+            // 2) filter
+            $parentNotification->filterExclude(['id', 'is_deleted']);
+            $notifier->filterInclude(['user_id', 'user_name']);
+            $rate->filterInclude(['name']);
+            $xRateableItem->filterInclude(['id', 'message']);
+
+
+            // 3) refine
+            $xRateableItem->replaceFieldNamesForAjax(['id' => 'post_id']);
+
+
+            // 4) combine
+            $parentNotification->combineWithObj($notification);
+            $parentNotification->combineWithObj($notifier);
+            $parentNotification->combineWithObj($rate);
+            $parentNotification->combineWithObj($xRateableItem);
+
+
+            /* Add a carbon-date field to the obj. */
+            $rawDateTimeFieldName = "initiation_date";
+            $parentNotification->addReadableDateField($rawDateTimeFieldName);
+        }
+
+
+        //
+        return $parentNotifications;
+
+    }
+
+
+    /** @override */
+    protected function readOld()
     {
 
         // Set the query clauses for reading the pseudo-parent-objs (Notification Objs).
@@ -155,7 +234,11 @@ class NotificationRateableItemController extends MainController implements AjaxC
 
     }
 
-    protected function fetch()
+    protected function fetch() {
+        return $this->read();
+    }
+
+    protected function fetchOld()
     {
 
         // Set the query clauses for reading the pseudo-parent-objs (Notification Objs).
@@ -176,6 +259,7 @@ class NotificationRateableItemController extends MainController implements AjaxC
             $parentObj->isComposedOf("Rate");
             $parentObj->isConnectedTo("RateableItem");
             $parentObj->isConnectedTo("TimelinePost");
+
         }
 
         // Filter the objs for json return.
@@ -264,14 +348,14 @@ class NotificationRateableItemController extends MainController implements AjaxC
     {
 
         // Create the pseudo-parent class first "Notification".
-        $this->notificationController = new NotificationController();
+        $this->notificationController = new NotificationController($this->menu, $this->action);
         $this->notificationController->setAction($this->action);
         $this->notificationController->overrideSanitizedFields($this->notificationData);
         $notificationId = $this->notificationController->create();
         $isCreationOk = false;
 
 
-        //ish
+
         if ($notificationId) {
             $this->menuObj->notification_id = $notificationId;
             $isCreationOk = $this->menuObj->create();
@@ -286,7 +370,7 @@ class NotificationRateableItemController extends MainController implements AjaxC
     {
 
         // Update the pseudo-parent class first "Notification".
-        $this->notificationController = new NotificationController();
+        $this->notificationController = new NotificationController($this->menu, $this->action);
         $this->notificationController->setAction($this->action);
         $this->notificationController->overrideSanitizedFields($this->notificationData);
         $isUpdateOk = $this->notificationController->update();

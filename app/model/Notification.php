@@ -39,6 +39,12 @@ class Notification extends MainModel
         parent::__construct();
     }
 
+    public function getChildNotification($childClassName) {
+
+        return $this->hasOne2($childClassName);
+
+    }
+
     public function getNotifier() {
 
         $fkUserId = $this->notifier_user_id;

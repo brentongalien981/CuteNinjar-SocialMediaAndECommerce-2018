@@ -35,6 +35,33 @@ class NotificationRateableItem extends MainModel implements FilterableFieldInter
         return self::$fieldsAllowedForReturn;
     }
 
+    public function getParentNotification() {
+
+        return $this->belongsTo2("Notification");
+
+    }
+
+    public function getParentNotifications($data) {
+
+        $extentionalObj = new \App\Model\Notification();
+
+        return $extentionalObj->read_by_where_clause($data);
+    }
+
+    public function getRate() {
+
+        $data = [
+            'value' => $this->rate_value
+        ];
+
+        return \App\Model\Rate::readByWhereClause($data)[0];
+    }
+
+    public function getRateableItem() {
+
+        return $this->belongsTo2('RateableItem');
+    }
+
 
     public static function setFieldsAllowedForReturn()
     {

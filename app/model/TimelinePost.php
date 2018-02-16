@@ -13,10 +13,11 @@ use App\Core\MainModel;
 
 class TimelinePost extends MainModel
 {
+    protected static $db_fields = array("id", "owner_user_id", "poster_user_id", "date_posted", "date_updated", "message");
+    protected static $table_name = "TimelinePosts";
+    protected static $className = "TimelinePost";
 
-//    protected static $table_name = "TimelinePosts";
-//    protected static $db_fields = array("id", "owner_user_id", "poster_user_id", "message");
-//    protected $primary_key_id_name = "id";
+
     public $id;
     public $owner_user_id;
     public $poster_user_id;
@@ -26,10 +27,6 @@ class TimelinePost extends MainModel
 
     /** @ */
     public function init() {
-        self::$table_name = "TimelinePosts";
-        self::$className = "TimelinePost";
-        self::$db_fields = array("id", "owner_user_id", "poster_user_id", "date_posted", "date_updated", "message");
-//        $this->primary_key_id_name = "user_id";
 
     }
 
