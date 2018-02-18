@@ -28,6 +28,10 @@ class MainController extends CNMain
         $this->setAction('show');
     }
 
+    protected function show() {
+        // Override this.
+    }
+
 
     /**
      * MainController constructor.
@@ -225,8 +229,9 @@ class MainController extends CNMain
     }
 
     public function index() {
-
+        // Override this.
     }
+
 
     protected function read() {
 

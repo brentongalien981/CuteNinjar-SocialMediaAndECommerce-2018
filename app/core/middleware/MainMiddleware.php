@@ -93,6 +93,7 @@ class MainMiddleware extends CNMain
 
                 switch ($action) {
                     case "index":
+                    case "show":
                         $allowedUserTypes = array("guest", "logged-in", "admin");
                         break;
                     case "create":
@@ -114,6 +115,7 @@ class MainMiddleware extends CNMain
                     case "read":
                     case "fetch":
                     case "patch":
+                    case "show":
                         $allowedUserTypes = array("guest", "logged-in", "admin");
                         break;
                     case "create":
@@ -137,6 +139,7 @@ class MainMiddleware extends CNMain
                     case "update":
                     case "delete":
                     case "patch":
+                    case "show":
                         $allowedUserTypes = array("logged-in", "admin");
                         break;
 
@@ -148,33 +151,14 @@ class MainMiddleware extends CNMain
 
             case self::ADMIN_TYPES_OF_ACTIONS:
 
-                switch ($action) {
-                    case "index":
-                        $allowedUserTypes = array("admin");
-                        break;
-                    case "create":
-                        $allowedUserTypes = array("admin");
-                        break;
-                    case "read":
-                    case "fetch":
-                        $allowedUserTypes = array("admin");
-                        break;
-                    case "update":
-                        $allowedUserTypes = array("admin");
-                        break;
-                    case "delete":
-                        $allowedUserTypes = array("admin");
-                        break;
-
-                }
-
-
+                $allowedUserTypes = array("admin");
                 break;
 
             case self::FORM_REQUEST_LOG_IN_TYPES_OF_ACTIONS:
 
                 switch ($action) {
                     case "index":
+                    case "show":
                         $allowedUserTypes = array("admin");
                         break;
                     case "create":
@@ -206,6 +190,7 @@ class MainMiddleware extends CNMain
                     case "index":
                     case "read":
                     case "fetch":
+                    case "show":
                         $allowedUserTypes = array("guest", "logged-in", "admin");
                         break;
                     case "create":
@@ -255,6 +240,8 @@ class MainMiddleware extends CNMain
             case "Work":
             case "Friendship":
             case "Friend":
+
+            case "video":
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_TYPES_OF_ACTIONS, $action);
                 break;
             case "timeline-post":

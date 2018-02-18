@@ -20,12 +20,20 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
 
 
         //
-        if (isset($_GET['user_name'])) {
-            $this->setIsRequestShow(true);
-        }
+        $this->checkIsRequestShow();
+
 
 
     }
+
+    protected function checkIsRequestShow() {
+        //
+        if (isset($_GET['user_name'])) {
+//            $this->setIsRequestShow(true);
+            $this->setAction('show');
+        }
+    }
+
 
 
     /** @override */
@@ -151,7 +159,7 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
 
 
 
-
+    /** @override */
     protected function show()
     {
 

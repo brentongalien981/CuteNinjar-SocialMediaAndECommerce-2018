@@ -22,6 +22,7 @@
     <?php require_once(LAYOUT_PATH . "nav_search_bar.php"); ?>
 
 
+
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
             data-target="#navbarsExample05"
             aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +30,7 @@
     </button>
 
 
-    <div class="navbar-collapse collapse" id="navbarsExample05" style="">
+    <div class="navbar-collapse collapse" id="cn-navbar-menu" style="">
         <!--        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">-->
         <ul class="nav navbar-nav ml-auto justify-content-end">
 
@@ -226,6 +227,9 @@
         </ul>
 
     </div>
+
+
+    <?php require_once(LAYOUT_PATH . "nav-page-actions.php"); ?>
 
 </nav>
 

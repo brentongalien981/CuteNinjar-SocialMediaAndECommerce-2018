@@ -12,6 +12,7 @@ function isRequestAjax()
 
 }
 
+
 function setRequestVars(&$menu, &$action)
 {
 
@@ -125,6 +126,9 @@ function getModifiedMenuName($menu) {
         case 'friend';
             $modifiedMenuName = "Friend";
             break;
+        case 'video';
+            $modifiedMenuName = "Video";
+            break;
 
     }
 
@@ -135,6 +139,9 @@ function getModifiedMenuName($menu) {
 
 
 <?php
+// Meat
+
+
 $menu = null;
 $action = null;
 
@@ -148,7 +155,8 @@ if (isRequestAjax()) {
         $menu = $_GET['menu'];
         $action = $_GET['action'];
     }
-} else {
+}
+else {
     setRequestVars($menu, $action);
     $menu = getModifiedMenuName($menu);
 }
@@ -159,17 +167,11 @@ if (isRequestAjax()) {
 
 if (!isInDisregardedClasses($menu)) {
 
-    $class = "App\\Controller\\{$menu}Controller";
-
-//    $menu_controller = null;
-//    if (isRequestAjax()) {
-//        $menu_controller = new $class();
-//    }
-//    else {
-//        $menu_controller = new $class($menu, $action);
-//    }
-    $menu_controller = new $class($menu, $action);
+    $controllerClass = "App\\Controller\\{$menu}Controller";
 
 
-    $menu_controller->doAction();
+    $controllerObj = new $controllerClass($menu, $action);
+
+
+    $controllerObj->doAction();
 }
