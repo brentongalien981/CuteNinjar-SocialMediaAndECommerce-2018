@@ -1,8 +1,6 @@
 <!--mandatory-->
 <?php require_once("../layout/master.php"); ?>
 
-<!--TODO-->
-<h5>FILE: www.cuteninjar.com/video/index.php</h5>
 
 <!--Main-->
 <?php //require_once(PUBLIC_PATH . "profile/read.php"); ?>
@@ -23,7 +21,7 @@
 
 
 <!--Main Scripts-->
-<?php //tryLoadingJsFilesFor("profile"); ?>
+<?php tryLoadingJsFilesFor("video"); ?>
 
 
 

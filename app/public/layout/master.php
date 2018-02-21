@@ -16,10 +16,10 @@
     <!--EARLY-BIND CSS/JS DEPENDENCIES-->
     <!--#################################################################-->
     <!--offline css/js dependencies.-->
-<!--        --><?php //require_once(PUBLIC_PATH . "cn-dependencies/offline.php"); ?>
+<!--    --><?php //require_once(PUBLIC_PATH . "cn-dependencies/offline.php"); ?>
     <!--#################################################################-->
     <!--online css/js dependencies.-->
-    <?php require_once(PUBLIC_PATH . "cn-dependencies/online.php"); ?>
+        <?php require_once(PUBLIC_PATH . "cn-dependencies/online.php"); ?>
     <!--#################################################################-->
     <!--agnostic css/js dependencies.-->
     <?php require_once(PUBLIC_PATH . "cn-dependencies/agnostic.php"); ?>
@@ -63,7 +63,6 @@
 <?php require_once(LAYOUT_PATH . "elements_for_updating_session_user_attribs.php"); ?>
 
 
-
 <!-- Script for updating the session-user-attributes. -->
 <!--TODO: When you're finalizing the "Chat", refactor this updating -->
 <!--TODO: of the session-attributes just like what you did in dawesdental.-->
@@ -77,7 +76,6 @@
 
 <!--footer-->
 <?php require_once(LAYOUT_PATH . "footer.php"); ?>
-
 
 
 </body>

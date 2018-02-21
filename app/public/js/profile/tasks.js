@@ -24,8 +24,10 @@ function initPage() {
 
 function setSideColumns() {
 
-    $("#cn-right-col").height($(this).height());
-    $("#cn-left-col").height($(this).height());
+    // $("#cn-right-col").height($(this).height());
+    // $("#cn-left-col").height($(this).height());
+    $("#cn-right-col").height($(this).outerHeight());
+    $("#cn-left-col").height($(this).outerHeight());
 }
 
 function initContainers() {

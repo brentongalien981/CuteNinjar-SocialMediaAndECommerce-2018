@@ -1,4 +1,5 @@
-#the-body {
+#the-body,
+#the_body {
     min-width: 640px;
 }
 
@@ -22,6 +23,10 @@
     display: none;
     opacity: 0.9;
     height: 200px;
+}
+
+#main-content {
+    min-height: 700px;
 }
 
 div#main_content2 {

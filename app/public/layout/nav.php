@@ -22,9 +22,8 @@
     <?php require_once(LAYOUT_PATH . "nav_search_bar.php"); ?>
 
 
-
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-            data-target="#navbarsExample05"
+            data-target="#cn-navbar-menu"
             aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -112,13 +111,12 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Videos">
-                <?php if ($session->is_logged_in()) { ?>
-                    <a id="menu_my_videos" class='menus nav-link'
-                       href="<?= LOCAL . "/public/__view/videos/index.php" ?>">
-                        <i class="fa fa-youtube-play"></i>
-                        <span class="sr-only">(current)</span>
-                    </a>
-                <?php } ?>
+                <a id="menu_my_videos" class='menus nav-link'
+                   href="<?= PUBLIC_LOCAL . "video/index.php" ?>">
+                    <i class="fa fa-youtube-play"></i>
+                    <span class="sr-only">(current)</span>
+                </a>
+
             </li>
 
 
