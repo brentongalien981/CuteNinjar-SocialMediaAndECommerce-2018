@@ -30,7 +30,7 @@ function doVideoAfterEffects(className, crudType, json, xObj) {
     switch (crudType) {
         case "read":
 
-            displayVideos(json);
+            displayVideos(json, xObj);
 
             break;
         case "create":
@@ -46,62 +46,104 @@ function doVideoAfterEffects(className, crudType, json, xObj) {
     }
 }
 
-function displayVideos(json) {
+function getVideoCategoryContainer(readForPageSection) {
 
+    var videoCategoryContainer = null;
+
+    // Checks if the video-category-container that is being populated has already done a previous read.
+    if (readForPageSection == null) {
+
+        videoCategoryContainer = cnCloneTemplateEl("video-category-container-template");
+        $(videoCategoryContainer).addClass("video-category-containers");
+        $(videoCategoryContainer).attr("pageSection", "recommended");
+    }
+    else {
+        videoCategoryContainer = $("[pageSection=recommended]");
+    }
+
+    return videoCategoryContainer;
+}
+
+function displayVideos(json, xObj) {
+
+    //
     var videos = json.objs;
 
     //
-    var videoCategoryContainer = cnCloneTemplateEl("video-category-container-template");
-    $(videoCategoryContainer).addClass("video-category-containers");
-
+    var readForPageSection = xObj.key_value_pairs["readForPageSection"];
 
     //
+    var videoCategoryContainer = getVideoCategoryContainer(readForPageSection);
+
+
+
+    // Iterates through all the video-json-objects.
     for (var i = 0; i < videos.length; i++) {
         var video = videos[i];
 
+
+        // Check if same video is already displayed.
+        if (isVideoDisplayed(video["id"])) { continue; }
+
+
         // Clones a video-item-template.
         var videoItem = cnCloneTemplateEl("video-recommendation-item-template");
-        $(videoItem).addClass("video-recommendation-item");
+        setVideoItemEl(videoItem, video);
 
 
-        //
-        var videoFrame = $(videoItem).find("iframe")[0];
-        var youtubeVideoSrcExtraDetails = "?rel=0&amp;controls=0&amp;showinfo=0";
-        var videoSrc = video["url"] + youtubeVideoSrcExtraDetails;
-        $(videoFrame).attr("src", videoSrc);
-
-
-        //
-        setVideoMaskHref(videoItem, videoSrc);
-
-
-        //
-        var videoThumbnailTitle = $(videoItem).find(".video-thumbnail-titles")[0];
-        $(videoThumbnailTitle).html(video["title"]);
-
-
-        //
-        var posterUserNameEl = $(videoItem).find(".video-thumbnail-poster-user-names")[0];
-        $(posterUserNameEl).html("TODO: " + video["owner_name"]);
-
-
-
-        //
+        // Appends the cloned template to the video-item-container.
         var videosSection = $(videoCategoryContainer).find(".videos-sections")[0];
         $(videosSection).append($(videoItem));
-
-
-        // //
-        // setVideoThumbnailContainerHeight(videoItem);
-        //
-        // setVideoThumbnailMask(videoItem);
     }
 
 
     //
     $("#cn-center-col").append($(videoCategoryContainer));
 
+    //
     setCenterCol();
+
+
+    //
+    var showMoreVideosBtn = $(videoCategoryContainer).find("button");
+    addClickListenerToShowMoreVideosBtn(showMoreVideosBtn);
+
+    //
+    setHasDoneInitialReadAttr(videoCategoryContainer);
+
+}
+
+/**
+ * fills-in the cloned template with details from the currently iterated video-json-obj.
+ * @param videoItem
+ * @param video
+ */
+function setVideoItemEl(videoItem, video) {
+
+    $(videoItem).addClass("video-recommendation-item");
+    $(videoItem).attr("id", "video" + video["id"]);
+    $(videoItem).attr("created-at", video["created_at"]);
+
+
+    // Set the actual video-frame.
+    var videoFrame = $(videoItem).find("iframe")[0];
+    var youtubeVideoSrcExtraDetails = "?rel=0&amp;controls=0&amp;showinfo=0";
+    var videoSrc = video["url"] + youtubeVideoSrcExtraDetails;
+    $(videoFrame).attr("src", videoSrc);
+
+
+    //
+    setVideoMaskHref(videoItem, videoSrc);
+
+
+    // Set the video title.
+    var videoThumbnailTitle = $(videoItem).find(".video-thumbnail-titles")[0];
+    $(videoThumbnailTitle).html(video["title"]);
+
+
+    // Set the name of the poster (the user).
+    var posterUserNameEl = $(videoItem).find(".video-thumbnail-poster-user-names")[0];
+    $(posterUserNameEl).html("TODO: " + video["owner_name"]);
 }
 
 function setVideoThumbnailMask(videoItem) {
@@ -169,4 +211,28 @@ function setVideoMaskHref(videoItem, href) {
     var mask = $(videoItem).find(".video-thumbnail-masks")[0];
 
     $(mask).attr("href", href);
+}
+
+function isVideoDisplayed(videoId) {
+
+    var videoEls = $(".video-recommendation-item");
+
+    for (var i = 0; i < videoEls.length; i++) {
+
+        var currentVideoId = $(videoEls[i]).attr("id");
+
+        if (currentVideoId === ("video" + videoId)) {
+            cnLog("Video is already displayed");
+            return true;
+        }
+
+    }
+
+    cnLog("Video is NOT yet displayed");
+    return false;
+}
+
+function setHasDoneInitialReadAttr(videoCategoryContainer) {
+
+    $(videoCategoryContainer).attr("hasDoneInitialRead", "yes");
 }

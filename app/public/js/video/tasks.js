@@ -28,6 +28,10 @@ function initCenterCol() {
     // setCenterCol()
 }
 
+
+/**
+ * Sets the center column (the position of the items, etc)
+ */
 function setCenterCol() {
     setVideoThumbnailContainersWidth();
     setVideoThumbnailContainersHeight();

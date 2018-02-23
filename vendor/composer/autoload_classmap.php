@@ -31,6 +31,7 @@ return array(
     'App\\Controller\\UserTopActivityController' => $baseDir . '/app/controller/UserTopActivityController.php',
     'App\\Controller\\VideoController' => $baseDir . '/app/controller/VideoController.php',
     'App\\Controller\\WorkController' => $baseDir . '/app/controller/WorkController.php',
+    'App\\Core\\CNTrait\\CNDataManipulator' => $baseDir . '/app/core/cn-trait/CNDataManipulator.php',
     'App\\Core\\MainModel' => $baseDir . '/app/core/main/MainModel.php',
     'App\\Core\\Main\\CNMain' => $baseDir . '/app/core/main/CNMain.php',
     'App\\Core\\Main\\MainController' => $baseDir . '/app/core/main/MainController.php',

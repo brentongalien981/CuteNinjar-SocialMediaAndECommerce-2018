@@ -10,7 +10,8 @@
       "./app/controller/",
       "./app/model/",
       "./app/ajax-handler/",
-      "./app/core/external-api/"
+      "./app/core/external-api/",
+      "./app/core/cn-trait/"
     ]
   }
 }

@@ -10,10 +10,13 @@ namespace App\Core\Main;
 
 use App\Core\Main\CNMain;
 use App\Core\Validation\Validator;
+use App\Core\CNTrait\CNDataManipulator;
 
 
 class MainController extends CNMain
 {
+    use CNDataManipulator;
+
     public $validator;
     protected $menu;
     protected $action;

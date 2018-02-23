@@ -25,7 +25,6 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
     {
         //
         if (isset($_GET['id'])) {
-//            $this->setIsRequestShow(true);
             $this->setAction('show');
         }
     }
@@ -36,6 +35,15 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
         switch ($this->action) {
             case 'read':
 
+//                $this->sanitizedFields['where_clause'] = "WHERE created_at < '{$this->sanitizedFields['earliestElDate']}'";
+                $this->sanitizedFields['where_clause'] = "WHERE private = 0";
+
+                if (strlen($this->sanitizedFields['displayedVideoIds']) != 0) {
+                    $this->sanitizedFields['where_clause'] .= " AND id NOT IN(" . $this->sanitizedFields['displayedVideoIds'] . ")";
+                }
+
+
+                $this->sanitizedFields['order_by_field'] = "created_at";
                 $this->sanitizedFields['limit'] = 6;
 
                 break;
@@ -66,7 +74,15 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
             case 'patch':
             case 'fetch':
             case 'index':
+                break;
             case 'read':
+
+                $this->validator->fieldsToBeValidated['displayedVideoIds'] = [
+                    'min' => 0,
+                    'max' => 320,
+                    'areNumeric' => 1
+                ];
+
                 break;
             case 'show':
                 //

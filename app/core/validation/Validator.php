@@ -65,6 +65,9 @@ class Validator
                     case 'urlPrefix':
                         $isValidationProcessOk = $this->validateUrlPrefix($field);
                         break;
+                    case 'areNumeric':
+                        $isValidationProcessOk = $this->validateAreNumeric($field);
+                        break;
                 }
 
                 $this->setIsOverallValidationOk($isValidationProcessOk);
@@ -198,6 +201,47 @@ class Validator
             $errorMsg = "{$field} has to be a number.";
             $this->errors[$field]['numeric'] = $errorMsg;
         }
+
+        return $isValidationProcessOk;
+    }
+
+    protected function validateAreNumeric($field)
+    {
+        // TODO: If the length of the string is 0, return true.
+
+
+        $isValidationProcessOk = true;
+
+
+        //
+        $stringifiedIds = null;
+
+        if (is_request_post()) {
+            $stringifiedIds = $_POST[$field];
+        } else {
+            $stringifiedIds = $_GET[$field];
+        }
+
+
+        // Convert the ids to an array.
+        $arrayOfIds = explode(",", $stringifiedIds);
+//        $numOfIds = count($arrayOfIds);
+
+
+        // Loop through the array.
+        foreach ($arrayOfIds as $id) {
+
+            // Check if each one is numeric.
+            if (!$this->isValueNumeric($id)) {
+
+                $isValidationProcessOk = false;
+                $errorMsg = "{$field} has to be a string of numbers.";
+                $this->errors[$field]['areNumeric'] = $errorMsg;
+
+                break;
+            }
+        }
+
 
         return $isValidationProcessOk;
     }

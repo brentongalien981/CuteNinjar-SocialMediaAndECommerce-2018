@@ -37,6 +37,7 @@ class ComposerStaticInit44c0e09186ec1e1a634b2e23952d00eb
         'App\\Controller\\UserTopActivityController' => __DIR__ . '/../..' . '/app/controller/UserTopActivityController.php',
         'App\\Controller\\VideoController' => __DIR__ . '/../..' . '/app/controller/VideoController.php',
         'App\\Controller\\WorkController' => __DIR__ . '/../..' . '/app/controller/WorkController.php',
+        'App\\Core\\CNTrait\\CNDataManipulator' => __DIR__ . '/../..' . '/app/core/cn-trait/CNDataManipulator.php',
         'App\\Core\\MainModel' => __DIR__ . '/../..' . '/app/core/main/MainModel.php',
         'App\\Core\\Main\\CNMain' => __DIR__ . '/../..' . '/app/core/main/CNMain.php',
         'App\\Core\\Main\\MainController' => __DIR__ . '/../..' . '/app/core/main/MainController.php',

@@ -9,6 +9,8 @@
 
     </div>
 
+    <div class="loader-container"></div>
+
     <button type="button" class="btn mx-auto btn-outline-info show-more-playlist-btn">show more</button>
 
 </div>
