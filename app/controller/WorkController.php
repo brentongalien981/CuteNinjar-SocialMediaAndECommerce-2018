@@ -26,6 +26,7 @@ class WorkController extends MainController implements AjaxCrudHandlerInterface
         // TODO: Implement doSpecificAjaxCrudAction() method.
     }
 
+    /* @override */
     protected function setSpecificQueryClauses()
     {
 

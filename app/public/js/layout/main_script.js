@@ -175,6 +175,9 @@ function decide_ajax_pre_after_effects(xObj, json) {
             // do_shipping_option_pre_after_effects(className, crudType, json);
             do_my_video_pre_after_effects(className, crudType, json, xObj);
             break;
+        case "Video":
+            doVideoPreAfterEffects(className, crudType, json, xObj)
+            break;
         case "TimelinePost":
             doTimelinePostPreAfterEffects(className, crudType, json, xObj);
             break;
@@ -211,6 +214,7 @@ function decide_ajax_pre_after_effects(xObj, json) {
         case "Friend":
             doFriendPreAfterEffects(className, crudType, json, xObj)
             break;
+
 
 
     }
@@ -315,6 +319,9 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
             break;
         case "MyVideo":
             do_my_video_after_effects(className, crudType, json, xObj);
+            break;
+        case "Video":
+            doVideoAfterEffects(className, crudType, json, xObj);
             break;
         case "Profile":
             doProfileAfterEffects(className, crudType, json, xObj);
@@ -666,7 +673,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "TimelinePostReply":
+        case "Video":
             return true;
             break;
     }

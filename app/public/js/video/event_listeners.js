@@ -2,9 +2,7 @@ $(window).resize(function(){
     setLeftCol();
     setRightCol();
 
-    setVideoThumbnailHoldersHeight();
-    setVideoThumbnailsDimensions();
-    setVideoThumbnailMasks();
+    setCenterCol();
 });
 
 

@@ -16,13 +16,13 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
     {
         parent::__construct($menu, $action);
 
-
         //
         $this->checkIsRequestShow();
 
     }
 
-    protected function checkIsRequestShow() {
+    protected function checkIsRequestShow()
+    {
         //
         if (isset($_GET['id'])) {
 //            $this->setIsRequestShow(true);
@@ -30,6 +30,18 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
         }
     }
 
+    protected function setSpecificQueryClauses()
+    {
+
+        switch ($this->action) {
+            case 'read':
+
+                $this->sanitizedFields['limit'] = 6;
+
+                break;
+
+        }
+    }
 
     /**
      * @return mixed
@@ -53,7 +65,6 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
 
             case 'patch':
             case 'fetch':
-                break;
             case 'index':
             case 'read':
                 break;

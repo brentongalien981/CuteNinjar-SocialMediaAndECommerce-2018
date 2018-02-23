@@ -1,4 +1,4 @@
-<div id="video-category-container-template" class="container-fluid">
+<div id="video-category-container-template" class="container-fluid cn-template">
 
     <h3 class="video-category-title">[Recommended for You]</h3>
     <hr>
@@ -21,12 +21,14 @@
     #video-category-container-template .show-more-playlist-btn,
     .video-category-containers .show-more-playlist-btn {
         display: block;
-        padding: 10px 100px;
-        margin-top: 30px;
+        padding-left: 300px;
+        padding-right: 300px;
+        margin-top: 50px;
     }
 
     #video-category-container-template,
-    .video-category-container {
-        padding: 20px 8%;
+    .video-category-containers {
+        padding: 30px 8%;
+        padding-bottom: 70px;
     }
 </style>

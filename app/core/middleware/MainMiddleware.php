@@ -242,6 +242,7 @@ class MainMiddleware extends CNMain
             case "Friend":
 
             case "video":
+            case "Video":
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_TYPES_OF_ACTIONS, $action);
                 break;
             case "timeline-post":

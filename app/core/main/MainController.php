@@ -233,6 +233,13 @@ class MainController extends CNMain
     }
 
 
+    protected function setSpecificQueryClauses()
+    {
+
+    }
+
+
+    /* @deprecated */
     protected function read() {
 
         $this->setSpecificQueryClauses();

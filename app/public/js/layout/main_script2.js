@@ -277,3 +277,11 @@ function cnCloneTemplate(id) {
     $(template).addClass("contact-detail-item");
     return template;
 }
+
+function cnCloneTemplateEl(templateElId) {
+    var template = $("#" + templateElId).clone(true);
+    $(template).removeClass("cn-template");
+    $(template).removeAttr("id");
+
+    return template;
+}

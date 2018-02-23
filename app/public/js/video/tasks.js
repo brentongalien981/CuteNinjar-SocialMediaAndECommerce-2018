@@ -3,6 +3,8 @@ $(document).ready(function () {
     setPageTitle("Videos | CuteNinjar");
 
     initPage();
+
+    readVideos();
 });
 
 
@@ -19,21 +21,21 @@ function initContainers() {
 }
 
 function initCenterCol() {
-    setVideoThumbnailHoldersHeight();
-    setVideoThumbnailsDimensions();
+    // setVideoThumbnailHoldersHeight();
+    // setVideoThumbnailsDimensions();
+    // setVideoThumbnailMasks();
+    //
+    // setCenterCol()
+}
+
+function setCenterCol() {
+    setVideoThumbnailContainersWidth();
+    setVideoThumbnailContainersHeight();
+
     setVideoThumbnailMasks();
 }
 
-function setVideoThumbnailMasks() {
 
-    var videoThumbnailWidth = $(".video-thumbnails").width();
-    var videoThumbnailHeight = $(".video-thumbnails").height();
-
-    $(".video-thumbnail-masks").width(videoThumbnailWidth);
-    $(".video-thumbnail-masks").height(videoThumbnailHeight);
-
-    $(".video-thumbnail-masks").css("margin-top", "-" + videoThumbnailHeight + "px");
-}
 
 function setVideoThumbnailsDimensions() {
 
