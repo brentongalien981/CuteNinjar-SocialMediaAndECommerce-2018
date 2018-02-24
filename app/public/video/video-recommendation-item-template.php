@@ -60,11 +60,12 @@
     }
 
     a.video-thumbnail-titles {
-        font-size: 120%;
+        font-size: 110%;
     }
 
     a.video-thumbnail-poster-user-names {
-
+        font-size: 90%;
+        font-weight: 100;
     }
 
     a.video-thumbnail-masks {

@@ -79,6 +79,7 @@ function displayVideos(json, xObj) {
 
     // Iterates through all the video-json-objects.
     for (var i = 0; i < videos.length; i++) {
+
         var video = videos[i];
 
 
@@ -143,7 +144,7 @@ function setVideoItemEl(videoItem, video) {
 
     // Set the name of the poster (the user).
     var posterUserNameEl = $(videoItem).find(".video-thumbnail-poster-user-names")[0];
-    $(posterUserNameEl).html("TODO: " + video["owner_name"]);
+    $(posterUserNameEl).html(video["poster_user_name"]);
 }
 
 function setVideoThumbnailMask(videoItem) {

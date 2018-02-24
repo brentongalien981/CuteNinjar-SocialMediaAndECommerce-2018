@@ -111,4 +111,43 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
 
         require_once(PUBLIC_PATH . "video/read.php");
     }
+
+    /** @override */
+    protected function read()
+    {
+
+        $videos = parent::read();
+
+        /**/
+        foreach ($videos as $video) {
+
+            // Find the extentional obj.
+            $posterUser = $video->getPosterUser();
+
+            // Filter the main obj.
+
+            // Refine the main obj.
+
+            // Combine the extentional and main obj.
+            $video->combineWithObj($posterUser);
+        }
+
+
+
+        /*
+    Remove all the static fields of the newly morphed profile obj.
+    NOTE that I do this removing of static fields in another loop and not also in
+    the previous loop because doing so in the previous loop would remove the static
+    vars of each userProfile obj. As a result, there would be a problem when subsequent
+    lines of codes uses the static vars, like calling static::class_name will no longer
+    give a value of "Profile", but a MainController default value of "DEFAULT_CLASS_NAME".
+*/
+        foreach ($videos as $video) {
+            $video->removeStaticFields();
+        }
+
+        //
+        return $videos;
+
+    }
 }

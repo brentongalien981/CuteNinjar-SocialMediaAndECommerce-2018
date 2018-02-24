@@ -23,17 +23,16 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
         $this->checkIsRequestShow();
 
 
-
     }
 
-    protected function checkIsRequestShow() {
+    protected function checkIsRequestShow()
+    {
         //
         if (isset($_GET['user_name'])) {
 //            $this->setIsRequestShow(true);
             $this->setAction('show');
         }
     }
-
 
 
     /** @override */
@@ -147,7 +146,14 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
         }
 
 
-        /* Remove all the static fields of the newly morphed profile obj. */
+        /*
+            Remove all the static fields of the newly morphed profile obj.
+            NOTE that I do this removing of static fields in another loop and not also in
+            the previous loop because doing so in the previous loop would remove the static
+            vars of each userProfile obj. As a result, there would be a problem when subsequent
+            lines of codes uses the static vars, like calling static::class_name will no longer
+            give a value of "Profile", but a MainController default value of "DEFAULT_CLASS_NAME".
+        */
         foreach ($profiles as $userProfile) {
             $userProfile->removeStaticFields();
         }
@@ -155,8 +161,6 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
         //
         return $profiles;
     }
-
-
 
 
     /** @override */
@@ -182,15 +186,12 @@ class ProfileController extends MainController implements AjaxCrudHandlerInterfa
                     redirect_to(PUBLIC_LOCAL . "profile/profile-private.php");
                 }
 
-            }
-            else {
+            } else {
                 $isAllowedToView = true;
             }
-        }
-        else {
+        } else {
             redirect_to(PUBLIC_LOCAL . "profile/profile-non-existent.php");
         }
-
 
 
         //

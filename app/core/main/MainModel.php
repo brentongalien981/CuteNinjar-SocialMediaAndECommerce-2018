@@ -763,7 +763,7 @@ class MainModel extends CNMain
         return $obj;
     }
 
-    /** TODO: Change this name later => hasOne2(). */
+    /** TODO: Change this name later from hasOne2() to hasOne(). */
     public function hasOne2($class)
     {
 

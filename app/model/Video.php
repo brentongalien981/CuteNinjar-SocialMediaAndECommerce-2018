@@ -39,4 +39,18 @@ class Video extends MainModel
     public $created_at;
     public $updated_at;
 
+    public function getPosterUser() {
+
+        // Find
+        $posterUser = $this->belongsTo2("User");
+
+        // Filter
+        $posterUser->filterInclude(['user_name']);
+
+        // Refine
+        $posterUser->replaceFieldNamesForAjax(['user_name' => 'poster_user_name']);
+
+        return $posterUser;
+    }
+
 }
