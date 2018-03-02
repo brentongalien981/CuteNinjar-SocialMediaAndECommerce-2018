@@ -388,6 +388,11 @@ class MainModel extends CNMain
         return $objs;
     }
 
+    public function show($data) {
+        $data['limit'] = 1;
+        return $this->read($data);
+    }
+
     public function read($data = null)
     {
 //        //

@@ -104,3 +104,8 @@ div#main_content2 {
 .cn-template {
     display: none;
 }
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}

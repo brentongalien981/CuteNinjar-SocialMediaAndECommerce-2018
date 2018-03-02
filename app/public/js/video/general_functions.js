@@ -17,6 +17,13 @@ function doVideoPreAfterEffects(className, crudType, json, xObj) {
             removeClonedLoaderEl(loaderEl);
             break;
 
+        case "show":
+
+            //
+            var loaderEl = $("#loader-for-show-video-xxx");
+            removeClonedLoaderEl(loaderEl);
+            break;
+
         case "create":
         case "update":
         case "delete":
@@ -31,6 +38,12 @@ function doVideoAfterEffects(className, crudType, json, xObj) {
         case "read":
 
             displayVideos(json, xObj);
+
+            break;
+
+        case "show":
+
+            soloDisplayVideo(json);
 
             break;
         case "create":
@@ -64,6 +77,44 @@ function getVideoCategoryContainer(readForPageSection) {
     return videoCategoryContainer;
 }
 
+function soloDisplayVideo(json) {
+
+    //
+    var videos = json.objs;
+
+    //
+    for (var i = 0; i < videos.length; i++) {
+
+        //
+        var video = videos[i];
+
+        //
+        setSoloVideoItemEl(video);
+        fillVideoMetaDetailsContainer(video);
+
+    }
+}
+
+function setSoloVideoItemEl(video) {
+
+    var videoFrame = $(".video-container").find(".video-item")[0];
+    var youtubeVideoSrcExtraDetails = "?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1";
+    // var youtubeVideoSrcExtraDetails = "?autoplay=1";
+    var videoSrc = video["url"] + youtubeVideoSrcExtraDetails;
+    $(videoFrame).attr("src", videoSrc);
+    $(videoFrame).css("display", "block");
+}
+
+function fillVideoMetaDetailsContainer(video) {
+
+    $("#video-meta-details-container h3").html(video["title"]);
+    $("#video-meta-details-container .poster-user-name").html("by " + video["poster_user_name"]);
+    $("#video-meta-details-container .upload-date").html("uploaded " + video["human_date"]);
+    $("#video-meta-details-container .description").html(video["description"]);
+
+    $("#video-meta-details-container").css("display", "block");
+}
+
 function displayVideos(json, xObj) {
 
     //
@@ -89,6 +140,8 @@ function displayVideos(json, xObj) {
 
         // Clones a video-item-template.
         var videoItem = cnCloneTemplateEl("video-recommendation-item-template");
+
+        //
         setVideoItemEl(videoItem, video);
 
 
@@ -134,7 +187,8 @@ function setVideoItemEl(videoItem, video) {
 
 
     //
-    setVideoMaskHref(videoItem, videoSrc);
+    // setVideoMaskHref(videoItem, videoSrc);
+    setVideoMaskHref(videoItem, video["id"]);
 
 
     // Set the video title.
@@ -207,9 +261,11 @@ function setVideoThumbnailContainersWidth() {
     $(videoThumbnailContainers).width(width);
 }
 
-function setVideoMaskHref(videoItem, href) {
+function setVideoMaskHref(videoItem, videoId) {
 
     var mask = $(videoItem).find(".video-thumbnail-masks")[0];
+
+    var href = get_local_url() + "video/show.php?id=" + videoId;
 
     $(mask).attr("href", href);
 }

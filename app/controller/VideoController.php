@@ -14,6 +14,7 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
 {
     public function __construct($menu = null, $action = null)
     {
+//        sleep(1);
         parent::__construct($menu, $action);
 
         //
@@ -24,8 +25,10 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
     protected function checkIsRequestShow()
     {
         //
-        if (isset($_GET['id'])) {
-            $this->setAction('show');
+        if ($this->action == "index" && isset($_GET['id'])) {
+//            $this->setAction('show');
+            $url = PUBLIC_LOCAL . "video/show.php?id={$_GET['id']}";
+            redirect_to($url);
         }
     }
 
@@ -46,6 +49,10 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
                 $this->sanitizedFields['order_by_field'] = "created_at";
                 $this->sanitizedFields['limit'] = 6;
 
+                break;
+
+            case 'show':
+//                $this->sanitizedFields['id'] = $this->sanitizedFields['id'];
                 break;
 
         }
@@ -90,19 +97,12 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
                     'required' => 1,
                     'min' => 1,
                     'max' => 12,
-                    'blank' => 1
+                    'blank' => 1,
+                    'numeric' => 1
                 ];
 
                 break;
         }
-    }
-
-
-    /** @override */
-    protected function show()
-    {
-
-        require_once(PUBLIC_PATH . "video/show.php");
     }
 
     /** @override */
@@ -130,6 +130,55 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
 
             // Combine the extentional and main obj.
             $video->combineWithObj($posterUser);
+        }
+
+
+
+        /*
+    Remove all the static fields of the newly morphed profile obj.
+    NOTE that I do this removing of static fields in another loop and not also in
+    the previous loop because doing so in the previous loop would remove the static
+    vars of each userProfile obj. As a result, there would be a problem when subsequent
+    lines of codes uses the static vars, like calling static::class_name will no longer
+    give a value of "Profile", but a MainController default value of "DEFAULT_CLASS_NAME".
+*/
+        foreach ($videos as $video) {
+            $video->removeStaticFields();
+        }
+
+        //
+        return $videos;
+
+    }
+
+    /** @override */
+    protected function show()
+    {
+
+        $videos = parent::show();
+
+        /**/
+        foreach ($videos as $video) {
+
+            // If the video to be viewed is private and not being viewed by the
+            // poster-user, then retun null.
+            if ($video->private == "1") {
+                if ($video->user_id != $this->session->actual_user_id) { return false; }
+            }
+
+            // Find the extentional obj.
+            $posterUser = $video->getPosterUser();
+
+            // Filter the main obj.
+
+            // Refine the main obj.
+
+            // Combine the extentional and main obj.
+            $video->combineWithObj($posterUser);
+
+            /* Add a carbon-date field to the obj. */
+            $rawDateTimeFieldName = "created_at";
+            $video->addReadableDateField($rawDateTimeFieldName);
         }
 
 

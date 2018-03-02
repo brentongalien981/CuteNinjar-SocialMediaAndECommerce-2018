@@ -1,0 +1,15 @@
+.video-container {
+    background-color: black;
+}
+
+.video-item {
+    /*width: 100%;*/
+    display: none;
+}
+
+
+#show-less-description-btn,
+#video-meta-details-container,
+#video-meta-details-container .description {
+    display: none;
+}

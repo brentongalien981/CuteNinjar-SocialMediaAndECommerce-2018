@@ -62,7 +62,16 @@ function redirect_to($new_location)
 }
 
 
-function tryLoadingJsFilesFor($currentDir)
+/**
+ * @param $currentDir
+ * @param null $requestAction
+ * @param null $specificFiles are files that will loaded specifically for that
+ *      $requestAction. Ex if $requestAction is "show", and $specificFiles is
+ *      ['tasks', 'general_functions'], then instead of loading files tasks.js and
+ *      general_functions.js by default, this func instead loads files tasks@show.js
+ *      and general_functions@show.js and the other default *.js files...
+ */
+function tryLoadingJsFilesFor($currentDir, $requestAction = null, $specificFiles = null)
 {
     $files = [
         'instance_vars',
@@ -71,6 +80,7 @@ function tryLoadingJsFilesFor($currentDir)
         'general_functions3',
         'create',
         'read',
+        'show',
         'update',
         'delete',
         'fetch',
@@ -94,6 +104,14 @@ function tryLoadingJsFilesFor($currentDir)
 
     // Now load all the remaining js files.
     foreach ($files as $file) {
+
+        // If the request action is other than index or read, like show, create, etc.,
+        // change it to like tasks@show, tasks@create, etc...
+        if (in_array($file, $specificFiles)) {
+            $file = $file . "@" . $requestAction;
+        }
+
+        //
         $doesFileExist = file_exists(JS_PATH . "{$currentDir}/{$file}.js");
         if ($doesFileExist) {
             $scriptTag = "<script src='" . PUBLIC_LOCAL . "js/" . $currentDir . "/" . $file . ".js'></script>";

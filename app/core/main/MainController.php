@@ -31,9 +31,6 @@ class MainController extends CNMain
         $this->setAction('show');
     }
 
-    protected function show() {
-        // Override this.
-    }
 
 
     /**
@@ -90,6 +87,7 @@ class MainController extends CNMain
                 $isCrudOk ? $this->json['is_result_ok'] = true : null;
                 break;
             case 'read':
+            case 'show':
             case 'fetch':
                 // On $action read, $isCrudOk is either false or json['objs']
                 if ($isCrudOk != false) {
@@ -239,6 +237,27 @@ class MainController extends CNMain
     protected function setSpecificQueryClauses()
     {
 
+    }
+
+    protected function show() {
+
+        $this->setSpecificQueryClauses();
+
+        $objs = $this->menuObj->show($this->sanitizedFields);
+
+        /* Filter unwanted fields of the objs. */
+        foreach ($objs as $obj) {
+            $obj->filterExclude([]);
+
+        }
+
+        /**/
+        foreach ($objs as $obj) {
+            $obj->removeStaticFields();
+        }
+
+
+        return $objs;
     }
 
 

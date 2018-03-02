@@ -1,0 +1,36 @@
+.rate-status-container {
+    /*background-color: indianred;*/
+    margin-top: 20px;
+}
+
+.rate-status-holder {
+    /*background-color: greenyellow;*/
+}
+
+
+.rate-status-item-container {
+    /*background-color: aliceblue;*/
+    display: inline-block;
+    padding: 5px 25px;
+    border-radius: 10px;
+    border: 1px solid rgb(150, 150, 150);
+    margin-right: 15px;
+}
+
+.rate-status-item-symbol {
+    padding-right: 8px;
+    border-right: 1px solid rgb(210, 210, 210);
+    font-size: 110%;
+    font-weight: 300;
+}
+
+.rate-status-item-value {
+    padding-left: 10px;
+    font-size: 80%;
+    font-weight: 100;
+}
+
+.rate-status-item-img-value {
+    padding-left: 10px;
+    width: 30px;
+}
