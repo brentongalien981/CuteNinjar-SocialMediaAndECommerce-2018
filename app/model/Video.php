@@ -53,4 +53,23 @@ class Video extends MainModel
         return $posterUser;
     }
 
+    public function getRateableItem() {
+
+        // Find
+        $data = [
+            'item_x_id' => $this->id,
+            'item_x_type_id' => \App\Model\RateableItem::ITEM_X_TYPE_ID_VIDEO
+        ];
+
+        $rateableItem = \App\Model\RateableItem::readByWhereClause($data)[0];
+
+        // Filter
+        $rateableItem->filterExclude();
+
+        // Refine
+        $rateableItem->replaceFieldNamesForAjax(['id' => 'rateable_item_id']);
+
+        return $rateableItem;
+    }
+
 }

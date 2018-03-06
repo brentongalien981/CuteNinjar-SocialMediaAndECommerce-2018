@@ -45,6 +45,26 @@ function doVideoAfterEffects(className, crudType, json, xObj) {
 
             soloDisplayVideo(json);
 
+
+            /* Set the identityOfRateStatusContainer. */
+            var video = json.objs[0];
+            var rateableItemId = video["rateableItem"]["rateable_item_id"];
+
+            //
+            var rateStatusContainer = $(".rate-status-container")[0];
+
+            //
+            setIdentityOfRateStatusContainer(rateStatusContainer, rateableItemId)
+
+
+            /*
+                Set the rate-status-item-containers (the pseudo-buttons of
+                the rate-status-container).
+            */
+            readUserTwoCentsOfRateableItem(rateableItemId);
+            readRatingSigmaOfRateableItem(rateableItemId);
+            readAverageRatingOfRateableItem(rateableItemId);
+
             break;
         case "create":
             break;
@@ -101,7 +121,11 @@ function setSoloVideoItemEl(video) {
     var youtubeVideoSrcExtraDetails = "?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1";
     // var youtubeVideoSrcExtraDetails = "?autoplay=1";
     var videoSrc = video["url"] + youtubeVideoSrcExtraDetails;
+
+    var videoId = "video" + video["id"];
+    $(videoFrame).attr("id", videoId);
     $(videoFrame).attr("src", videoSrc);
+    $(videoFrame).attr("rateable-item-id", video["rateableItem"]["rateable_item_id"]);
     $(videoFrame).css("display", "block");
 }
 

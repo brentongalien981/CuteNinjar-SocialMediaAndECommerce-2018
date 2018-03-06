@@ -182,8 +182,44 @@ class MainModel extends CNMain
         }
     }
 
+    public function updateByWhereClause($whereClause) {
 
-    public function update()
+        $dataForUpdate = ['whereClause' => $whereClause];
+        return $this->update($dataForUpdate);
+    }
+
+    public static function createWhereClause($data) {
+        //ish
+        //
+        $count = 0;
+
+        foreach ($data as $field => $value) {
+
+            //
+            if ($field == "limit" ||
+                $field == "tableName" ||
+                $field == "orderBy") {
+                continue;
+            }
+
+
+            //
+            if ($count != 0) {
+                $data['whereClause'] .= " AND {$field} = '{$value}'";
+            } else {
+                $data['whereClause'] = "WHERE {$field} = '{$value}'";
+            }
+
+
+            //
+            ++$count;
+        }
+
+        //
+        return $data['whereClause'];
+    }
+
+    public function update($data = null)
     {
         // Don't forget your SQL syntax and good habits:
         // - UPDATE table SET key='value', key='value' WHERE condition
@@ -204,7 +240,16 @@ class MainModel extends CNMain
 
         $query = "UPDATE " . static::$table_name . " SET ";
         $query .= join(", ", $attribute_pairs);
-        $query .= " WHERE {$this->primary_key_id_name} =" . $this->database->escape_value($this->{$this->primary_key_id_name});
+
+
+        // Append the whereClause to the query.
+        if ($data != null && $data['whereClause'] != null) {
+            $query .= " " . $data['whereClause'];
+        }
+        else {
+            $query .= " WHERE {$this->primary_key_id_name} =" . $this->database->escape_value($this->{$this->primary_key_id_name});
+        }
+
 
 
         //
@@ -952,7 +997,7 @@ class MainModel extends CNMain
 //        $this->removeStaticFields();
     }
 
-    public function filterExclude($excludedFields)
+    public function filterExclude($excludedFields = [])
     {
 
         // Other default excluded fields.

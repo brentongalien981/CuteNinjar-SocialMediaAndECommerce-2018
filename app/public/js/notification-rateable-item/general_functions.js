@@ -9,6 +9,8 @@ function doNotificationRateableItemsAfterEffects(className, crudType, json, xObj
 
             break;
         case "create":
+            // TODO: DEBUG
+            cnLog("success ajax-create-NotificationRateableItem");
             break;
         case "update":
             break;
@@ -21,7 +23,7 @@ function doNotificationRateableItemsAfterEffects(className, crudType, json, xObj
     }
 }
 
-function getContentForRateableItemNotification(anXNotification) {
+function getNotificationContentForRatingATimelinePost(anXNotification) {
 
     var n = anXNotification;
     var notificationEl = document.createElement("p");
@@ -39,6 +41,42 @@ function getContentForRateableItemNotification(anXNotification) {
     msg += n["message"].substring(0, 40) + " ...";
     msg += "\" ";
     msg += "\"" + n["name"] + "\".";
+
+    $(notificationEl).html(msg);
+
+    return notificationEl;
+}
+
+function getNotificationContentForRatingAVideo(anXNotification) {
+
+    var n = anXNotification;
+    var notificationEl = document.createElement("p");
+    var videoTitle = n["video_title"];
+
+
+    //
+    if (videoTitle.length > 40) {
+        videoTitle = videoTitle.substring(0, 40);
+        videoTitle += "...";
+    }
+
+    //
+    var msg = "";
+
+
+    // CJ rated your video “[Kendrick Lamar - HUMBLE...]” “bomb”.
+
+    msg += " " + n["user_name"];
+    msg += " rated your ";
+
+    msg += "<a href='#'>";
+    msg += "video";
+    msg += " \"";
+    msg += videoTitle;
+    msg += "\"";
+    msg += "</a>";
+
+    msg += " \"" + n["name"] + "\".";
 
     $(notificationEl).html(msg);
 

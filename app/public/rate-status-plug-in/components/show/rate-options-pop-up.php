@@ -64,6 +64,7 @@
         </div>
 
 
+
         <div id="last-rate-option" class="rate-option rate-options-pop-up-trigger-elelements orange-hovered-shadow" rate-value="-5">
             <img class="rate-option-img rate-options-pop-up-trigger-elelements" src="<?= PUBLIC_LOCAL . "img/rate-icons/CryingMJ.png" ?>">
             <h6 class="rate-option-label rate-options-pop-up-trigger-elelements">-5 MEME</h6>

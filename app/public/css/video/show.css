@@ -1,5 +1,13 @@
 .video-container {
     background-color: black;
+    margin: 0;
+    padding: 0;
+
+}
+
+.video-container > div {
+    margin: 0;
+    padding: 0;
 }
 
 .video-item {

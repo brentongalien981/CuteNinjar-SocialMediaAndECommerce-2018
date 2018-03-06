@@ -31,7 +31,8 @@ class RateableItem extends MainModel
     public $item_x_type_id;
 
     /** @override */
-    public function init() {
+    public function init()
+    {
 
 
 //        $this->primary_key_id_name = "user_id";
@@ -46,14 +47,18 @@ class RateableItem extends MainModel
     /**
      * @override
      */
-    public function create() {
-        if ($this->doesRecordExist()) { return true; }
+    public function create()
+    {
+        if ($this->doesRecordExist()) {
+            return true;
+        }
 
         $isCrudOk = parent::create();
         return $isCrudOk;
     }
 
-    public function getXRateableItem() {
+    public function getXRateableItem()
+    {
 
         //
         $modelPath = "\\App\\Model\\";
@@ -62,6 +67,9 @@ class RateableItem extends MainModel
         switch ($this->item_x_type_id) {
             case self::ITEM_X_TYPE_ID_TIMELINE_POST:
                 $modelPath .= 'TimelinePost';
+                break;
+            case self::ITEM_X_TYPE_ID_VIDEO:
+                $modelPath .= 'Video';
                 break;
             default:
                 return null;
@@ -73,12 +81,58 @@ class RateableItem extends MainModel
             'id' => $this->item_x_id
         ];
 
+        // Find
+        $xRateableItem = $modelPath::readById($data)[0];
+
+
+        // Filter
+        $xRateableItem->filterInclude($this->getFieldsToBeIncludedForJson());
+
+
+        // Refine
+        $xRateableItem->replaceFieldNamesForAjax($this->getFieldNamesAndReplacementsKeyValuePairsForJson());
+
 
         //
-        return $modelPath::readById($data)[0];
+        return $xRateableItem;
     }
 
-    public function doesRecordExist() {
+    private function getFieldNamesAndReplacementsKeyValuePairsForJson()
+    {
+        switch ($this->item_x_type_id) {
+            case self::ITEM_X_TYPE_ID_TIMELINE_POST:
+                return ['id' => 'post_id'];
+                break;
+
+            case self::ITEM_X_TYPE_ID_VIDEO:
+                return [
+                    'id' => 'video_id',
+                    'title' => 'video_title'
+                ];
+                break;
+            default:
+                return null;
+        }
+    }
+
+    private function getFieldsToBeIncludedForJson()
+    {
+        //
+        switch ($this->item_x_type_id) {
+            case self::ITEM_X_TYPE_ID_TIMELINE_POST:
+                return ['id', 'message'];
+                break;
+
+            case self::ITEM_X_TYPE_ID_VIDEO:
+                return ['id', 'title'];
+                break;
+            default:
+                return null;
+        }
+    }
+
+    public function doesRecordExist()
+    {
         $data['where_clause'] = "WHERE item_x_id = {$this->item_x_id}";
         $data['where_clause'] .= " AND item_x_type_id = {$this->item_x_type_id}";
 

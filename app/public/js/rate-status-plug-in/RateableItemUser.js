@@ -15,6 +15,10 @@ function RateableItemUser (crud_type, request_type, key_value_pairs) {
         my_ajax(this);
     };
 
+    this.show = function () {
+        my_ajax(this);
+    };
+
     this.update = function () {
         my_ajax(this);
     };
@@ -28,10 +32,6 @@ function RateableItemUser (crud_type, request_type, key_value_pairs) {
     };
 
     this.patch = function () {
-        my_ajax(this);
-    };
-
-    this.show = function () {
         my_ajax(this);
     };
 }

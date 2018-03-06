@@ -1,6 +1,6 @@
 <div id="video-meta-details-container" class="container-fluid row">
 
-    <div id="video-meta-details-holder" class="col-8 mx-auto">
+    <div id="video-meta-details-holder" class="col-10 mx-auto">
 
         <h3>[Mercedes AMG GT C Coupe]</h3>
         <a href="#cn"><h5 class="poster-user-name">[by Calvin Abueva]</h5></a>
@@ -25,3 +25,13 @@
     </div>
 
 </div>
+
+
+
+
+
+<style>
+    #video-meta-details-container {
+        margin-top: 40px;
+    }
+</style>

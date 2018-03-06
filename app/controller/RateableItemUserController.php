@@ -110,13 +110,43 @@ class RateableItemUserController extends MainController implements AjaxCrudHandl
         }
     }
 
+    /** @override */
     protected function read()
     {
+        $whatToRead = $this->sanitizedFields['what_to_read'];
 
-        $this->setSpecificQueryClauses();
+        $objs = null;
 
-        $objs = $this->menuObj->read_by_where_clause($this->sanitizedFields);
+        switch ($whatToRead) {
+            case "rate_tags":
+                $objs = parent::read();
+                break;
 
+            case "rate_sigma":
+            case "rate_value_sigma":
+
+                $this->setSpecificQueryClauses();
+
+                $objs = $this->menuObj->read_by_where_clause($this->sanitizedFields);
+
+                break;
+        }
+
+
+        //
         return $objs;
+    }
+
+    /** @override */
+    protected function update() {
+
+        $dataForUpdate = [
+            'rateable_item_id' => $this->database->escape_value($this->menuObj->rateable_item_id),
+            'responder_user_id' => $this->database->escape_value($this->menuObj->responder_user_id)
+        ];
+
+        $whereClause = $this->menuObj::createWhereClause($dataForUpdate);
+        $isCrudOk = $this->menuObj->updateByWhereClause($whereClause);
+        return $isCrudOk;
     }
 }

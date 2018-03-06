@@ -16,3 +16,6 @@
 <!--js / main-->
 <?php tryLoadingJsFilesFor("rate-status-plug-in", "show", ['tasks']); ?>
 
+<!--js / extentional-->
+<?php tryLoadingJsFilesFor("rateable-item-user", "show", ['tasks', 'read', 'general_functions', 'update']); ?>
+

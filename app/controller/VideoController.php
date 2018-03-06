@@ -130,6 +130,7 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
 
             // Combine the extentional and main obj.
             $video->combineWithObj($posterUser);
+
         }
 
 
@@ -168,6 +169,7 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
 
             // Find the extentional obj.
             $posterUser = $video->getPosterUser();
+            $rateableItem = $video->getRateableItem();
 
             // Filter the main obj.
 
@@ -175,6 +177,7 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
 
             // Combine the extentional and main obj.
             $video->combineWithObj($posterUser);
+            $video->rateableItem = $rateableItem;
 
             /* Add a carbon-date field to the obj. */
             $rawDateTimeFieldName = "created_at";

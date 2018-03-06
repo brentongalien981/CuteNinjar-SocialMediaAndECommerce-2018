@@ -94,7 +94,7 @@ class NotificationRateableItemController extends MainController implements AjaxC
     protected function setSpecificQueryClauses() {
 
         $this->sanitizedFields['where_clause'] = "WHERE notified_user_id = {$this->session->actual_user_id}";
-        $this->sanitizedFields['where_clause'] .= " AND notification_msg_id = 4";
+        $this->sanitizedFields['where_clause'] .= " AND notification_msg_id IN(4, 6)";
 
         $this->sanitizedFields['order_by_field'] = "initiation_date";
 
@@ -168,19 +168,16 @@ class NotificationRateableItemController extends MainController implements AjaxC
             $notifier = $parentNotification->getNotifier();
             $rate = $notification->getRate();
             $rateableItem = $notification->getRateableItem();
-            $xRateableItem = $rateableItem->getXRateableItem();
+            $xRateableItem = $rateableItem->getXRateableItem(); // Could be timeline-post, video, photo, etc..
 
 
             // 2) filter
             $parentNotification->filterExclude(['id', 'is_deleted']);
+            $notification->filterExclude();
             $notifier->filterInclude(['user_id', 'user_name']);
             $rate->filterInclude(['name']);
-            $xRateableItem->filterInclude(['id', 'message']);
-
 
             // 3) refine
-            $xRateableItem->replaceFieldNamesForAjax(['id' => 'post_id']);
-
 
             // 4) combine
             $parentNotification->combineWithObj($notification);

@@ -12,7 +12,17 @@
         <div class="video-container container-fluid row justify-content-center">
 
             <div class="col-12">
-                <iframe class="video-item" src="https://www.youtube.com/embed/NWI4zJgcQEc?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                <iframe
+                    class="video-item rateable-item"
+                    rateable-item-id=""
+                    item-x-type-id="2"
+                    src="https://www.youtube.com/embed/NWI4zJgcQEc?rel=0&amp;showinfo=0"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+                </iframe>
+
                 <div class="loader-container"></div>
             </div>
 

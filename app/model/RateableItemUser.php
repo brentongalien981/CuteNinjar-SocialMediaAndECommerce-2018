@@ -74,8 +74,8 @@ class RateableItemUser extends MainModel
         return $obj;
     }
 
-    /** @override */
-    public function update()
+    /** @deprecated  */
+    public function updateOld()
     {
         // Don't forget your SQL syntax and good habits:
         // - UPDATE table SET key='value', key='value' WHERE condition

@@ -119,11 +119,14 @@ function getSpecificXNotificationMainContent(anXNotification, className) {
     var specificXNotificationMainContent = null;
 
     switch (notificationMsgId) {
-        case TAG_RATE_NOTIFICATION_MSG_ID:
-            specificXNotificationMainContent = getContentForRateableItemNotification(anXNotification);
+        case NOTIFICATION_FOR_RATING_TIMELINE_POST_MSG_ID:
+            specificXNotificationMainContent = getNotificationContentForRatingATimelinePost(anXNotification);
             break;
         case NEW_TIMELINE_POST_REPLY_NOTIFICATION_MSG_ID:
             specificXNotificationMainContent = getContentForNotificationTimelinePostReply(anXNotification);
+            break;
+        case NOTIFICATION_FOR_RATING_VIDEO_MSG_ID:
+            specificXNotificationMainContent = getNotificationContentForRatingAVideo(anXNotification);
             break;
     }
 

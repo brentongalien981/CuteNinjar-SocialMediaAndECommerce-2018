@@ -11,6 +11,7 @@ async function init_read_response_bar_details() {
     read_rate_value_sigma();
 }
 
+
 function read_rate_value_sigma(rateable_item_id) {
 
     var crud_type = "read";
