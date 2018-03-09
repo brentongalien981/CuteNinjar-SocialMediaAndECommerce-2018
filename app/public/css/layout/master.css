@@ -105,6 +105,10 @@ div#main_content2 {
     display: none;
 }
 
+.initially-hidden-el {
+    display: none;
+}
+
 .row {
     margin-left: 0;
     margin-right: 0;

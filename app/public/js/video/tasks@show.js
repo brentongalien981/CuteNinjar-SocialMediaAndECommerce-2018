@@ -34,6 +34,7 @@ function initCenterCol() {
     setVideoContainer();
     setVideoMetaDetailsContainer();
     initRateStatusPlugIn();
+    initVideoPlaylistPlugIn();
 
     //
     $("#the_body").append($("#main-content"));
