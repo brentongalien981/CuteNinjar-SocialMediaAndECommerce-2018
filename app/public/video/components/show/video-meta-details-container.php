@@ -2,7 +2,7 @@
 
     <div id="video-meta-details-holder" class="col-10 mx-auto">
 
-        <h3>[Mercedes AMG GT C Coupe]</h3>
+        <h3 class="title">[Mercedes AMG GT C Coupe]</h3>
         <a href="#cn"><h5 class="poster-user-name">[by Calvin Abueva]</h5></a>
         <h6 class="upload-date">uploaded 6 days ago</h6>
 
@@ -19,8 +19,8 @@
 
 
 
-        <button type="button" class="btn btn-primary animated" id="show-more-description-btn">show more</button>
-        <button type="button" class="btn btn-secondary animated" id="show-less-description-btn">show less</button>
+        <button type="button" class="btn btn-sm btn-primary animated" id="show-more-description-btn">show more</button>
+        <button type="button" class="btn btn-sm btn-secondary animated" id="show-less-description-btn">show less</button>
 
     </div>
 
@@ -32,6 +32,29 @@
 
 <style>
     #video-meta-details-container {
-        margin-top: 40px;
+        /*margin-top: 40px;*/
+        background-color: rgb(150, 150, 150);
+        padding-top: 40px;
+
+    }
+
+    #video-meta-details-container .title {
+        font-weight: 300;
+    }
+
+    #video-meta-details-container .poster-user-name {
+        font-weight: 200;
+        color: powderblue;
+    }
+
+    #video-meta-details-container .upload-date,
+    #video-meta-details-container .description {
+        font-weight: 100;
+        font-size: 90%;
+    }
+
+    #video-meta-details-container button {
+        font-weight: 100;
+        font-size: 80%;
     }
 </style>

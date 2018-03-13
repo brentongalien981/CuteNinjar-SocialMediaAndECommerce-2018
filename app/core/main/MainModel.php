@@ -361,7 +361,7 @@ class MainModel extends CNMain
         return $isDeletionOk;
     }
 
-    /** TODO: Change this later when you completely got rid of func read(). */
+    /** TODO: Change this func name later when you completely got rid of func read(). */
     public static function readStatic($data = null)
     {
 

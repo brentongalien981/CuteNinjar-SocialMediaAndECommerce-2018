@@ -341,6 +341,9 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
         case "Friend":
             doFriendAfterEffects(className, crudType, json, xObj);
             break;
+        case "Playlist":
+            doPlaylistAfterEffects(className, crudType, json, xObj);
+            break;
 
     }
 }
@@ -673,7 +676,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "NotificationRateableItem":
+        case "Playlist":
             return true;
             break;
     }

@@ -144,7 +144,8 @@ function displayVideos(json, xObj) {
     //
     var videos = json.objs;
 
-    //
+    // Figure out which page section calls the reading of the videos. It could be
+    // the "Featured Section", "Recommended Section", etc...
     var readForPageSection = xObj.key_value_pairs["readForPageSection"];
 
     //
@@ -166,7 +167,7 @@ function displayVideos(json, xObj) {
         var videoItem = cnCloneTemplateEl("video-recommendation-item-template");
 
         //
-        setVideoItemEl(videoItem, video);
+        setVideoRecommendationItem(videoItem, video);
 
 
         // Appends the cloned template to the video-item-container.
@@ -193,35 +194,37 @@ function displayVideos(json, xObj) {
 
 /**
  * fills-in the cloned template with details from the currently iterated video-json-obj.
- * @param videoItem
+ * @param videoRecommendationItem
  * @param video
  */
-function setVideoItemEl(videoItem, video) {
+function setVideoRecommendationItem(videoRecommendationItem, video) {
 
-    $(videoItem).addClass("video-recommendation-item");
-    $(videoItem).attr("id", "video" + video["id"]);
-    $(videoItem).attr("created-at", video["created_at"]);
+    var videoId = (video["id"] != null) ? video["id"] : video["video_id"];
+
+    $(videoRecommendationItem).addClass("video-recommendation-item");
+    $(videoRecommendationItem).attr("id", "video" + videoId);
+    $(videoRecommendationItem).attr("created-at", video["created_at"]);
 
 
     // Set the actual video-frame.
-    var videoFrame = $(videoItem).find("iframe")[0];
+    var videoFrame = $(videoRecommendationItem).find("iframe")[0];
     var youtubeVideoSrcExtraDetails = "?rel=0&amp;controls=0&amp;showinfo=0";
     var videoSrc = video["url"] + youtubeVideoSrcExtraDetails;
     $(videoFrame).attr("src", videoSrc);
 
 
     //
-    // setVideoMaskHref(videoItem, videoSrc);
-    setVideoMaskHref(videoItem, video["id"]);
+    // setVideoMaskHref(videoRecommendationItem, videoSrc);
+    setVideoMaskHref(videoRecommendationItem, videoId);
 
 
     // Set the video title.
-    var videoThumbnailTitle = $(videoItem).find(".video-thumbnail-titles")[0];
+    var videoThumbnailTitle = $(videoRecommendationItem).find(".video-thumbnail-titles")[0];
     $(videoThumbnailTitle).html(video["title"]);
 
 
     // Set the name of the poster (the user).
-    var posterUserNameEl = $(videoItem).find(".video-thumbnail-poster-user-names")[0];
+    var posterUserNameEl = $(videoRecommendationItem).find(".video-thumbnail-poster-user-names")[0];
     $(posterUserNameEl).html(video["poster_user_name"]);
 }
 

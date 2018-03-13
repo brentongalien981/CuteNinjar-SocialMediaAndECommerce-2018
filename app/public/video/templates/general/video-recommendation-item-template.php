@@ -1,5 +1,5 @@
 <?php //for ($i = 0; $i < 6; $i++) { ?>
-<div id="video-recommendation-item-template" class="col-md-4 col-sm-6 cn-template">
+<div id="video-recommendation-item-template" class="cn-template col-md-6">
     <!--    <div id="video-recommendation-item-template" class="col col-md-4 col-sm-4">-->
 
 
@@ -7,7 +7,7 @@
 
         <div class="video-thumbnails">
             <!--            https://www.youtube.com/embed/FESJlsKeYGo-->
-            <iframe src="" encrypted-media" frameborder="0"></iframe>
+            <iframe src="https://www.youtube.com/embed/FESJlsKeYGo" encrypted-media" frameborder="0"></iframe>
         </div>
 
         <a href="https://www.facebook.com" target="_blank" class="video-thumbnail-masks"></a>
@@ -23,13 +23,8 @@
 <?php //} ?>
 
 <style>
-    #video-recommendation-item-template {
-        /* min-width: 150px; */
-        /*background-color: orange;*/
-        /*min-height: 200px; */
-        /* Should be the min-height of a youtube video. */
-        /*padding: 0 10px;*/
-        /*border: 1px solid gray;*/
+    .video-recommendation-item {
+        padding-left: 0;
     }
 
     .video-thumbnail-containers {
@@ -38,8 +33,9 @@
     }
 
     .video-thumbnails {
-        /*background-color: green;*/
-        /*min-height: 150px;*/
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 30px rgb(20, 20, 20);
     }
 
     .video-thumbnails > iframe {
@@ -52,11 +48,13 @@
 
     .video-thumbnail-details-containers {
         /*background-color: blue;*/
+
     }
 
     .video-thumbnail-details-containers a {
         display: block;
         color: black;
+        font-weight: 100;
     }
 
     a.video-thumbnail-titles {

@@ -2,7 +2,8 @@ function showVideo() {
 
     //
     var url = window.location.href;
-    var id = getUrlParamValue(url, "?id");
+    // var id = getUrlParamValue(url, "?id");
+    var id = extractValueFromUrl(url, "id");
 
     //
     doPreShowVideo();
