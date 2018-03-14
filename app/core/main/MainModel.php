@@ -313,16 +313,28 @@ class MainModel extends CNMain
             //
             if ($field == "limit" ||
                 $field == "tableName" ||
-                $field == "orderBy") {
+                $field == "orderBy" ||
+                $field == "orderByFields" ||
+                $field == "orderArrangement" ||
+                $field == "includedPivotFields")
+            {
                 continue;
             }
 
 
             //
+            $comparisonOperator = '=';
+            if (isset($value['comparisonOperator'])) {
+                $comparisonOperator = $value['comparisonOperator'];
+                $value = $value['value'];
+            }
+
             if ($count != 0) {
-                $data['whereClause'] .= " AND {$field} = '{$value}'";
+
+                $data['whereClause'] .= " AND {$field}" . " {$comparisonOperator}" . " '{$value}'";
+
             } else {
-                $data['whereClause'] = "WHERE {$field} = '{$value}'";
+                $data['whereClause'] .= "WHERE {$field}" . " {$comparisonOperator}" . " '{$value}'";
             }
 
 
@@ -835,7 +847,7 @@ class MainModel extends CNMain
      * @param $path
      * @return mixed
      */
-    private function hasX($class, $path)
+    private function hasX($class, $path, $data = null)
     {
 
         // Dynamically figure out the name of the field of the extentional
@@ -843,7 +855,7 @@ class MainModel extends CNMain
         $fkName = self::getPascalCasedNameOf(static::$className) . "_id";
         $pkName = $this->primary_key_id_name;
         $pkValue = $this->$pkName;
-        $data = [$fkName => $pkValue];
+        $data[$fkName] = $pkValue;
 
 
         // Then call the readByWhereClause() to get the extentional obs.
@@ -911,7 +923,7 @@ class MainModel extends CNMain
     }
 
     /** TODO: Change this name later: hasMany2(). */
-    public function hasMany2($class)
+    public function hasMany2($class, $dataForPivotTable = null)
     {
 
         // Dynamically figure out the name of the pivot table/class by
@@ -920,7 +932,7 @@ class MainModel extends CNMain
 
 
         //
-        $pivotObjs = $this->hasX($class, $pivotPath);
+        $pivotObjs = $this->hasX($class, $pivotPath, $dataForPivotTable);
 
 
         //
@@ -930,6 +942,11 @@ class MainModel extends CNMain
         foreach ($pivotObjs as $pivotObj) {
             $obj = $pivotObj->belongsTo2($class);
 
+            //
+            $includedPivotFields = $dataForPivotTable['includedPivotFields'];
+            $this->joinPivotFieldsToObj($pivotObj, $includedPivotFields, $obj);
+
+
             array_push($objs, $obj);
         }
 
@@ -937,6 +954,22 @@ class MainModel extends CNMain
         // Return the extentional objs.
         return $objs;
 
+    }
+
+    private function joinPivotFieldsToObj($pivotObj, $includedPivotFields, &$obj) {
+
+        // Join some pivot-table-fields to the extentional-obj.
+        if (isset($includedPivotFields)) {
+
+            foreach ($includedPivotFields as $pivotField) {
+
+                $fieldName = $pivotField['fieldName'];
+                $replacementFieldName = $pivotField['toBeNamed'];
+
+                // Dynamically add the pivot-field value to the extentional-obj.
+                $obj->$replacementFieldName = $pivotObj->$fieldName;
+            }
+        }
     }
 
     /** @deprecated  */

@@ -33,7 +33,7 @@
 <style>
     #video-meta-details-container {
         /*margin-top: 40px;*/
-        background-color: rgb(150, 150, 150);
+        background-color: rgb(190, 190, 190);
         padding-top: 40px;
 
     }
@@ -44,7 +44,7 @@
 
     #video-meta-details-container .poster-user-name {
         font-weight: 200;
-        color: powderblue;
+        color: black;
     }
 
     #video-meta-details-container .upload-date,

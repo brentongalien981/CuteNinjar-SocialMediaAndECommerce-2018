@@ -6,14 +6,17 @@
 
             <h4 class="video-playlist-items-container-title">[My 90’s Favorites]</h4>
 
-            <button type="button" class="btn btn-sm btn-outline-dark">show</button>
+            <button id="show-playlist-items-btn" type="button" class="btn btn-sm btn-outline-dark">show</button>
 
-            <button type="button" class="btn btn-sm btn-outline-dark">hide</button>
+            <button id="hide-playlist-items-btn" type="button" class="btn btn-sm btn-outline-dark">hide</button>
 
         </div>
 
 
-        <div class="video-recommendation-items-container row"></div>
+        <div class="video-recommendation-items-container row animated fadeIn"></div>
+
+
+        <button id="show-more-playlist-videos-btn" type="button" class="btn btn-outline-light">show more videos</button>
 
     </div>
 
@@ -27,6 +30,7 @@
         background-color: rgb(70, 70, 70);
         padding-top: 80px;
         padding-bottom: 100px;
+        /*visibility: hidden;*/
     }
 
     #video-playlist-plug-in * {
@@ -46,5 +50,10 @@
 
     #video-playlist-plug-in button {
         font-weight: 100;
+    }
+
+    #show-more-playlist-videos-btn {
+        width: 100%;
+        margin-top: 50px;
     }
 </style>

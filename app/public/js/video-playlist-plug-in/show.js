@@ -1,11 +1,20 @@
 function showPlaylistVideoThumbnails() {
 
-    doPreShowPlaylistVideoThumbnails();
+    var isOkToProceed = doPreShowPlaylistVideoThumbnails();
+
+    if (!isOkToProceed) { return; }
+
     doRegularShowPlaylistVideoThumbnails();
     doPostShowPlaylistVideoThumbnails();
 }
 
-function doPreShowPlaylistVideoThumbnails() {}
+function doPreShowPlaylistVideoThumbnails() {
+    //
+    if (getIsPlaylistShowing() || (getNumOfFailedPlaylistAjaxShow() >= 3)) { return false; }
+    setIsPlaylistShowing(true);
+
+    return true;
+}
 
 function doRegularShowPlaylistVideoThumbnails() {
 
@@ -21,13 +30,17 @@ function doRegularShowPlaylistVideoThumbnails() {
 
     var crud_type = "show";
     var request_type = "GET";
+    var earliestElDate = getLimitDateOfDomElement("earliest", "video-recommendation-item");
+
 
     var key_value_pairs = {
         show: "yes",
         video_id: videoId,
         playlist_id: playlistId,
+        earliest_el_date: earliestElDate,
         read_video_for_what: READ_VIDEO_FOR_VIDEO_PLAYLIST
     };
+
 
 
     var obj = new Playlist(crud_type, request_type, key_value_pairs);

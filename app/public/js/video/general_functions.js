@@ -197,13 +197,24 @@ function displayVideos(json, xObj) {
  * @param videoRecommendationItem
  * @param video
  */
-function setVideoRecommendationItem(videoRecommendationItem, video) {
+function setVideoRecommendationItem(videoRecommendationItem, video, playlistId, doOpenLinkInCurrentTab) {
 
     var videoId = (video["id"] != null) ? video["id"] : video["video_id"];
 
     $(videoRecommendationItem).addClass("video-recommendation-item");
     $(videoRecommendationItem).attr("id", "video" + videoId);
-    $(videoRecommendationItem).attr("created-at", video["created_at"]);
+
+    // If this method is for showing thumbnails to a
+    // playlist, the use date when this particular video
+    // was added to the playlist and not when this video was uploaded
+    // so that you can use that attr ("created_at" which is the "dateAddedToPlaylist")
+    // for reading more playlist-videos.
+    if (playlistId != null) {
+        $(videoRecommendationItem).attr("created-at", video["dateAddedToPlaylist"]);
+    } else {
+        $(videoRecommendationItem).attr("created-at", video["created_at"]);
+    }
+
 
 
     // Set the actual video-frame.
@@ -215,7 +226,12 @@ function setVideoRecommendationItem(videoRecommendationItem, video) {
 
     //
     // setVideoMaskHref(videoRecommendationItem, videoSrc);
-    setVideoMaskHref(videoRecommendationItem, videoId);
+    if (playlistId != null) {
+        setVideoMaskHref(videoRecommendationItem, videoId, playlistId, doOpenLinkInCurrentTab);
+    }
+    else {
+        setVideoMaskHref(videoRecommendationItem, videoId);
+    }
 
 
     // Set the video title.
@@ -288,13 +304,23 @@ function setVideoThumbnailContainersWidth() {
     $(videoThumbnailContainers).width(width);
 }
 
-function setVideoMaskHref(videoItem, videoId) {
+function setVideoMaskHref(videoItem, videoId, playlistId, doOpenLinkInCurrentTab) {
 
     var mask = $(videoItem).find(".video-thumbnail-masks")[0];
 
+    //
     var href = get_local_url() + "video/show.php?id=" + videoId;
 
+    if (playlistId != null) {
+        href += "&playlist_id=" + playlistId;
+    }
+
+    //
     $(mask).attr("href", href);
+
+    if (doOpenLinkInCurrentTab != null) {
+        $(mask).removeAttr("target");
+    }
 }
 
 function isVideoDisplayed(videoId) {

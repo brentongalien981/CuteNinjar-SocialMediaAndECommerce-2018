@@ -50,10 +50,10 @@ class Playlist extends MainModel
     }
 
 
-    public function getVideos() {
+    public function getVideos($dataForPivotTable) {
 
         // Find
-        $videos = $this->hasMany2("Video");
+        $videos = $this->hasMany2("Video", $dataForPivotTable);
 
 
         foreach ($videos as $video) {

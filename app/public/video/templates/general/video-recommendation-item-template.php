@@ -1,5 +1,5 @@
 <?php //for ($i = 0; $i < 6; $i++) { ?>
-<div id="video-recommendation-item-template" class="cn-template col-md-6">
+<div id="video-recommendation-item-template" class="cn-template col-md-6 animated fadeIn">
     <!--    <div id="video-recommendation-item-template" class="col col-md-4 col-sm-4">-->
 
 
@@ -48,6 +48,7 @@
 
     .video-thumbnail-details-containers {
         /*background-color: blue;*/
+        margin-top: 10px;
 
     }
 

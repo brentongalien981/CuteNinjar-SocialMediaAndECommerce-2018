@@ -169,14 +169,14 @@ function decide_ajax_pre_after_effects(xObj, json) {
             do_shipping_option_pre_after_effects(className, crudType, json);
             break;
         case "PaypalSellerAccountAuthentication":
-            do_paypal_payment_pre_after_effects(className, crudType, json)
+            do_paypal_payment_pre_after_effects(className, crudType, json);
             break;
         case "MyVideo":
             // do_shipping_option_pre_after_effects(className, crudType, json);
             do_my_video_pre_after_effects(className, crudType, json, xObj);
             break;
         case "Video":
-            doVideoPreAfterEffects(className, crudType, json, xObj)
+            doVideoPreAfterEffects(className, crudType, json, xObj);
             break;
         case "TimelinePost":
             doTimelinePostPreAfterEffects(className, crudType, json, xObj);
@@ -197,26 +197,26 @@ function decide_ajax_pre_after_effects(xObj, json) {
             doMyPhotoPreAfterEffects(className, crudType, json, xObj);
             break;
         case "Profile":
-            doProfilePreAfterEffects(className, crudType, json, xObj)
+            doProfilePreAfterEffects(className, crudType, json, xObj);
             break;
         case "UserSocialMediaAccount":
-            doUserSocialMediaAccountPreAfterEffects(className, crudType, json, xObj)
+            doUserSocialMediaAccountPreAfterEffects(className, crudType, json, xObj);
             break;
         case "UserTopActivity":
-            doUserTopActivityPreAfterEffects(className, crudType, json, xObj)
+            doUserTopActivityPreAfterEffects(className, crudType, json, xObj);
             break;
         case "Work":
-            doWorkPreAfterEffects(className, crudType, json, xObj)
+            doWorkPreAfterEffects(className, crudType, json, xObj);
             break;
         case "Friendship":
-            doFriendshipPreAfterEffects(className, crudType, json, xObj)
+            doFriendshipPreAfterEffects(className, crudType, json, xObj);
             break;
         case "Friend":
-            doFriendPreAfterEffects(className, crudType, json, xObj)
+            doFriendPreAfterEffects(className, crudType, json, xObj);
             break;
-
-
-
+        case "Playlist":
+            doPlaylistPreAfterEffects(className, crudType, json, xObj);
+            break;
     }
 }
 

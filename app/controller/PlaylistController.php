@@ -72,6 +72,13 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
                     'numeric' => 1
                 ];
 
+                $this->validator->fieldsToBeValidated['earliest_el_date'] = [
+                    'required' => 1,
+                    'min' => 19,
+                    'max' => 20,
+                    'blank' => 1
+                ];
+
                 break;
         }
     }
@@ -90,7 +97,21 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
             $data = ['id' => $playlistId];
             $playlist = \App\Model\Playlist::readById($data)[0];
 
-            $playlistVideos = $playlist->getVideos();
+            $dataForPivotTable = [
+                'created_at' => [
+                    'comparisonOperator' => '<',
+                    'value' => $this->sanitizedFields['earliest_el_date']
+                ],
+                'orderByFields' => 'created_at',
+                'includedPivotFields' => [
+                    [
+                        'fieldName' => 'created_at',
+                        'toBeNamed' => 'dateAddedToPlaylist'
+                    ]
+                ]
+            ];
+
+            $playlistVideos = $playlist->getVideos($dataForPivotTable);
 
             // Filter
             $playlist->filterExclude();
@@ -103,6 +124,7 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
         }
 
         //
+        if (count($playlist->videos) == 0) { $playlist = null; }
         return $playlist;
     }
 
