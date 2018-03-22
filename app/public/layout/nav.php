@@ -9,7 +9,7 @@
        title="Go to My Timeline"
        href="<?= PUBLIC_LOCAL . 'user/index.php' ?>">
 
-        <img id="home-profile-img" src="<?= b_get_profile_pic_src($session->currently_viewed_user_id); ?>"
+        <img id="home-profile-img" src="<?= b_get_profile_pic_src($session->actual_user_id); ?>"
              class="rounded">
     </a>
 

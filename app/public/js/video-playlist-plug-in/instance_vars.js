@@ -1,4 +1,5 @@
-const READ_VIDEO_FOR_VIDEO_PLAYLIST = 1;
+const READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN = 2;
+
 
 var isPlaylistShowing = false;
 var numOfFailedPlaylistAjaxShow = 0;

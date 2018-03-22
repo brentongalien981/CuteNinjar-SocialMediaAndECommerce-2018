@@ -23,59 +23,59 @@
 <?php //} ?>
 
 <style>
-    .video-recommendation-item {
-        padding-left: 0;
-    }
+    /*.video-recommendation-item {*/
+        /*padding-left: 0;*/
+    /*}*/
 
-    .video-thumbnail-containers {
-        margin-top: 40px;
-        width: 90%;
-    }
+    /*.video-thumbnail-containers {*/
+        /*margin-top: 40px;*/
+        /*width: 90%;*/
+    /*}*/
 
-    .video-thumbnails {
-        width: 100%;
-        height: 100%;
-        box-shadow: 0 0 30px rgb(20, 20, 20);
-    }
+    /*.video-thumbnails {*/
+        /*width: 100%;*/
+        /*height: 100%;*/
+        /*box-shadow: 0 0 30px rgb(20, 20, 20);*/
+    /*}*/
 
-    .video-thumbnails > iframe {
-        width: 100%;
-        /*height = width * 0.5625*/
-        height: 100%;
-        /*height: 250px;*/
-        /*width: -webkit-fill-available;*/
-    }
+    /*.video-thumbnails > iframe {*/
+        /*width: 100%;*/
+        /*!*height = width * 0.5625*!*/
+        /*height: 100%;*/
+        /*!*height: 250px;*!*/
+        /*!*width: -webkit-fill-available;*!*/
+    /*}*/
 
-    .video-thumbnail-details-containers {
-        /*background-color: blue;*/
-        margin-top: 10px;
+    /*.video-thumbnail-details-containers {*/
+        /*!*background-color: blue;*!*/
+        /*margin-top: 10px;*/
 
-    }
+    /*}*/
 
-    .video-thumbnail-details-containers a {
-        display: block;
-        color: black;
-        font-weight: 100;
-    }
+    /*.video-thumbnail-details-containers a {*/
+        /*display: block;*/
+        /*color: black;*/
+        /*font-weight: 100;*/
+    /*}*/
 
-    a.video-thumbnail-titles {
-        font-size: 110%;
-    }
+    /*a.video-thumbnail-titles {*/
+        /*font-size: 110%;*/
+    /*}*/
 
-    a.video-thumbnail-poster-user-names {
-        font-size: 90%;
-        font-weight: 100;
-    }
+    /*a.video-thumbnail-poster-user-names {*/
+        /*font-size: 90%;*/
+        /*font-weight: 100;*/
+    /*}*/
 
-    a.video-thumbnail-masks {
-        /* width: 90%; */
-        /*height: 187.989px;*/
-        width: 100%;
-        height: 100%;
-        background-color: goldenrod;
-        opacity: 0;
-        /*margin-top: -187.989px;*/
-        position: relative;
-        display: block;
-    }
+    /*a.video-thumbnail-masks {*/
+        /*!* width: 90%; *!*/
+        /*!*height: 187.989px;*!*/
+        /*width: 100%;*/
+        /*height: 100%;*/
+        /*background-color: goldenrod;*/
+        /*opacity: 0;*/
+        /*!*margin-top: -187.989px;*!*/
+        /*position: relative;*/
+        /*display: block;*/
+    /*}*/
 </style>

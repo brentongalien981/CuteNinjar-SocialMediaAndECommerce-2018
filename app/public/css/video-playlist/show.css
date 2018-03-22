@@ -1,49 +1,30 @@
-.video-container {
-    background-color: black;
-    margin: 0;
-    padding: 0;
-
-}
-
-.video-container > div {
-    margin: 0;
-    padding: 0;
-}
-
-.video-item {
-    /*width: 100%;*/
-    display: none;
-}
-
-
-#show-less-description-btn,
-#video-meta-details-container,
-#video-meta-details-container .description {
-    display: none;
-}
-
-
-
-
-
-
 /*#########################################*/
 /*video-recommendation-item-template.php*/
 /*#########################################*/
+a.video-thumbnail-masks {
+    top: -100%;
+    opacity: 0;
+}
+
+
 .video-recommendation-item {
     padding-left: 0;
+    margin-bottom: 70px;
 }
 
 .video-thumbnail-containers {
-    margin-top: 40px;
+    /*margin-top: 40px;*/
+    padding-left: 0;
     width: 90%;
 }
 
 .video-thumbnails {
     width: 100%;
     height: 100%;
-    box-shadow: 0 0 30px rgb(20, 20, 20);
+    /*box-shadow: 0 0 30px rgb(20, 20, 20);*/
 }
+
+
 
 .video-thumbnails > iframe {
     width: 100%;
@@ -55,7 +36,8 @@
 
 .video-thumbnail-details-containers {
     /*background-color: blue;*/
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+    padding-left: 0;
 
 }
 
@@ -80,8 +62,11 @@ a.video-thumbnail-masks {
     width: 100%;
     height: 100%;
     background-color: goldenrod;
-    opacity: 0;
     /*margin-top: -187.989px;*/
     position: relative;
     display: block;
 }
+
+/*.video-thumbnails:hover {*/
+    /*box-shadow: 0 0 30px rgb(20, 20, 20);*/
+/*}*/

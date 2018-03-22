@@ -4,7 +4,7 @@
 
         <div id="video-playlist-plug-in-header">
 
-            <h4 class="video-playlist-items-container-title">[My 90’s Favorites]</h4>
+            <a class="video-playlist-items-container-title">[My 90’s Favorites]</a>
 
             <button id="show-playlist-items-btn" type="button" class="btn btn-sm btn-outline-dark">show</button>
 
@@ -42,10 +42,12 @@
         /*background-color: lawngreen;*/
     }
 
-    #video-playlist-plug-in-header h4 {
+    #video-playlist-plug-in-header h4,
+    #video-playlist-plug-in-header .video-playlist-items-container-title {
         display: inline-block;
-        font-weight: 200;
+        font-weight: 100;
         margin-right: 20px;
+        font-size: 140%;
     }
 
     #video-playlist-plug-in button {

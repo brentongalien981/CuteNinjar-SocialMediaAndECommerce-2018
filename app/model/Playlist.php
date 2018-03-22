@@ -13,6 +13,9 @@ use App\Core\MainModel;
 
 class Playlist extends MainModel
 {
+    const READ_VIDEO_FOR_VIDEO_PLAYLIST = 1;
+    const READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN = 2;
+
     protected static $table_name = "Playlists";
     protected static $className = "Playlist";
 

@@ -38,7 +38,7 @@ function doRegularShowPlaylistVideoThumbnails() {
         video_id: videoId,
         playlist_id: playlistId,
         earliest_el_date: earliestElDate,
-        read_video_for_what: READ_VIDEO_FOR_VIDEO_PLAYLIST
+        read_video_for_what: READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN
     };
 
 

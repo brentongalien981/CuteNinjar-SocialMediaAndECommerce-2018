@@ -61,6 +61,23 @@ function redirect_to($new_location)
     exit;
 }
 
+function tryLoadingSpecificJsFilesFor($currentDir, $specificFiles = null)
+{
+
+    // Now load all the remaining js files.
+    foreach ($specificFiles as $file) {
+
+        //
+        $doesFileExist = file_exists(JS_PATH . "{$currentDir}/{$file}.js");
+        if ($doesFileExist) {
+            $scriptTag = "<script src='" . PUBLIC_LOCAL . "js/" . $currentDir . "/" . $file . ".js'></script>";
+            echo $scriptTag;
+        }
+    }
+
+
+}
+
 
 /**
  * @param $currentDir
@@ -181,6 +198,7 @@ function getSpecificJsPseudoObjFileName($currentDir)
             $specificJsPseudoObjFileName = "Video";
             break;
         case 'video-playlist-plug-in';
+        case 'video-playlist';
             $specificJsPseudoObjFileName = "Playlist";
             break;
 

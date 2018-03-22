@@ -63,8 +63,10 @@ function doPreDisplayPlaylistVideoThumbnails(json) {
 
         // Set the title element of the playlist.
         var playlist = json.objs;
+        var playlistUrl = get_local_url() + "video-playlist/show.php?id=" + playlist.playlist_id;
 
         $(".video-playlist-items-container-title").html(playlist.title);
+        $(".video-playlist-items-container-title").attr("href", playlistUrl);
     }
 }
 
@@ -129,6 +131,7 @@ function setPlaylistVideoThumbnailContainersHeight() {
     height = roundToTwo(height);
 
     $(videoThumbnailContainers).height(height);
+    // $(".video-thumbnails").height(height);
 }
 
 function setPlaylistVideoThumbnailContainersWidth() {
@@ -142,6 +145,7 @@ function setPlaylistVideoThumbnailContainersWidth() {
     width = roundToTwo(width);
 
     $(videoThumbnailContainers).width(width);
+    // $(".video-thumbnails").width(width);
 }
 
 function initVideoPlaylistPlugIn() {

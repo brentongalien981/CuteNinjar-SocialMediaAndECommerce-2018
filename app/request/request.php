@@ -129,6 +129,9 @@ function getModifiedMenuName($menu) {
         case 'video';
             $modifiedMenuName = "Video";
             break;
+        case 'video-playlist';
+            $modifiedMenuName = "Playlist";
+            break;
 
     }
 

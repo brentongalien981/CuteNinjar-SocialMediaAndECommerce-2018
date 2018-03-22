@@ -47,14 +47,19 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
                 break;
 
             case 'show':
+
                 //
-                $this->validator->fieldsToBeValidated['video_id'] = [
-                    'required' => 1,
-                    'min' => 1,
-                    'max' => 12,
-                    'blank' => 1,
-                    'numeric' => 1
-                ];
+                if ($_GET['read_video_for_what'] == \App\Model\Playlist::READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN) {
+
+                    $this->validator->fieldsToBeValidated['video_id'] = [
+                        'required' => 1,
+                        'min' => 1,
+                        'max' => 12,
+                        'blank' => 1,
+                        'numeric' => 1
+                    ];
+                }
+
 
                 $this->validator->fieldsToBeValidated['playlist_id'] = [
                     'required' => 1,
@@ -86,12 +91,27 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
     /** @override */
     protected function show()
     {
-        /* Check if that playlist-id contains that video-id. */
-        $playlistId = $this->sanitizedFields['playlist_id'];
-        $videoId = $this->sanitizedFields['video_id'];
+        //
+        $isRequestForPlugIn = ($_GET['read_video_for_what'] == \App\Model\Playlist::READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN) ? true : false;
         $playlist = null;
+        $playlistId = $this->sanitizedFields['playlist_id'];
 
-        if (\App\Model\Playlist::doesContainVideo($playlistId, $videoId)) {
+
+        /**/
+        $isOkToProceed = true;
+        if ($isRequestForPlugIn) {
+
+            $videoId = $this->sanitizedFields['video_id'];
+
+            // Check if that playlist-id contains that video-id.
+            if (!\App\Model\Playlist::doesContainVideo($playlistId, $videoId)) {
+                $isOkToProceed = false;
+            }
+        }
+
+
+        /**/
+        if ($isOkToProceed) {
 
             // Find
             $data = ['id' => $playlistId];

@@ -237,11 +237,16 @@ function setVideoRecommendationItem(videoRecommendationItem, video, playlistId, 
     // Set the video title.
     var videoThumbnailTitle = $(videoRecommendationItem).find(".video-thumbnail-titles")[0];
     $(videoThumbnailTitle).html(video["title"]);
+    var videoTitleHref = getVideoTitleHref(videoId, playlistId);
+    $(videoThumbnailTitle).attr("href", videoTitleHref);
 
 
     // Set the name of the poster (the user).
     var posterUserNameEl = $(videoRecommendationItem).find(".video-thumbnail-poster-user-names")[0];
     $(posterUserNameEl).html(video["poster_user_name"]);
+
+    var videoUploaderLinkHref = getVideoUploaderLinkHref(video["poster_user_name"]);
+    $(posterUserNameEl).attr("href", videoUploaderLinkHref);
 }
 
 function setVideoThumbnailMask(videoItem) {
@@ -321,6 +326,30 @@ function setVideoMaskHref(videoItem, videoId, playlistId, doOpenLinkInCurrentTab
     if (doOpenLinkInCurrentTab != null) {
         $(mask).removeAttr("target");
     }
+}
+
+function getVideoTitleHref(videoId, playlistId) {
+
+
+    //
+    var href = get_local_url() + "video/show.php?id=" + videoId;
+
+    //
+    if (playlistId != null) {
+        href += "&playlist_id=" + playlistId;
+    }
+
+    //
+    return href;
+}
+
+function getVideoUploaderLinkHref(uploaderUserName) {
+
+    //
+    var href = get_local_url() + "profile/index.php?user_name=" + uploaderUserName;
+
+    //
+    return href;
 }
 
 function isVideoDisplayed(videoId) {
