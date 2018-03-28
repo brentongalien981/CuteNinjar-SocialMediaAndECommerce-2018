@@ -13,11 +13,13 @@
 
             <div class="col-12">
 
+<!--                https://www.youtube.com/embed/NWI4zJgcQEc?rel=0&amp;showinfo=0-->
+
                 <iframe
                     class="video-item rateable-item"
                     rateable-item-id=""
                     item-x-type-id="2"
-                    src="https://www.youtube.com/embed/NWI4zJgcQEc?rel=0&amp;showinfo=0"
+                    src=""
                     frameborder="0"
                     allow="autoplay; encrypted-media"
                     allowfullscreen>
@@ -28,6 +30,9 @@
 
         </div>
 
+
+        <!--        -->
+        <div id="comments-plug-in-container" class="container-fluid row"></div>
     </div>
 
 

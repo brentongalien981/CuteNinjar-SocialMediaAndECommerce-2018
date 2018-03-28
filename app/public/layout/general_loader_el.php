@@ -6,9 +6,8 @@
     .mcn-loader-el {
         display: none;
         width: inherit;
-        margin: 10px;
         background-color: white;
-        border-radius: 3px;
+        border-radius: 5px;
     }
 
     .mcn-loader-comment {

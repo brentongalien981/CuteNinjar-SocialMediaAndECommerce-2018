@@ -16,6 +16,7 @@
 <!--extentional views-->
 <?php require_once(PUBLIC_PATH . "rate-status-plug-in/show.php"); ?>
 <?php require_once(PUBLIC_PATH . "video-playlist-plug-in/show.php"); ?>
+<?php require_once(PUBLIC_PATH . "comments-plug-in/read.php"); ?>
 
 
 <!--js / main-->

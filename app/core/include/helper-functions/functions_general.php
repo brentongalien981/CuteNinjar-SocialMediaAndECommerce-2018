@@ -201,6 +201,9 @@ function getSpecificJsPseudoObjFileName($currentDir)
         case 'video-playlist';
             $specificJsPseudoObjFileName = "Playlist";
             break;
+        case 'comments-plug-in';
+            $specificJsPseudoObjFileName = "Comment";
+            break;
 
     }
 

@@ -65,6 +65,10 @@ function doVideoAfterEffects(className, crudType, json, xObj) {
             readRatingSigmaOfRateableItem(rateableItemId);
             readAverageRatingOfRateableItem(rateableItemId);
 
+            /* */
+            var loaderContainer = $("#comments-plug-in").find(".loader-element-container");
+            readComments(loaderContainer);
+
             break;
         case "create":
             break;

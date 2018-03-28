@@ -310,7 +310,7 @@ class MainModel extends CNMain
 
         foreach ($data as $field => $value) {
 
-            //
+            // Skip the fields that won't be in the where clause.
             if ($field == "limit" ||
                 $field == "tableName" ||
                 $field == "orderBy" ||
@@ -322,7 +322,8 @@ class MainModel extends CNMain
             }
 
 
-            //
+            // Set the comparison operator to each fields in the
+            // where clause such as '=' or '<', '<=', etc...
             $comparisonOperator = '=';
             if (isset($value['comparisonOperator'])) {
                 $comparisonOperator = $value['comparisonOperator'];

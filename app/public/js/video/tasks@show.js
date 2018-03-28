@@ -36,6 +36,9 @@ function initCenterCol() {
     initRateStatusPlugIn();
     // initVideoPlaylistPlugIn();
 
+    var commentsPlugInContainer = $("#comments-plug-in-container");
+    initCommentsPlugIn(commentsPlugInContainer);
+
     //
     $("#the_body").append($("#main-content"));
 
