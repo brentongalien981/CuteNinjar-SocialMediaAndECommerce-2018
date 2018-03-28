@@ -17,6 +17,11 @@ function doCommentPreAfterEffects(className, crudType, json, xObj) {
                 setNumOfFailedCommentAjaxRead(parseInt(getNumOfFailedCommentAjaxRead()) + 1);
             }
 
+            //
+            if (!getHasCommentInitializedFetching()) {
+                initializeCommentsFetching();
+            }
+
             break;
 
         case "show":
@@ -25,6 +30,18 @@ function doCommentPreAfterEffects(className, crudType, json, xObj) {
         case "update":
         case "delete":
         case "fetch":
+
+            // If there's no comments fetched, just carry on fetching.
+            // Otherwise,  wait for the DOM to display the new comment
+            // so that there will be no conflict on the latest of the
+            // nextly-fetched-comments.
+            // The method setIsCommentFetching(false) will be called then
+            // once the newly fetched comments have been successfully INSERTED.
+            if (!isCnAjaxResultOk(json)) {
+                setIsCommentFetching(false);
+            }
+
+            break;
         case "patch":
             break;
     }
@@ -34,26 +51,29 @@ function doCommentAfterEffects(className, crudType, json, xObj) {
 
     switch (crudType) {
         case "read":
-            displayComments(json);
+            displayComments(json, crudType);
             break;
         case "show":
             break;
         case "create":
+            // On ajax after-effects, app clears the #comment-textarea.
+            $("#comments-plug-in").find("#comment-textarea").val("");
             break;
         case "update":
             break;
         case "delete":
             break;
         case "fetch":
+            displayComments(json, crudType);
             break;
         case "patch":
             break;
     }
 }
 
-function displayComments(json) {
+function displayComments(json, crudType) {
     doPreDisplayComments();
-    doRegularDisplayComments(json);
+    doRegularDisplayComments(json, crudType);
     doPostDisplayComments();
 }
 
@@ -72,7 +92,7 @@ function doPostDisplayComments() {
     }
 }
 
-function doRegularDisplayComments(json) {
+function doRegularDisplayComments(json, crudType) {
 
     //
     var comments = json.objs;
@@ -88,10 +108,31 @@ function doRegularDisplayComments(json) {
         // App fills-in the cloned template with details from the currently iterated json-obj.
         setCommentPlugInItem(commentPlugInItem, comment);
 
-        // App appends the cloned template to
-        // #comments-plug-in / .actual-comments-section.
-        var commentItemContainer = $("#comments-plug-in").find(".actual-comments-section");
-        $(commentItemContainer).append($(commentPlugInItem));
+        //
+        if (crudType == "read") {
+
+            // App appends the cloned template to
+            // #comments-plug-in / .actual-comments-section.
+
+            var commentItemContainer = $("#comments-plug-in").find(".actual-comments-section");
+            $(commentItemContainer).append($(commentPlugInItem));
+        }
+        else if (crudType == "fetch") {
+
+            // If the crud-type is “fetch”, then app inserts
+            // the cloned template to  #comments-plug-in-container.
+            // Meaning, insert the commentPlugInItem after the
+            // element .no-comments-to-show-label.
+            var noCommentsToShowLabel = $("#comments-plug-in").find(".no-comments-to-show-label");
+            $(commentPlugInItem).insertAfter(noCommentsToShowLabel);
+
+        }
+
+    }
+
+    //
+    if (crudType == "fetch") {
+        setIsCommentFetching(false);
     }
 
 }
