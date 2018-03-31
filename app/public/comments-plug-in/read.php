@@ -1,4 +1,6 @@
-<?php //return; ?>
+<!--external views (domains or menus or features)-->
+<!--############################-->
+
 <!--general (optional)-->
 <?php //require_once(PUBLIC_PATH . "rate-status-plug-in/general.php"); ?>
 

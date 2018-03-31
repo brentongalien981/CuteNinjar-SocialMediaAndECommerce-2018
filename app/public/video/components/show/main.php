@@ -31,8 +31,11 @@
         </div>
 
 
-        <!--        -->
+        <!-- ############ -->
         <div id="comments-plug-in-container" class="container-fluid row"></div>
+
+        <!-- ############ -->
+        <div id="video-recommendations-plug-in-container" class="container-fluid row"></div>
     </div>
 
 

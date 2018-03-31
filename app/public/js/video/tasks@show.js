@@ -30,7 +30,7 @@ function setVideoContainer() {
 
 function initCenterCol() {
 
-    //
+    /**/
     setVideoContainer();
     setVideoMetaDetailsContainer();
     initRateStatusPlugIn();
@@ -39,7 +39,12 @@ function initCenterCol() {
     var commentsPlugInContainer = $("#comments-plug-in-container");
     initCommentsPlugIn(commentsPlugInContainer);
 
-    //
+    var videoRecommendationsPlugInContainer = $("#video-recommendations-plug-in-container");
+    initVideoRecommendationsPlugInContainer(videoRecommendationsPlugInContainer);
+
+
+
+    /**/
     $("#the_body").append($("#main-content"));
 
     //
