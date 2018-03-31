@@ -74,6 +74,11 @@ function checkReadinessOfRateableItem() {
 
 function doPreReadComments(loaderContainer) {
 
+    //
+    if (getIsCommentReading() || (getNumOfFailedCommentAjaxRead() >= 3)) { return false; }
+    setIsCommentReading(true);
+
+
     // App shows the loaders element.
     // Set the loader element.
     var loaderMsg = "Loading comments...";
@@ -83,10 +88,6 @@ function doPreReadComments(loaderContainer) {
     // var loaderContainer = $("#photo-main-container");
 
     appendClonedLoaderEl(loaderContainer, clonedLoaderEl);
-
-    //
-    if (getIsCommentReading() || (getNumOfFailedCommentAjaxRead() >= 3)) { return false; }
-    setIsCommentReading(true);
 
     return true;
 }
