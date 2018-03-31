@@ -85,3 +85,32 @@ a.video-thumbnail-masks {
     position: relative;
     display: block;
 }
+
+
+
+/*#cn-center-col*/
+
+/*#comments-and-recommendations-container*/
+#comments-and-recommendations-container {
+    background-color: rgb(240, 240, 240);
+}
+
+/*#comments-plug-in-col*/
+#comments-plug-in-col {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid lightgray;
+}
+
+/*#comments-plug-in-container*/
+#comments-plug-in-container,
+#video-recommendations-plug-in-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/*#video-recommendations-plug-in-col*/
+#video-recommendations-plug-in-col {
+    margin: 0;
+    padding: 0;
+}

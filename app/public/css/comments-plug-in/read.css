@@ -1,8 +1,24 @@
 /*comments-plug-in*/
+
 #comments-plug-in-container {
     background-color: rgb(240, 240, 240);
     padding-top: 80px;
     padding-bottom: 100px;
+    padding-right: 40px;
+
+
+}
+
+@media screen and (max-width: 991px) {
+
+    #comments-plug-in-container {
+        padding-right: 0;
+    }
+}
+
+#comments-plug-in {
+    margin: 0;
+    padding: 0;
 }
 
 

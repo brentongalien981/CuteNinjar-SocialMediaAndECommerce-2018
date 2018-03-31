@@ -45,6 +45,9 @@ function initCenterCol() {
 
 
     /**/
+    $("#cn-center-col").append($("#video-playlist-plug-in"));
+    $("#cn-center-col").append($("#comments-and-recommendations-container"));
+
     $("#the_body").append($("#main-content"));
 
     //

@@ -31,11 +31,36 @@
         </div>
 
 
-        <!-- ############ -->
-        <div id="comments-plug-in-container" class="container-fluid row"></div>
 
-        <!-- ############ -->
-        <div id="video-recommendations-plug-in-container" class="container-fluid row"></div>
+        <!--Comments and Video-recommendations-->
+        <div id="comments-and-recommendations-container" class="container-fluid row">
+
+            <div class="col-10 mx-auto">
+
+                <div class="row">
+
+                    <div id="comments-plug-in-col" class="col-lg-9">
+
+                        <!-- ############ -->
+                        <div id="comments-plug-in-container" class="container-fluid row"></div>
+
+                    </div>
+
+
+                    <div id="video-recommendations-plug-in-col" class="col-lg-3">
+
+                        <!-- ############ -->
+                        <div id="video-recommendations-plug-in-container" class="container-fluid row"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
     </div>
 
 

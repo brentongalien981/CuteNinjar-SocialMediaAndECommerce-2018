@@ -1,4 +1,4 @@
-<div id="comments-plug-in" class="col-10 mx-auto">
+<div id="comments-plug-in" class="col-12">
 
     <h3>Comments</h3>
 

@@ -2,7 +2,7 @@ function initCommentsPlugIn(commentsPlugInContainer) {
 
     var commentsPlugIn = $("#comments-plug-in");
     $(commentsPlugInContainer).append($(commentsPlugIn));
-    $("#cn-center-col").append($(commentsPlugInContainer));
+    // $("#cn-center-col").append($(commentsPlugInContainer));
 
 
     // // TODO: Delete this later: Append sample comment-items to DOM.

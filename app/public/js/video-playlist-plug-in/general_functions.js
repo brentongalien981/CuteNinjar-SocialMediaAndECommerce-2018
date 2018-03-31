@@ -113,18 +113,18 @@ function setPlaylistVideoThumbnailsDimensions() {
 
 function setPlaylistVideoThumbnailMasks() {
 
-    var videoThumbnailContainers = $(".video-thumbnail-containers");
+    var videoThumbnailContainers = $("#video-playlist-plug-in").find(".video-thumbnail-containers");
 
     var videoThumbnailContainerHeight = $(videoThumbnailContainers).height();
 
 
-    var videoThumbnailMasks = $(".video-thumbnail-masks");
+    var videoThumbnailMasks = $("#video-playlist-plug-in").find(".video-thumbnail-masks");
 
     $(videoThumbnailMasks).css("margin-top", "-" + videoThumbnailContainerHeight + "px");
 }
 function setPlaylistVideoThumbnailContainersHeight() {
 
-    var videoThumbnailContainers = $(".video-thumbnail-containers");
+    var videoThumbnailContainers = $("#video-playlist-plug-in").find(".video-thumbnail-containers");
 
     var width = $(videoThumbnailContainers).width();
     var height = width * 0.5625;
@@ -137,9 +137,10 @@ function setPlaylistVideoThumbnailContainersHeight() {
 function setPlaylistVideoThumbnailContainersWidth() {
 
     //video-recommendation-item-template
-    var videoRecommendationItems = $(".video-recommendation-item");
+    // var videoRecommendationItems = $(".video-recommendation-item");
+    var videoRecommendationItems = $("#video-playlist-plug-in").find(".video-recommendation-item");
 
-    var videoThumbnailContainers = $(".video-thumbnail-containers");
+    var videoThumbnailContainers = $("#video-playlist-plug-in").find(".video-thumbnail-containers");
 
     var width = $(videoRecommendationItems).width();
     width = roundToTwo(width);
@@ -151,7 +152,7 @@ function setPlaylistVideoThumbnailContainersWidth() {
 function initVideoPlaylistPlugIn() {
 
     var videoPlaylistPlugIn = $("#video-playlist-plug-in");
-    $("#cn-center-col").append($(videoPlaylistPlugIn));
+    // $("#cn-center-col").append($(videoPlaylistPlugIn));
 
     $(videoPlaylistPlugIn).removeClass("initially-hidden-el");
 }

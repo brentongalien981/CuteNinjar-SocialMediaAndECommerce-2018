@@ -1,12 +1,19 @@
 function initVideoRecommendationItemEl(el) {
-    setVideoRecommendationItemElOrientation(el, "landscape");
+
+    setVideoRecommendationItemWidth(el);
+    setVideoRecommendationItemHeight(el);
+    setVideoRecommendationItemThumbnailMasks(el);
+
+    setVideoRecommendationItemElOrientation(el, "portrait");
 }
 
 function setVideoRecommendationItemElOrientation(el, orientation) {
 
     //
+    $(el).removeClass("col-md-6");
+
+    //
     if (orientation == "landscape") {
-        $(el).removeClass("col-md-6");
         $(el).addClass("row");
 
         //
