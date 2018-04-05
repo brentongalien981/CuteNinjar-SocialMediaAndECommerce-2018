@@ -145,6 +145,7 @@ class MainController extends CNMain
         switch ($this->menu) {
             case 'NonExistentModel':
             case 'Login':
+            case 'VideoRecommendationItem':
                 return false;
             default:
                 return true;

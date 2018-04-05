@@ -13,5 +13,8 @@
       "./app/core/external-api/",
       "./app/core/cn-trait/"
     ]
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.0"
   }
 }
