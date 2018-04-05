@@ -5,6 +5,7 @@
          colors="true"
          verbose="true"
          stopOnFailure="true">
+
     <testsuites>
 
         <testsuite name="Test suite">
