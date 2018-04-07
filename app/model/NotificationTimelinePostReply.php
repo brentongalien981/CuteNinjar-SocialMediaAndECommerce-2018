@@ -29,7 +29,7 @@ class NotificationTimelinePostReply extends MainModel
     }
 
     /** @override */
-    public function hasMany($extentionClassName, $timelinePostId) {
+    public function hasMany($extentionClassName, $timelinePostId, $data = null) {
 
         $extentionalData["id"] = $timelinePostId;
         $extentionalClassPath = "\\App\\Model\\" . $extentionClassName;

@@ -88,7 +88,7 @@ function tryLoadingSpecificJsFilesFor($currentDir, $specificFiles = null)
  *      general_functions.js by default, this func instead loads files tasks@show.js
  *      and general_functions@show.js and the other default *.js files...
  */
-function tryLoadingJsFilesFor($currentDir, $requestAction = null, $specificFiles = null)
+function tryLoadingJsFilesFor($currentDir, $requestAction = null, $specificFiles = [])
 {
     $files = [
         'instance_vars',
@@ -121,6 +121,9 @@ function tryLoadingJsFilesFor($currentDir, $requestAction = null, $specificFiles
 
     // Now load all the remaining js files.
     foreach ($files as $file) {
+
+        // Sanity check.
+//        if ($specificFiles == null) { continue; }
 
         // If the request action is other than index or read, like show, create, etc.,
         // change it to like tasks@show, tasks@create, etc...
@@ -203,6 +206,9 @@ function getSpecificJsPseudoObjFileName($currentDir)
             break;
         case 'comments-plug-in';
             $specificJsPseudoObjFileName = "Comment";
+            break;
+        case 'video-recommendations-plug-in';
+            $specificJsPseudoObjFileName = "VideoRecommendationItem";
             break;
 
     }

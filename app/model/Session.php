@@ -9,7 +9,7 @@ class Session
 
 //    public $my_static_counter;
     private $logged_in = false;
-    public $actual_user_id;
+    public $actual_user_id = -69;
     public $actual_user_name;
     public $actual_user_type_id;
     public $currently_viewed_user_id;
@@ -227,6 +227,8 @@ class Session
 
     public function is_viewing_own_account()
     {
+        if (!isset($this->actual_user_id)) { return false; }
+
         if ($this->actual_user_id === $this->currently_viewed_user_id) {
             return true;
         } else {

@@ -45,4 +45,9 @@ class Comment extends MainModel
 
         return $posterUser;
     }
+
+    // This is just for sample phpunit test.
+    public function getShit() {
+        return 'shit';
+    }
 }

@@ -97,6 +97,34 @@ class RateableItem extends MainModel
         return $xRateableItem;
     }
 
+    public function getTags() {
+
+        $tags = [];
+
+        // Find
+        $tags = $this->hasMany2("Tag");
+
+        foreach ($tags as $tag) {
+
+            // Find
+
+            // Filter
+            $tag->filterExclude();
+
+            // Refine
+
+            // Combine
+        }
+
+
+        //
+        return $tags;
+    }
+
+    public function getShit() {
+        return 'shit';
+    }
+
     private function getFieldNamesAndReplacementsKeyValuePairsForJson()
     {
         switch ($this->item_x_type_id) {

@@ -69,6 +69,9 @@ function doVideoAfterEffects(className, crudType, json, xObj) {
             var loaderContainer = $("#comments-plug-in").find(".loader-element-container");
             readComments(loaderContainer);
 
+            /**/
+            readVideoRecommendationItems();
+
             break;
         case "create":
             break;

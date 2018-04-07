@@ -304,3 +304,15 @@ function cnGetAbsolutePosition(element) {
         left: left
     };
 }
+
+
+function cnStringify(items) {
+
+    var stringifiedItems = "";
+
+    for (i = 0; i < items.length; i++) {
+        stringifiedItems += items[i] + ",";
+    }
+
+    return stringifiedItems;
+}

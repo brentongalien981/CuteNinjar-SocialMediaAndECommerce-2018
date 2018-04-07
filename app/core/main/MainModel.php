@@ -302,7 +302,7 @@ class MainModel extends CNMain
         return static::readStatic($data);
     }
 
-    public static function readByWhereClause($data)
+    public static function readByWhereClause($data = null)
     {
 
         //
@@ -335,7 +335,15 @@ class MainModel extends CNMain
                 $data['whereClause'] .= " AND {$field}" . " {$comparisonOperator}" . " '{$value}'";
 
             } else {
-                $data['whereClause'] .= "WHERE {$field}" . " {$comparisonOperator}" . " '{$value}'";
+
+                if (isset($field) &&
+                    isset($comparisonOperator) &&
+                    isset($value))
+                {
+                    $data['whereClause'] = "";
+                    $data['whereClause'] .= "WHERE {$field}" . " {$comparisonOperator}" . " '{$value}'";
+                }
+
             }
 
 
@@ -895,7 +903,7 @@ class MainModel extends CNMain
     }
 
     /** @deprecated  */
-    public function hasMany($class, $fk, $data)
+    public function hasMany($class, $fk, $data = null)
     {
 
 
@@ -924,7 +932,7 @@ class MainModel extends CNMain
     }
 
     /** TODO: Change this name later: hasMany2(). */
-    public function hasMany2($class, $dataForPivotTable = null)
+    public function hasMany2($class, $data = null)
     {
 
         // Dynamically figure out the name of the pivot table/class by
@@ -933,7 +941,7 @@ class MainModel extends CNMain
 
 
         //
-        $pivotObjs = $this->hasX($class, $pivotPath, $dataForPivotTable);
+        $pivotObjs = $this->hasX($class, $pivotPath, $data);
 
 
         //
@@ -944,7 +952,7 @@ class MainModel extends CNMain
             $obj = $pivotObj->belongsTo2($class);
 
             //
-            $includedPivotFields = $dataForPivotTable['includedPivotFields'];
+            $includedPivotFields = $data['includedPivotFields'];
             $this->joinPivotFieldsToObj($pivotObj, $includedPivotFields, $obj);
 
 

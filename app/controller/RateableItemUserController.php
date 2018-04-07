@@ -92,7 +92,8 @@ class RateableItemUserController extends MainController implements AjaxCrudHandl
 
         switch ($whatToRead) {
             case "rate_tags":
-                $this->sanitizedFields['where_clause'] = "WHERE responder_user_id = {$this->session->actual_user_id}";
+                $actualUserId = (isset($this->session->actual_user_id)) ? $this->session->actual_user_id : -69;
+                $this->sanitizedFields['where_clause'] = "WHERE responder_user_id = {$actualUserId}";
                 $this->sanitizedFields['where_clause'] .= " AND rateable_item_id = {$this->sanitizedFields['rateable_item_id']}";
                 break;
             case "rate_sigma":

@@ -33,7 +33,7 @@ class MainMiddleware extends CNMain
     {
         parent::__construct();
 
-        // Set this to true only when unit testing.
+        // TODO: Set this to true only when unit testing.
         $isTesting = true;
         if ($isTesting) { return; }
 
@@ -250,6 +250,7 @@ class MainMiddleware extends CNMain
             case "video-playlist":
             case "Playlist":
             case "Comment":
+            case "VideoRecommendationItem":
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_TYPES_OF_ACTIONS, $action);
                 break;
             case "timeline-post":
