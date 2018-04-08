@@ -220,6 +220,9 @@ function decide_ajax_pre_after_effects(xObj, json) {
         case "Comment":
             doCommentPreAfterEffects(className, crudType, json, xObj);
             break;
+        case "VideoRecommendationItem":
+            doVideoRecommendationItemPreAfterEffects(className, crudType, json, xObj);
+            break;
     }
 }
 
@@ -349,6 +352,9 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
             break;
         case "Comment":
             doCommentAfterEffects(className, crudType, json, xObj);
+            break;
+        case "VideoRecommendationItem":
+            doVideoRecommendationItemAfterEffects(className, crudType, json, xObj);
             break;
 
     }

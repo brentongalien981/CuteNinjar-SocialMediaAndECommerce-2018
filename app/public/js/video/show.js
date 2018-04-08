@@ -43,3 +43,12 @@ function doPreShowVideo() {
 
     appendClonedLoaderEl(loaderContainer, clonedLoaderEl);
 }
+
+
+function getIdOfShownVideo() {
+    var url = window.location.href;
+    // var id = getUrlParamValue(url, "?id");
+    var id = extractValueFromUrl(url, "id");
+
+    return id;
+}

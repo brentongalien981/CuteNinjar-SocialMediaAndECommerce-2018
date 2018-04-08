@@ -13,3 +13,7 @@ function setIsVideoRecommendationItemReading(value) {
 function getNumOfFailedVideoRecommendationItemAjaxRead() {
     return numOfFailedVideoRecommendationItemAjaxRead;
 }
+
+function setNumOfFailedVideoRecommendationItemAjaxRead(value) {
+    numOfFailedVideoRecommendationItemAjaxRead = value;
+}

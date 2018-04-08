@@ -47,6 +47,14 @@ class VideoRecommendationItemController extends MainController implements AjaxCr
                     'numeric' => 1
                 ];
 
+                $this->validator->fieldsToBeValidated['video_id'] = [
+                    'required' => 1,
+                    'min' => 1,
+                    'max' => 12,
+                    'blank' => 1,
+                    'numeric' => 1
+                ];
+
                 $this->validator->fieldsToBeValidated['stringified_video_ids_of_already_recommendeded_items'] = [
                     'required' => 1,
                     'min' => 0,
@@ -81,6 +89,51 @@ class VideoRecommendationItemController extends MainController implements AjaxCr
     {
 
         //
-        $referenceTags = \App\Model\RateableItem::getTags($this->sanitizedFields['rateable_item_id']);
+        $rateableItemId = $this->sanitizedFields['rateable_item_id'];
+        $rateableItemData = ['id' => $rateableItemId];
+        $rateableItem = \App\Model\RateableItem::readById($rateableItemData)[0];
+        $referenceTags = $rateableItem->getTags();
+
+        $queryData = [
+            'itemXTypeId' => $rateableItem->item_x_type_id,
+            'tags' => $referenceTags,
+            'referenceVideoId' => $this->sanitizedFields['video_id']
+        ];
+
+
+        // The query string.
+        $videoRecommendationItemQ = \App\Model\RecommendationItemQueryProducer::getQuery($queryData);
+
+        //
+        $videoRecommendationItemRecords = \App\Model\RateableItemTag::readByRawQuery($videoRecommendationItemQ);
+
+
+        //
+        $recommendedVideos = [];
+
+        foreach ($videoRecommendationItemRecords as $recommendationItemRecord) {
+
+            $readData = ['id' => $recommendationItemRecord['video_id']];
+            $recommendedVideos[] = \App\Model\Video::readById($readData)[0];
+        }
+
+        //
+        foreach ($recommendedVideos as $video) {
+
+            // Find the extentional obj.
+            $posterUser = $video->getPosterUser();
+
+            // Filter the main obj.
+            $video->filterExclude();
+
+            // Refine the main obj.
+
+            // Combine the extentional and main obj.
+            $video->combineWithObj($posterUser);
+
+        }
+
+        //
+        return $recommendedVideos;
     }
 }

@@ -382,6 +382,32 @@ class MainModel extends CNMain
         return $isDeletionOk;
     }
 
+
+    /**
+     *
+     */
+    public static function readByRawQuery($q = null)
+    {
+
+        $records = [];
+
+        if ($q == null) { return $records; }
+
+
+        //
+        $resultSet = self::execute_by_query($q);
+
+        //
+        global $database;
+        while ($row = $database->fetch_array($resultSet)) {
+            $records[] = static::staticCreatePseudoObj($row);
+        }
+
+        //
+        return $records;
+
+    }
+
     /** TODO: Change this func name later when you completely got rid of func read(). */
     public static function readStatic($data = null)
     {
@@ -535,6 +561,50 @@ class MainModel extends CNMain
 
         return $array_of_objs;
     }
+
+
+    /**
+     * If the attributes to be returned to the ajax / normal request are
+     * combinations of real obj attributes, then use this method instead
+     * of the normal instantiate() method.
+     * @param $data
+     * @param $record
+     * @return array|null
+     */
+    public function createPseudoObj($data, $record)
+    {
+        $obj = null;
+
+        return $obj;
+    }
+
+
+    public static function staticCreatePseudoObj($record)
+    {
+        $pseudoObj = [];
+
+        /*
+         * Because records from querying the db returns records like this:
+         *      $record = [
+         *          0 => 'value1',
+         *
+         *          'field1' => 'value1',
+         *
+         *          1 => 'value2',
+         *
+         *          'field2' => 'value2'
+         *      ]
+         * ...you wanna eliminate the fields with numeric indexes.
+         */
+        foreach ($record as $field => $value) {
+            if (!is_numeric($field)) {
+                $pseudoObj[$field] = $value;
+            }
+        }
+
+        return $pseudoObj;
+    }
+
 
     public static function delete($data)
     {

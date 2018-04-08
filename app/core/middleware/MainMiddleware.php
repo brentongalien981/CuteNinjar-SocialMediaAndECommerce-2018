@@ -33,9 +33,9 @@ class MainMiddleware extends CNMain
     {
         parent::__construct();
 
-        // TODO: Set this to true only when unit testing.
-        $isTesting = true;
-        if ($isTesting) { return; }
+//        // TODO: Set this to true only when unit testing.
+//        $isTesting = true;
+//        if ($isTesting) { return; }
 
         $requested_url = $_SERVER['REQUEST_URI'];
         $requested_url_tokens = explode("/", $requested_url);

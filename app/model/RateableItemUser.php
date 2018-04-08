@@ -40,6 +40,7 @@ class RateableItemUser extends MainModel
     }
 
     /**
+     * @override
      * If the attributes to be returned to the ajax / normal request are
      * combinations of real obj attributes, then use this method instead
      * of the normal instantiate() method.

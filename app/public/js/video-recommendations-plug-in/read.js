@@ -20,6 +20,7 @@ function doRegularReadVideoRecommendationItems() {
 
     // App dom-gets the id of the rateable-item (with type rateable-item-type: video)
     var rateableItemId = getIdOfRateableItem();
+    var videoId = getIdOfShownVideo();
 
     //
     if (rateableItemId == null) {
@@ -39,6 +40,7 @@ function doRegularReadVideoRecommendationItems() {
     var key_value_pairs = {
         read: "yes",
         rateable_item_id: rateableItemId,
+        video_id: videoId,
         stringified_video_ids_of_already_recommendeded_items: stringifiedVideoIdsOfAlreadyRecommendededItems,
         earliest_el_date: earliestElDate
     };
