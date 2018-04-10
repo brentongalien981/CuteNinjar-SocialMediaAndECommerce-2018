@@ -243,9 +243,17 @@ function setVideoRecommendationItem(videoRecommendationItem, video, playlistId, 
 
     // Set the video title.
     var videoThumbnailTitle = $(videoRecommendationItem).find(".video-thumbnail-titles")[0];
-    $(videoThumbnailTitle).html(video["title"]);
+    // var videoTitle = getBreakPointReactiveVideoTitle(video["title"]);
+    var videoTitle = video["title"];
+    $(videoThumbnailTitle).html(videoTitle);
+
+    var videoAlt = video["title"];
+    $(videoThumbnailTitle).attr("title", videoAlt);
+
+
     var videoTitleHref = getVideoTitleHref(videoId, playlistId);
     $(videoThumbnailTitle).attr("href", videoTitleHref);
+
 
 
     // Set the name of the poster (the user).
@@ -334,6 +342,40 @@ function setVideoMaskHref(videoItem, videoId, playlistId, doOpenLinkInCurrentTab
         $(mask).removeAttr("target");
     }
 }
+
+function getBreakPointReactiveVideoTitle(rawTitle) {
+
+    var breakPointName = cnGetBreakPointName();
+    var adjustedTitle = rawTitle;
+    var maxNumOfChars = 11;
+
+    switch (breakPointName) {
+        case "xs":
+            maxNumOfChars = 28;
+            break;
+        case "sm":
+            maxNumOfChars = 32;
+            break;
+        case "md":
+            maxNumOfChars = 11;
+            break;
+        case "lg":
+            maxNumOfChars = 14;
+            break;
+    }
+
+    // maxNumOfChars -= 3;
+
+    // if (rawTitle.length > maxNumOfChars) {
+    //     adjustedTitle = rawTitle.substring(0, maxNumOfChars);
+    //     adjustedTitle += "..";
+    // }
+
+
+    return adjustedTitle;
+}
+
+
 
 function getVideoTitleHref(videoId, playlistId) {
 

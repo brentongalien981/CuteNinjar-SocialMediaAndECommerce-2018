@@ -32,6 +32,7 @@
 /*#########################################*/
 .video-recommendation-item {
     padding-left: 0;
+    margin-bottom: 30px;
 }
 
 .video-thumbnail-containers {
@@ -66,7 +67,7 @@
 }
 
 a.video-thumbnail-titles {
-    font-size: 110%;
+    font-size: 100%;
 }
 
 a.video-thumbnail-poster-user-names {
@@ -113,4 +114,12 @@ a.video-thumbnail-masks {
 #video-recommendations-plug-in-col {
     margin: 0;
     padding: 0;
+}
+
+
+#video-recommendations-plug-in a.video-thumbnail-titles,
+#video-recommendations-plug-in a.video-thumbnail-poster-user-names {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

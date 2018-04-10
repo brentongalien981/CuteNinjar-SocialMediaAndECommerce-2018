@@ -60,11 +60,17 @@
 
     /*a.video-thumbnail-titles {*/
         /*font-size: 110%;*/
+        /*text-overflow: ellipsis;*/
+        /*white-space: nowrap;*/
+        /*overflow: hidden;*/
     /*}*/
 
     /*a.video-thumbnail-poster-user-names {*/
         /*font-size: 90%;*/
         /*font-weight: 100;*/
+        /*text-overflow: ellipsis;*/
+        /*white-space: nowrap;*/
+        /*overflow: hidden;*/
     /*}*/
 
     /*a.video-thumbnail-masks {*/

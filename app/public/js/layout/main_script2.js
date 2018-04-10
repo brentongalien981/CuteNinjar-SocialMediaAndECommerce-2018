@@ -316,3 +316,26 @@ function cnStringify(items) {
 
     return stringifiedItems;
 }
+
+function cnGetBreakPointName() {
+
+    var windowWidth = $(window).width();
+
+    var lgBreakPointMin = 1200;
+    var lgBreakPointMax = 1439;
+
+    var mdBreakPointMin = 992;
+    var mdBreakPointMax = 1199;
+
+    var smBreakPointMin = 768;
+    var smBreakPointMax = 991;
+
+    var xsBreakPointMin = 480;
+    var xsBreakPointMax = 767;
+
+    if (windowWidth <= xsBreakPointMax) { return "xs"; }
+    else if (windowWidth > xsBreakPointMax && windowWidth <= smBreakPointMax) { return "sm"; }
+    else if (windowWidth > smBreakPointMax && windowWidth <= mdBreakPointMax) { return "md"; }
+    else if (windowWidth > mdBreakPointMax && windowWidth <= lgBreakPointMax) { return "lg"; }
+    else { return "xl"; }
+}
