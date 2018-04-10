@@ -22,6 +22,13 @@ class RecommendationItemQueryProducer
         $itemXTypeId = $data['itemXTypeId'];
         $referenceVideoId = $data['referenceVideoId'];
         $stringifiedReferenceTags = "";
+        $stringifiedVideoIdsOfAlreadyRecommendedItems = $data['stringifiedVideoIdsOfAlreadyRecommendedItems'];
+
+        //
+        $stringifiedExemptedVideoIds = $referenceVideoId . "," . $stringifiedVideoIdsOfAlreadyRecommendedItems;
+
+        // Remove the trailing comma.
+        $stringifiedExemptedVideoIds = substr($stringifiedExemptedVideoIds,0,strlen($stringifiedExemptedVideoIds) - 1);
 
 
         foreach ($data['tags'] as $tag) {
@@ -42,13 +49,13 @@ class RecommendationItemQueryProducer
         $query .= $stringifiedReferenceTags;
         $query .= ")";
 
-        $query .= " AND v.id NOT IN ({$referenceVideoId})";
+        $query .= " AND v.id NOT IN ({$stringifiedExemptedVideoIds})";
 
         $query .= " AND item_x_type_id = {$itemXTypeId}";
 
         $query .= " GROUP BY rateable_item_id";
         $query .= " ORDER BY count DESC";
-        $query .= " LIMIT 10";
+        $query .= " LIMIT 4";
 
         return $query;
     }

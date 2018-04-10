@@ -210,6 +210,7 @@ function setVideoRecommendationItem(videoRecommendationItem, video, playlistId, 
 
     $(videoRecommendationItem).addClass("video-recommendation-item");
     $(videoRecommendationItem).attr("id", "video" + videoId);
+    $(videoRecommendationItem).attr("video-id", videoId);
 
     // If this method is for showing thumbnails to a
     // playlist, the use date when this particular video

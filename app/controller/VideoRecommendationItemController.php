@@ -16,6 +16,7 @@ class VideoRecommendationItemController extends MainController implements AjaxCr
 {
     public function __construct($menu = null, $action = null)
     {
+//        sleep(1);
         parent::__construct($menu, $action);
 
     }
@@ -97,7 +98,8 @@ class VideoRecommendationItemController extends MainController implements AjaxCr
         $queryData = [
             'itemXTypeId' => $rateableItem->item_x_type_id,
             'tags' => $referenceTags,
-            'referenceVideoId' => $this->sanitizedFields['video_id']
+            'referenceVideoId' => $this->sanitizedFields['video_id'],
+            'stringifiedVideoIdsOfAlreadyRecommendedItems' => $this->sanitizedFields['stringified_video_ids_of_already_recommendeded_items']
         ];
 
 

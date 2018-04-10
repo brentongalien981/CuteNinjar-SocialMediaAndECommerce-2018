@@ -23,7 +23,7 @@ function doRegularReadVideoRecommendationItems() {
     var videoId = getIdOfShownVideo();
 
     //
-    if (rateableItemId == null) {
+    if (rateableItemId == null || videoId == 0) {
         return;
     }
 

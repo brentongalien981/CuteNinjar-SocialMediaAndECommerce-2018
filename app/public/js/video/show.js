@@ -50,5 +50,8 @@ function getIdOfShownVideo() {
     // var id = getUrlParamValue(url, "?id");
     var id = extractValueFromUrl(url, "id");
 
+    //
+    if (id == false) { id = 0; }
+
     return id;
 }
