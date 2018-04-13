@@ -3,7 +3,7 @@
 
 
 <!--general (optional)-->
-<?php require_once(PUBLIC_PATH . "video/general.php"); ?>
+<?php //require_once(PUBLIC_PATH . "video/general.php"); ?>
 
 <!--css / main-->
 <link rel="stylesheet" type="text/css" href="<?= PUBLIC_LOCAL . "css/video/show.css"; ?>">

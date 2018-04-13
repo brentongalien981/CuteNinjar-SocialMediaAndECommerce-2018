@@ -67,6 +67,10 @@ function initLeftCol() {
 
 function setLeftCol() {
     $("#cn-left-col").height($(this).outerHeight());
+
+    initUserVideoPlaylistsPlugIn();
+    
+    readVideoUserPlaylists();
 }
 
 function setRightCol() {

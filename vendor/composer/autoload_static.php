@@ -124,6 +124,7 @@ class ComposerStaticInit44c0e09186ec1e1a634b2e23952d00eb
         'App\\Model\\TimelinePostReply' => __DIR__ . '/../..' . '/app/model/TimelinePostReply.php',
         'App\\Model\\TimelinePostUserSubscription' => __DIR__ . '/../..' . '/app/model/TimelinePostUserSubscription.php',
         'App\\Model\\User' => __DIR__ . '/../..' . '/app/model/User.php',
+        'App\\Model\\UserPlaylist' => __DIR__ . '/../..' . '/app/model/UserPlaylist.php',
         'App\\Model\\UserSocialMediaAccount' => __DIR__ . '/../..' . '/app/model/UserSocialMediaAccount.php',
         'App\\Model\\UserTopActivity' => __DIR__ . '/../..' . '/app/model/UserTopActivity.php',
         'App\\Model\\Video' => __DIR__ . '/../..' . '/app/model/Video.php',

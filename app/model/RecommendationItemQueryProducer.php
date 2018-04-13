@@ -28,7 +28,11 @@ class RecommendationItemQueryProducer
         $stringifiedExemptedVideoIds = $referenceVideoId . "," . $stringifiedVideoIdsOfAlreadyRecommendedItems;
 
         // Remove the trailing comma.
-        $stringifiedExemptedVideoIds = substr($stringifiedExemptedVideoIds,0,strlen($stringifiedExemptedVideoIds) - 1);
+        $lastCharOfStringifiedExemptedVideoIds = substr($stringifiedExemptedVideoIds,strlen($stringifiedExemptedVideoIds) - 1);
+        if ($lastCharOfStringifiedExemptedVideoIds === ',') {
+            $stringifiedExemptedVideoIds = substr($stringifiedExemptedVideoIds,0,strlen($stringifiedExemptedVideoIds) - 1);
+        }
+
 
 
         foreach ($data['tags'] as $tag) {

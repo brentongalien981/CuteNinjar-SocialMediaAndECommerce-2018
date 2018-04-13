@@ -41,7 +41,8 @@ class RateableItemTagTest extends TestCase
         $queryData = [
             'itemXTypeId' => $rateableItem->item_x_type_id,
             'tags' => $arrayOfTags,
-            'referenceVideoId' => $referenceVideoId
+            'referenceVideoId' => $referenceVideoId,
+            'stringifiedVideoIdsOfAlreadyRecommendedItems' => "1,2,"
         ];
 
 

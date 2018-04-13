@@ -70,6 +70,7 @@ return array(
     'App\\Model\\TimelinePostReply' => $baseDir . '/app/model/TimelinePostReply.php',
     'App\\Model\\TimelinePostUserSubscription' => $baseDir . '/app/model/TimelinePostUserSubscription.php',
     'App\\Model\\User' => $baseDir . '/app/model/User.php',
+    'App\\Model\\UserPlaylist' => $baseDir . '/app/model/UserPlaylist.php',
     'App\\Model\\UserSocialMediaAccount' => $baseDir . '/app/model/UserSocialMediaAccount.php',
     'App\\Model\\UserTopActivity' => $baseDir . '/app/model/UserTopActivity.php',
     'App\\Model\\Video' => $baseDir . '/app/model/Video.php',

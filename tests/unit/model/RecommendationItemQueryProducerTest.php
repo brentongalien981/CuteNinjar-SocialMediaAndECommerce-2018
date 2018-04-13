@@ -19,7 +19,8 @@ class RecommendationItemQueryProducerTest extends TestCase
         $queryData = [
             'itemXTypeId' => $rateableItem->item_x_type_id,
             'tags' => $arrayOfTags,
-            'referenceVideoId' => $referenceVideoId
+            'referenceVideoId' => $referenceVideoId,
+            'stringifiedVideoIdsOfAlreadyRecommendedItems' => "1,2"
         ];
 
 
@@ -33,12 +34,12 @@ class RecommendationItemQueryProducerTest extends TestCase
         $expectedQuery .= " INNER JOIN RateableItems ri ON rit.rateable_item_id = ri.id";
         $expectedQuery .= " INNER JOIN Videos v ON ri.item_x_id = v.id";
         $expectedQuery .= " WHERE tag_id IN (1,2,3,12)";
-        $expectedQuery .= " AND v.id NOT IN (14)";
+        $expectedQuery .= " AND v.id NOT IN (14,1,2)";
 
         $expectedQuery .= " AND item_x_type_id = 2";
         $expectedQuery .= " GROUP BY rateable_item_id";
         $expectedQuery .= " ORDER BY count DESC";
-        $expectedQuery .= " LIMIT 10";
+        $expectedQuery .= " LIMIT 4";
 
         //
         $actualQuery = \App\Model\RecommendationItemQueryProducer::getQuery($queryData);

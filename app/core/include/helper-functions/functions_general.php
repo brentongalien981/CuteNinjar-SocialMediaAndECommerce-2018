@@ -210,6 +210,10 @@ function getSpecificJsPseudoObjFileName($currentDir)
         case 'video-recommendations-plug-in';
             $specificJsPseudoObjFileName = "VideoRecommendationItem";
             break;
+        case 'video-user-playlists-plug-in';
+            $specificJsPseudoObjFileName = "UserPlaylist";
+            break;
+
 
     }
 

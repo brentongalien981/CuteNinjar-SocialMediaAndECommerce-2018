@@ -302,6 +302,11 @@ class MainModel extends CNMain
         return static::readStatic($data);
     }
 
+
+    /**
+     * @param null $data
+     * @return array
+     */
     public static function readByWhereClause($data = null)
     {
 
@@ -1114,6 +1119,7 @@ class MainModel extends CNMain
 
         // Other default excluded fields.
         array_push($excludedFields, 'primary_key_id_name');
+        array_push($excludedFields, 'pk');
         array_push($excludedFields, 'session');
         array_push($excludedFields, 'database');
 

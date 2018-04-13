@@ -7,6 +7,10 @@
     <div id="cn-right-col" class="cn-col animated"></div>
 
 
+    <!--*** NOTE ***-->
+    <!--Make sure to always load this #cn-center-col the latest...-->
+    <!--...later than the left and right cols, so that you won't have problem-->
+    <!--...with the displaying of the DOM.-->
     <div id="cn-center-col" class="cn-col">
 
         <div class="video-container container-fluid row justify-content-center">

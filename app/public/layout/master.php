@@ -16,10 +16,10 @@
     <!--EARLY-BIND CSS/JS DEPENDENCIES-->
     <!--#################################################################-->
     <!--offline css/js dependencies.-->
-<!--    --><?php //require_once(PUBLIC_PATH . "cn-dependencies/offline.php"); ?>
+    <?php require_once(PUBLIC_PATH . "cn-dependencies/offline.php"); ?>
     <!--#################################################################-->
     <!--online css/js dependencies.-->
-        <?php require_once(PUBLIC_PATH . "cn-dependencies/online.php"); ?>
+<!--        --><?php //require_once(PUBLIC_PATH . "cn-dependencies/online.php"); ?>
     <!--#################################################################-->
     <!--agnostic css/js dependencies.-->
     <?php require_once(PUBLIC_PATH . "cn-dependencies/agnostic.php"); ?>
@@ -44,10 +44,10 @@
 <!--Late-bind css/js dependencies-->
 <!--#################################################################-->
 <!--late-bind-offline css/js dependencies.-->
-<?php //require_once(PUBLIC_PATH . "cn-dependencies/late-bind-offline.php"); ?>
+<?php require_once(PUBLIC_PATH . "cn-dependencies/late-bind-offline.php"); ?>
 <!--#################################################################-->
 <!--late-bind-online css/js dependencies.-->
-<?php require_once(PUBLIC_PATH . "cn-dependencies/late-bind-online.php"); ?>
+<?php //require_once(PUBLIC_PATH . "cn-dependencies/late-bind-online.php"); ?>
 <!--#################################################################-->
 <!--late-bind-agnostic css/js dependencies.-->
 <?php require_once(PUBLIC_PATH . "cn-dependencies/late-bind-agnostic.php"); ?>
