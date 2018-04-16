@@ -49,6 +49,9 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
             case 'show':
 
                 //
+                if (!isset($_GET['read_video_for_what'])) { return; }
+
+                //
                 if ($_GET['read_video_for_what'] == \App\Model\Playlist::READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN) {
 
                     $this->validator->fieldsToBeValidated['video_id'] = [
@@ -91,6 +94,9 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
     /** @override */
     protected function show()
     {
+        //
+        if (!isset($_GET['read_video_for_what'])) { return null; }
+
         //
         $isRequestForPlugIn = ($_GET['read_video_for_what'] == \App\Model\Playlist::READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN) ? true : false;
         $playlist = null;
