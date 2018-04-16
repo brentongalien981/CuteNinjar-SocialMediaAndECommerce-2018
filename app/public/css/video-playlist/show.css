@@ -70,3 +70,14 @@ a.video-thumbnail-masks {
 /*.video-thumbnails:hover {*/
     /*box-shadow: 0 0 30px rgb(20, 20, 20);*/
 /*}*/
+
+
+
+
+/*#####################################*/
+/* video-playlist*/
+/*#####################################*/
+
+#video-playlist #error-showing-playlist-message {
+    display: none;
+}

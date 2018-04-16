@@ -94,7 +94,7 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
     /** @override */
     protected function show()
     {
-        //
+        // Sanity check if the request is just a url-request (non-ajax-request).
         if (!isset($_GET['read_video_for_what'])) { return null; }
 
         //
@@ -122,6 +122,13 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
             // Find
             $data = ['id' => $playlistId];
             $playlist = \App\Model\Playlist::readById($data)[0];
+
+            //
+            if ($playlist->private && !$this->session->is_viewing_own_account()) {
+                $this->json['comments'][] = "Sorry, but this playlist is private.";
+                return null;
+            }
+
 
             $dataForPivotTable = [
                 'created_at' => [

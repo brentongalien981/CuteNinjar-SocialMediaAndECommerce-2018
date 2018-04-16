@@ -40,6 +40,8 @@ function doPlaylistPreAfterEffects(className, crudType, json, xObj) {
                 setNumOfFailedPlaylistVideosAjaxShow(parseInt(getNumOfFailedPlaylistVideosAjaxShow()) + 1);
             }
 
+            setPlaylistVideoErrorMessage(json);
+
             break;
         case "create":
         case "update":
@@ -47,6 +49,27 @@ function doPlaylistPreAfterEffects(className, crudType, json, xObj) {
         case "fetch":
         case "patch":
             break;
+    }
+}
+
+
+function setPlaylistVideoErrorMessage(json) {
+    if (!isCnAjaxResultOk(json)) {
+
+        //
+        $("#video-playlist").find("#error-showing-playlist-message").css("display", "block");
+        $("#video-playlist").find("#error-showing-playlist-message").html("Sorry, but that playlist doesn't exist.");
+
+        //
+        for (i = 0; i < json.comments.length; i++) {
+            if (json.comments[i] === "Sorry, but this playlist is private.") {
+                $("#video-playlist").find("#error-showing-playlist-message").html("Sorry, but this playlist is private.");
+                break;
+            }
+        }
+    }
+    else {
+        $("#video-playlist").find("#error-showing-playlist-message").css("display", "none");
     }
 }
 
