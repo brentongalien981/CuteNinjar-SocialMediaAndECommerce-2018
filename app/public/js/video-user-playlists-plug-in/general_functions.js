@@ -96,6 +96,7 @@ function doRegularDisplayVideoUserPlaylist(json) {
         // TODO: Set the href attribute.
         var hrefAttr = get_local_url() + "video-playlist/show.php?id=" + currentObj.playlist.id;
         $(playlistItem).attr("href", hrefAttr);
+        $(playlistItem).attr("created-at", currentObj.created_at);
 
         // Append the cloned template to  #video-user-playlist-plug-in’s .actual-contents-section.
         $("#video-user-playlists-plug-in").find(".actual-contents-section").append($(playlistItem));

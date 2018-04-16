@@ -69,6 +69,7 @@ class UserPlaylistController extends MainController implements AjaxCrudHandlerIn
                 'comparisonOperator' => '<',
                 'value' => $this->sanitizedFields['earliest_el_date']
             ],
+            'limit' => 2,
             'orderByFields' => 'created_at'
         ];
 
@@ -92,6 +93,7 @@ class UserPlaylistController extends MainController implements AjaxCrudHandlerIn
             }
 
             //
+            $userPlaylist->filterInclude(['created_at']);
             $playlist->filterInclude(['id', 'title']);
 
             //
