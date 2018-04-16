@@ -107,7 +107,8 @@ function tryLoadingJsFilesFor($currentDir, $requestAction = null, $specificFiles
         'event_listeners',
         'event_listeners2',
         'event_listeners3',
-        'tasks'
+        'tasks',
+        'experiments'
     ];
 
     $specificJsPseudoObjFileName = getSpecificJsPseudoObjFileName($currentDir);

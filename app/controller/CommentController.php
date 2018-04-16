@@ -14,7 +14,7 @@ class CommentController extends MainController implements AjaxCrudHandlerInterfa
 {
     public function __construct($menu = null, $action = null)
     {
-//        sleep(1);
+//        sleep(3);
         parent::__construct($menu, $action);
 
     }

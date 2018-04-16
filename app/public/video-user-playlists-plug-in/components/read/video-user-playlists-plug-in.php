@@ -14,7 +14,7 @@
 
         <h6 class="no-playlist-to-display-el">You currenlty don’t have any playlist...</h6>
 
-        <a href="#" class="cn-template"><h6 class="playlist-titles">[cn-template]</h6></a>
+        <a id="playlist-item-template" href="#" class="cn-template"><h6 class="playlist-titles">[cn-template]</h6></a>
 
     </div>
 

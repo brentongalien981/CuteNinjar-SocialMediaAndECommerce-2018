@@ -135,4 +135,58 @@ class UserPlaylistTest extends TestCase
             $this->assertTrue(isset($userPlaylist->playlist_id));
         }
     }
+
+
+    /** @test */
+    public function unset_a_private_user_playlist_from_the_read_user_playlist_arrays()
+    {
+        /* Given */
+        $actualUserId = 8;
+        $currentlyViewedUserId = 8;
+        $readData = [
+            'user_id' => $currentlyViewedUserId
+        ];
+
+
+        /* When */
+        $userPlaylists = \App\Model\UserPlaylist::readByWhereClause($readData);
+
+
+        /* Then */
+//        echo "userPlaylist count before: " . count($userPlaylists) . "<br>";
+
+
+
+        foreach ($userPlaylists as $userPlaylist) {
+            $userPlaylist->filterExclude();
+        }
+//        var_dump($userPlaylists);
+
+
+        for ($i = 0; $i < count($userPlaylists); $i++) {
+
+            $userPlaylist = $userPlaylists[$i];
+
+            $playlist = \App\Model\Playlist::readById(['id' => $userPlaylist->playlist_id])[0];
+
+            if ($playlist->isGuardedForPrivacy()) {
+                unset($userPlaylists[$i]);
+                continue;
+            }
+
+            $userPlaylist->playlist = $playlist;
+        }
+
+        $this->assertCount(2, $userPlaylists);
+
+//        var_dump($userPlaylists);
+//        echo "userPlaylist count after: " . count($userPlaylists);
+    }
+
+
+//    /** @test */
+//    public function method_isGuarded()
+//    {
+//
+//    }
 }

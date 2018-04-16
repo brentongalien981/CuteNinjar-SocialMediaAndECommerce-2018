@@ -83,6 +83,7 @@ class ComposerStaticInit44c0e09186ec1e1a634b2e23952d00eb
         'App\\Controller\\TimelinePostReplyController' => __DIR__ . '/../..' . '/app/controller/TimelinePostReplyController.php',
         'App\\Controller\\TimelinePostUserSubscriptionController' => __DIR__ . '/../..' . '/app/controller/TimelinePostUserSubscriptionController.php',
         'App\\Controller\\UserController' => __DIR__ . '/../..' . '/app/controller/UserController.php',
+        'App\\Controller\\UserPlaylistController' => __DIR__ . '/../..' . '/app/controller/UserPlaylistController.php',
         'App\\Controller\\UserSocialMediaAccountController' => __DIR__ . '/../..' . '/app/controller/UserSocialMediaAccountController.php',
         'App\\Controller\\UserTopActivityController' => __DIR__ . '/../..' . '/app/controller/UserTopActivityController.php',
         'App\\Controller\\VideoController' => __DIR__ . '/../..' . '/app/controller/VideoController.php',

@@ -29,6 +29,7 @@ return array(
     'App\\Controller\\TimelinePostReplyController' => $baseDir . '/app/controller/TimelinePostReplyController.php',
     'App\\Controller\\TimelinePostUserSubscriptionController' => $baseDir . '/app/controller/TimelinePostUserSubscriptionController.php',
     'App\\Controller\\UserController' => $baseDir . '/app/controller/UserController.php',
+    'App\\Controller\\UserPlaylistController' => $baseDir . '/app/controller/UserPlaylistController.php',
     'App\\Controller\\UserSocialMediaAccountController' => $baseDir . '/app/controller/UserSocialMediaAccountController.php',
     'App\\Controller\\UserTopActivityController' => $baseDir . '/app/controller/UserTopActivityController.php',
     'App\\Controller\\VideoController' => $baseDir . '/app/controller/VideoController.php',

@@ -223,6 +223,9 @@ function decide_ajax_pre_after_effects(xObj, json) {
         case "VideoRecommendationItem":
             doVideoRecommendationItemPreAfterEffects(className, crudType, json, xObj);
             break;
+        case "UserPlaylist":
+            doUserPlaylistPreAfterEffects(className, crudType, json, xObj);
+            break;
     }
 }
 
@@ -355,6 +358,9 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
             break;
         case "VideoRecommendationItem":
             doVideoRecommendationItemAfterEffects(className, crudType, json, xObj);
+            break;
+        case "UserPlaylist":
+            doUserPlaylistAfterEffects(className, crudType, json, xObj);
             break;
 
     }
@@ -688,7 +694,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "VideoRecommendationItem":
+        case "UserPlaylist":
             return true;
             break;
     }

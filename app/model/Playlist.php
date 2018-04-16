@@ -79,4 +79,22 @@ class Playlist extends MainModel
         return $videos;
 
     }
+
+
+    public function isGuardedForPrivacy() {
+
+        //
+        $isGuarded = true;
+
+        // If the playlist-obj is private,
+        if ($this->private) {
+
+            // if the user is not viewing its own account,
+            if ($this->session->is_viewing_own_account()) { $isGuarded = false; }
+        }
+        else { $isGuarded = false; }
+
+        //
+        return $isGuarded;
+    }
 }
