@@ -3,10 +3,14 @@
     <div class="actual-contents-section">
 
         <?php global $session; ?>
-        <?php if ($session->is_viewing_own_account()) { ?>
-            <h5 title="My Playlists">Playlists</h5>
+        <?php if ($session->is_logged_in()) { ?>
+            <?php if ($session->is_viewing_own_account()) { ?>
+                <h5 title="My Playlists">My Playlists</h5>
+            <?php } else { ?>
+                <h5 title="<?= $session->currently_viewed_user_name . "'s Playlists"; ?>"><?= $session->currently_viewed_user_name . "'s Playlists"; ?></h5>
+            <?php } ?>
         <?php } else { ?>
-            <h5 title="<?= $session->currently_viewed_user_name . "'s Playlists"; ?>">Playlists</h5>
+            <h5>Playlists</h5>
         <?php } ?>
 
         <hr>

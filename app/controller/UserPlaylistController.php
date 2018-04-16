@@ -61,7 +61,21 @@ class UserPlaylistController extends MainController implements AjaxCrudHandlerIn
 
     /** @override */
     protected function read() {
-        $userPlaylists = parent::read();
+
+        //
+        $readData = [
+            'user_id' => $this->session->currently_viewed_user_id,
+            'created_at' => [
+                'comparisonOperator' => '<',
+                'value' => $this->sanitizedFields['earliest_el_date']
+            ],
+            'orderByFields' => 'created_at'
+        ];
+
+        //
+        $userPlaylists = \App\Model\UserPlaylist::readByWhereClause($readData);
+
+        //
 
         //
         for ($i = 0; $i < count($userPlaylists); $i++) {

@@ -28,6 +28,36 @@ class UserPlaylistTest extends TestCase
 
 
     /** @test */
+    public function reads_by_where_clause_an_array_of_user_playlist_objs()
+    {
+        /* Given */
+        $currentlyViewedUserId = 8;
+        $earliest_el_date = "0000-00-00 00:00:00";
+
+        $readData = [
+            'user_id' => $currentlyViewedUserId,
+            'created_at' => [
+                'comparisonOperator' => '<',
+                'value' => $earliest_el_date
+            ],
+            'orderByFields' => 'created_at'
+        ];
+
+
+        /* When */
+        $userPlaylists = \App\Model\UserPlaylist::readByWhereClause($readData);
+
+
+        /* Then */
+        $this->assertInternalType('array', $userPlaylists);
+
+        foreach ($userPlaylists as $userPlaylist) {
+            $this->assertInstanceOf(\App\Model\UserPlaylist::class, $userPlaylist);
+        }
+    }
+
+
+    /** @test */
     public function read_a_playlist_obj_based_on_the_playlist_id_of_user_playlist()
     {
         /* Given */
