@@ -25,6 +25,13 @@ class MainMiddleware extends CNMain
     const REGULAR_REQUEST_MY_PHOTO_TYPES_OF_ACTIONS = 7;
     const LOGGED_IN_TYPES_OF_ACTIONS = 8;
 
+    public function isUnitTesting()
+    {
+        // TODO: Set this to true only when unit testing.
+//        return true;
+        return false;
+    }
+
 
     /**
      * MainMiddleware constructor.
@@ -33,9 +40,10 @@ class MainMiddleware extends CNMain
     {
         parent::__construct();
 
-//        // TODO: Set this to true only when unit testing.
-//        $isTesting = true;
-//        if ($isTesting) { return; }
+
+        if ($this->isUnitTesting()) {
+            return;
+        }
 
         $requested_url = $_SERVER['REQUEST_URI'];
         $requested_url_tokens = explode("/", $requested_url);
@@ -252,6 +260,7 @@ class MainMiddleware extends CNMain
             case "Comment":
             case "VideoRecommendationItem":
             case "UserPlaylist":
+            case "Category":
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_TYPES_OF_ACTIONS, $action);
                 break;
             case "timeline-post":

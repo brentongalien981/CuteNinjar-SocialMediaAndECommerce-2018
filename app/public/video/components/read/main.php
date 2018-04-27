@@ -2,16 +2,17 @@
 
 
     <div id="cn-left-col" class="cn-col animated">
-        <div id="video-user-playlists-plug-in-container"></div>
+        <div>
+            <div id="video-user-playlists-plug-in-container"></div>
+        </div>
     </div>
 
 
     <div id="cn-right-col" class="cn-col animated">
-
-        <div id="page-outline-container">
-            <?php require_once(PUBLIC_PATH . "video/page-outline-section-container-template.php"); ?>
+        <div>
+            <div id="page-outline-plug-in-container"></div>
+            <div id="video-categories-plug-in-container"></div>
         </div>
-
     </div>
 
     <!--*** NOTE ***-->

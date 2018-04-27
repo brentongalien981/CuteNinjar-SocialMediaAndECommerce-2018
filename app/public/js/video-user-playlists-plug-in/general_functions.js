@@ -4,9 +4,9 @@ function doUserPlaylistPreAfterEffects(className, crudType, json, xObj) {
     switch (crudType) {
         case "read":
 
-            // Unset loader el.
-            var loaderEl = $("#loader-for-video-user-playlists-plug-in");
-            removeClonedLoaderEl(loaderEl);
+            // // Unset loader el.
+            // var loaderEl = $("#loader-for-video-user-playlists-plug-in");
+            // removeClonedLoaderEl(loaderEl);
 
 
             //
@@ -112,4 +112,7 @@ function doPostDisplayVideoUserPlaylist() {
     } else {
         $("#video-user-playlists-plug-in").find(".no-playlist-to-display-el").css("display", "none");
     }
+
+    //
+    setNumOfFailedUserPlaylistAjaxRead(0);
 }

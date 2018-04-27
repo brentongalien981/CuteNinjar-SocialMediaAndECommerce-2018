@@ -18,7 +18,7 @@ class MainModel extends CNMain
     protected static $table_name = "DEFAULT_TABLE_NAME";
     protected static $className = "DEFAULT_CLASS_NAME";
 
-    // Override this if the pk-field is not named "id". Ex. "user_id", "product_id", etc...
+    // Override this only if the pk-field is not named "id". Ex. "user_id", "product_id", etc...
     protected $pk = [];
 
     public static $searchable_fields = array();
@@ -391,7 +391,7 @@ class MainModel extends CNMain
     /**
      *
      */
-    public static function readByRawQuery($q = null)
+    public static function readByRawQuery($q = null, $instantiateObs = false)
     {
 
         $records = [];
@@ -400,12 +400,22 @@ class MainModel extends CNMain
 
 
         //
+        $q = self::update_query_with_current_time_stamp($q);
+
+        //
         $resultSet = self::execute_by_query($q);
 
         //
         global $database;
         while ($row = $database->fetch_array($resultSet)) {
-            $records[] = static::staticCreatePseudoObj($row);
+
+            if ($instantiateObs) {
+                $records[] = static::instantiate($row);
+            }
+            else {
+                $records[] = static::staticCreatePseudoObj($row);
+            }
+
         }
 
         //

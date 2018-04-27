@@ -232,6 +232,7 @@ class MainController extends CNMain
 
     public function index() {
         // Override this.
+        return null;
     }
 
 

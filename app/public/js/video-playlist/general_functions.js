@@ -144,6 +144,8 @@ function doPreDisplayPlaylistVideos(json) {
     if (videos.length > 0) {
 
         // Set the title element of the playlist.
-        $(".video-playlist-items-container-title").html(playlist.title);
+        // $(".video-playlist-items-container-title").html(playlist.title);
+
+        $("#video-playlist").find("#video-playlist-title").html(playlist.title);
     }
 }

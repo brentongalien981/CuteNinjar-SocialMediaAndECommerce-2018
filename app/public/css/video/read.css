@@ -1,3 +1,7 @@
+html, body {
+    min-width: 640px;
+}
+
 .video-main-item {
     padding: 130px 0;
     padding-bottom: 150px;
@@ -44,11 +48,13 @@
 }
 
 #cn-right-col {
+    max-width: 256px;
     background-color: white;
     position: fixed;
     right: 0;
     box-shadow: 0 0 30px rgb(100, 100, 100);
     display: none;
+    overflow-y: auto;
 }
 
 body {

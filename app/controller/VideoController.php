@@ -105,12 +105,12 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
         }
     }
 
-    /** @override */
-    public function index()
-    {
-
-        require_once(PUBLIC_PATH . "video/read.php");
-    }
+//    /** @override */
+//    public function index()
+//    {
+//
+//        require_once(PUBLIC_PATH . "video/read.php");
+//    }
 
     /** @override */
     protected function read()

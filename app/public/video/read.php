@@ -15,6 +15,7 @@
 
 <!--extentional views-->
 <?php require_once(PUBLIC_PATH . "video-user-playlists-plug-in/read.php"); ?>
+<?php require_once(PUBLIC_PATH . "page-outline-plug-in/read.php"); ?>
 
 
 <!--js / main-->

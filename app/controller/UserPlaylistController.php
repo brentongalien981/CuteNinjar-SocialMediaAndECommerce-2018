@@ -69,7 +69,7 @@ class UserPlaylistController extends MainController implements AjaxCrudHandlerIn
                 'comparisonOperator' => '<',
                 'value' => $this->sanitizedFields['earliest_el_date']
             ],
-            'limit' => 2,
+            'limit' => 10,
             'orderByFields' => 'created_at'
         ];
 

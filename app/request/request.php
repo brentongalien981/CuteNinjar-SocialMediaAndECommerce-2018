@@ -135,6 +135,9 @@ function getModifiedMenuName($menu) {
         case 'comment';
             $modifiedMenuName = "Comment";
             break;
+        case 'category';
+            $modifiedMenuName = "Category";
+            break;
 
     }
 

@@ -226,6 +226,9 @@ function decide_ajax_pre_after_effects(xObj, json) {
         case "UserPlaylist":
             doUserPlaylistPreAfterEffects(className, crudType, json, xObj);
             break;
+        case "Category":
+            doCategoryPreAfterEffects(className, crudType, json, xObj);
+            break;
     }
 }
 
@@ -362,7 +365,9 @@ function decide_ajax_after_effects_class_handlers(xObj, json) {
         case "UserPlaylist":
             doUserPlaylistAfterEffects(className, crudType, json, xObj);
             break;
-
+        case "Category":
+            doCategoryAfterEffects(className, crudType, json, xObj);
+            break;
     }
 }
 
@@ -694,7 +699,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "UserPlaylist":
+        case "Category":
             return true;
             break;
     }

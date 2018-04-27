@@ -59,4 +59,12 @@
     #video-user-playlists-plug-in .btns-section {
         margin-top: 10px;
     }
+
+    #video-user-playlists-plug-in .show-less-btn {
+        visibility: hidden;
+    }
+
+    #video-user-playlists-plug-in .loader-element-container {
+        width: 100%;
+    }
 </style>

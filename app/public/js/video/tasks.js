@@ -75,6 +75,11 @@ function setLeftCol() {
 
 function setRightCol() {
     $("#cn-right-col").height($(this).outerHeight());
+
+    initPageOutlinePlugIn();
+    initVideoCategoriesPlugIn();
+
+    readCategories();
 }
 
 function initRightCol() {

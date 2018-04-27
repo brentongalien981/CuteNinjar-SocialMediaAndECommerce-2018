@@ -88,6 +88,7 @@ function doVideoAfterEffects(className, crudType, json, xObj) {
 
 function getVideoCategoryContainer(readForPageSection) {
 
+
     var videoCategoryContainer = null;
 
     // Checks if the video-category-container that is being populated has already done a previous read.
@@ -97,10 +98,22 @@ function getVideoCategoryContainer(readForPageSection) {
         $(videoCategoryContainer).addClass("video-category-containers");
         $(videoCategoryContainer).attr("pageSection", "recommended");
     }
-    else {
+    else if (readForPageSection === "recommended") {
+
+        // alert ("YEAH RECOMMENDED");
         videoCategoryContainer = $("[pageSection=recommended]");
     }
 
+    //
+    if (readForPageSection != null) {
+        $(videoCategoryContainer).attr("id", readForPageSection + "-videos-section");
+    }
+    else {
+        $(videoCategoryContainer).attr("id", "recommended-videos-section");
+    }
+
+
+    //
     return videoCategoryContainer;
 }
 

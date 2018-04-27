@@ -40,15 +40,15 @@ function doPreReadVideoUserPlaylists() {
     setIsUserPlaylistReading(true);
 
 
-    // App shows the loaders element.
-    // Set the loader element.
-    var loaderMsg = "Loading playlists...";
-    var loaderId = "video-user-playlists-plug-in";
-    var clonedLoaderEl = getClonedLoaderEl(loaderId, loaderMsg);
-
-    var loaderContainer = $("#video-user-playlists-plug-in").find(".loader-element-container");
-
-    appendClonedLoaderEl(loaderContainer, clonedLoaderEl);
+    // // App shows the loaders element.
+    // // Set the loader element.
+    // var loaderMsg = "Loading playlists...";
+    // var loaderId = "video-user-playlists-plug-in";
+    // var clonedLoaderEl = getClonedLoaderEl(loaderId, loaderMsg);
+    //
+    // var loaderContainer = $("#video-user-playlists-plug-in").find(".loader-element-container");
+    //
+    // appendClonedLoaderEl(loaderContainer, clonedLoaderEl);
 
     return true;
 }
