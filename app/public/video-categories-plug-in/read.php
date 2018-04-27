@@ -3,7 +3,7 @@
 
 
 <!--css / main-->
-<!--<link rel="stylesheet" type="text/css" href="--><?//= PUBLIC_LOCAL . "css/page-outline-plug-in/read.css"; ?><!--">-->
+<link rel="stylesheet" type="text/css" href="<?= PUBLIC_LOCAL . "css/video-categories-plug-in/read.css"; ?>">
 
 
 <!--templates / extentional-->

@@ -90,11 +90,12 @@ function doRegularDisplayCategory(json) {
         // 4) Fill-in the cloned template with details from the ith obj.
         $(categyItem).html(currentObj.name);
         $(categyItem).attr("title", currentObj.name);
+        $(categyItem).attr("created-at", currentObj.created_at);
 
         var categoryHref = get_local_url() + "video-categories/show.php?id=" + currentObj.id;
         $(categyItem).attr("href", categoryHref);
 
         // 5) Append.
-        $("#video-categories-plug-in").append($(categyItem));
+        $("#video-categories-plug-in").find(".actual-contents-section").append($(categyItem));
     }
 }

@@ -71,7 +71,7 @@ class CategoryController extends MainController implements AjaxCrudHandlerInterf
         // Find main-objs.
         $dataForProducingReadQuery = [
             'earliest_el_date' => $this->sanitizedFields['earliest_el_date'],
-            'limit' => 5,
+            'limit' => 10,
             'stringifiedIdsOfAlreadyBeenReadCategories' => $this->sanitizedFields['stringified_ids_of_already_been_read_categories']
         ];
 
