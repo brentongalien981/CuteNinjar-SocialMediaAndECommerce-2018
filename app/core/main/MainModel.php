@@ -346,7 +346,15 @@ class MainModel extends CNMain
                     isset($value))
                 {
                     $data['whereClause'] = "";
-                    $data['whereClause'] .= "WHERE {$field}" . " {$comparisonOperator}" . " '{$value}'";
+
+                    //
+                    if ($comparisonOperator === 'NOT IN') {
+                        $data['whereClause'] .= "WHERE {$field} NOT IN(" . "{$value})";
+                    } else {
+                        $data['whereClause'] .= "WHERE {$field}" . " {$comparisonOperator}" . " '{$value}'";
+                    }
+
+
                 }
 
             }

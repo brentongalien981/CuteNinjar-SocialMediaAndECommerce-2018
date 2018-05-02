@@ -54,7 +54,10 @@ function doPlaylistPreAfterEffects(className, crudType, json, xObj) {
 
 
 function setPlaylistVideoErrorMessage(json) {
-    if (!isCnAjaxResultOk(json)) {
+
+    var hasActualError = (json.comments.length > 0) ? true : false;
+
+    if (!isCnAjaxResultOk(json) && hasActualError) {
 
         //
         $("#video-playlist").find("#error-showing-playlist-message").css("display", "block");

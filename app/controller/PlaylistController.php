@@ -49,7 +49,9 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
             case 'show':
 
                 //
-                if (!isset($_GET['read_video_for_what'])) { return; }
+                if (!isset($_GET['read_video_for_what'])) {
+                    return;
+                }
 
                 //
                 if ($_GET['read_video_for_what'] == \App\Model\Playlist::READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN) {
@@ -80,11 +82,18 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
                     'numeric' => 1
                 ];
 
-                $this->validator->fieldsToBeValidated['earliest_el_date'] = [
+//                $this->validator->fieldsToBeValidated['earliest_el_date'] = [
+//                    'required' => 1,
+//                    'min' => 19,
+//                    'max' => 20,
+//                    'blank' => 1
+//                ];
+
+                $this->validator->fieldsToBeValidated['stringified_video_ids_of_already_shown_playlist_videos'] = [
                     'required' => 1,
-                    'min' => 19,
-                    'max' => 20,
-                    'blank' => 1
+                    'min' => 0,
+                    'max' => 8192,
+                    'areNumeric' => 1
                 ];
 
                 break;
@@ -95,7 +104,9 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
     protected function show()
     {
         // Sanity check if the request is just a url-request (aka non-ajax-request).
-        if (!isset($_GET['read_video_for_what'])) { return null; }
+        if (!isset($_GET['read_video_for_what'])) {
+            return null;
+        }
 
         //
         $isRequestForPlugIn = ($_GET['read_video_for_what'] == \App\Model\Playlist::READ_VIDEO_FOR_VIDEO_PLAYLIST_PLUG_IN) ? true : false;
@@ -111,6 +122,7 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
 
             // Check if that playlist-id contains that video-id.
             if (!\App\Model\Playlist::doesContainVideo($playlistId, $videoId)) {
+                $this->json['comments'][] = "Sorry, but that playlist doesn't exist.";
                 $isOkToProceed = false;
             }
         }
@@ -131,10 +143,11 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
 
 
             $dataForPivotTable = [
-                'created_at' => [
-                    'comparisonOperator' => '<',
-                    'value' => $this->sanitizedFields['earliest_el_date']
+                'video_id' => [
+                    'comparisonOperator' => 'NOT IN',
+                    'value' => $this->sanitizedFields['stringified_video_ids_of_already_shown_playlist_videos']
                 ],
+//                'video_id' => 'NOT IN(' . $this->sanitizedFields['stringified_video_ids_of_already_shown_playlist_videos'] . ')',
                 'orderByFields' => 'created_at',
                 'includedPivotFields' => [
                     [
@@ -143,6 +156,11 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
                     ]
                 ]
             ];
+
+            //
+            if (empty($this->sanitizedFields['stringified_video_ids_of_already_shown_playlist_videos'])) {
+                unset($dataForPivotTable['video_id']);
+            }
 
             $playlistVideos = $playlist->getVideos($dataForPivotTable);
 
@@ -157,7 +175,9 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
         }
 
         //
-        if (count($playlist->videos) == 0) { $playlist = null; }
+        if (count($playlist->videos) == 0) {
+            $playlist = null;
+        }
         return $playlist;
     }
 

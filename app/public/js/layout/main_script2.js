@@ -29,7 +29,7 @@ function mcnLogObject(obj) {
     /**/
     console.log("###########################");
     console.log("IN METHOD mcnLogObject()");
-    
+
     /**/
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
@@ -312,6 +312,11 @@ function cnStringify(items) {
 
     for (i = 0; i < items.length; i++) {
         stringifiedItems += items[i] + ",";
+    }
+
+    // Remove the last comma if possible.
+    if (stringifiedItems.length > 0) {
+        stringifiedItems = stringifiedItems.substring(0, stringifiedItems.length - 1);
     }
 
     return stringifiedItems;
