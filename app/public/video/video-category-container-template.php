@@ -18,19 +18,20 @@
 
 
 
-<style>
-
-    #video-category-container-template .show-more-playlist-btn,
-    .video-category-containers .show-more-playlist-btn {
-        display: block;
-        padding-left: 300px;
-        padding-right: 300px;
-        margin-top: 50px;
-    }
-
-    #video-category-container-template,
-    .video-category-containers {
-        padding: 30px 8%;
-        padding-bottom: 70px;
-    }
-</style>
+<!--<style>-->
+<!---->
+<!--    #video-category-container-template .show-more-playlist-btn,-->
+<!--    .video-category-containers .show-more-playlist-btn {-->
+<!--        display: block;-->
+<!--        /*padding-left: 300px;*/-->
+<!--        /*padding-right: 300px;*/-->
+<!--        width: 100%-->
+<!--        margin-top: 50px;-->
+<!--    }-->
+<!---->
+<!--    #video-category-container-template,-->
+<!--    .video-category-containers {-->
+<!--        padding: 30px 8%;-->
+<!--        padding-bottom: 70px;-->
+<!--    }-->
+<!--</style>-->
