@@ -94,7 +94,7 @@ class PlaylistController extends MainController implements AjaxCrudHandlerInterf
     /** @override */
     protected function show()
     {
-        // Sanity check if the request is just a url-request (non-ajax-request).
+        // Sanity check if the request is just a url-request (aka non-ajax-request).
         if (!isset($_GET['read_video_for_what'])) { return null; }
 
         //

@@ -699,7 +699,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "Category":
+        case "Playlist":
             return true;
             break;
     }

@@ -1,10 +1,19 @@
 <div id="main-content" class="">
 
 
-    <div id="cn-left-col" class="cn-col animated"></div>
+    <div id="cn-left-col" class="cn-col animated">
+        <div>
+            <div id="video-user-playlists-plug-in-container"></div>
+        </div>
+    </div>
 
 
-    <div id="cn-right-col" class="cn-col animated"></div>
+    <div id="cn-right-col" class="cn-col animated">
+        <div>
+            <div id="page-outline-plug-in-container"></div>
+            <div id="video-categories-plug-in-container"></div>
+        </div>
+    </div>
 
 
     <!--*** NOTE ***-->
@@ -13,7 +22,7 @@
     <!--...with the displaying of the DOM.-->
     <div id="cn-center-col" class="cn-col">
 
-        <div class="video-container container-fluid row justify-content-center">
+        <div id="shown-video-container" class="video-container container-fluid row justify-content-center">
 
             <div class="col-12">
 

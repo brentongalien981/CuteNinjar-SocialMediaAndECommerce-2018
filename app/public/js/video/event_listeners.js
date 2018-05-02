@@ -1,6 +1,8 @@
 $(window).resize(function(){
-    setLeftCol();
-    setRightCol();
+    setLeftColHeight();
+
+    // setRightCol();
+    setRightColHeight();
 
     setCenterCol();
 });

@@ -66,20 +66,33 @@ function initLeftCol() {
 }
 
 function setLeftCol() {
-    $("#cn-left-col").height($(this).outerHeight());
+
+    setLeftColHeight();
 
     initUserVideoPlaylistsPlugIn();
     
     readVideoUserPlaylists();
 }
 
+
+function setLeftColHeight() {
+
+    $("#cn-left-col").height($(this).outerHeight());
+}
+
 function setRightCol() {
-    $("#cn-right-col").height($(this).outerHeight());
+
+    setRightColHeight();
 
     initPageOutlinePlugIn();
     initVideoCategoriesPlugIn();
 
     readCategories();
+}
+
+function setRightColHeight() {
+
+    $("#cn-right-col").height($(this).outerHeight());
 }
 
 function initRightCol() {
