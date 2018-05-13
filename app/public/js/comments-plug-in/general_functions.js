@@ -148,6 +148,10 @@ function setCommentPlugInItem(commentPlugInItem, comment) {
     $(commentPlugInItem).addClass("comment-plug-in-item");
 
 
+    // Set attr of unique id (unique node id).
+    $(commentPlugInItem).attr("node-id", comment["id"]);
+
+
     // Set the poster-user-photo.
     var photoUrl = comment["posterUserProfile"]["pic_url"];
     if (photoUrl != null && photoUrl != "0") {

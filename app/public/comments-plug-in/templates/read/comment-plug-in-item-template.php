@@ -1,4 +1,4 @@
-<div id="comment-plug-in-item-template" class="cn-template">
+<div id="comment-plug-in-item-template" class="cn-template" node-id="">
 
     <div class="comment-details-container">
 

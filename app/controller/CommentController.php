@@ -83,6 +83,13 @@ class CommentController extends MainController implements AjaxCrudHandlerInterfa
                     'blank' => 1
                 ];
 
+                $this->validator->fieldsToBeValidated['stringified_already_shown_comment_ids'] = [
+                    'required' => 1,
+                    'min' => 0,
+                    'max' => 8192,
+                    'areNumeric' => 1
+                ];
+
                 break;
 
             case 'update':
@@ -120,13 +127,24 @@ class CommentController extends MainController implements AjaxCrudHandlerInterfa
     {
         // Find main-objs.
         $data = [
+            'disregardUsingPkIdForQuery' => true,
             'rateable_item_id' => $this->sanitizedFields['rateable_item_id'],
             'created_at' => [
-                'comparisonOperator' => '<',
+                'comparisonOperator' => '<=',
                 'value' => $this->sanitizedFields['earliest_el_date']
+            ],
+            'id' => [
+                'comparisonOperator' => 'NOT IN',
+                'value' => $this->sanitizedFields['stringified_already_shown_comment_ids']
             ],
             'orderByFields' => 'created_at'
         ];
+
+
+        //
+        if (empty($this->sanitizedFields['stringified_already_shown_comment_ids'])) {
+            unset($data['id']);
+        }
 
 
         $comments = \App\Model\Comment::readByWhereClause($data);
@@ -142,6 +160,7 @@ class CommentController extends MainController implements AjaxCrudHandlerInterfa
 
             // Filter
             $comment->filterExclude();
+//            $comment->filterInclude(['id']);
             $commentPosterUser->filterInclude(['user_name']);
             $posterUserProfile->filterInclude(['pic_url']);
 

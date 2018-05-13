@@ -23,11 +23,19 @@ function doRegularReadComments() {
     var request_type = "GET";
     var earliestElDate = getLimitDateOfDomElement("earliest", "comment-plug-in-item");
 
+    var dataForGettingIdsOfAlreadyShownItems = {
+        selector: "#comments-plug-in .comment-plug-in-item",
+        attrNameOfUniqueId: "node-id"
+    }
+    var alreadyShownCommentIds = CnGeneral.getIdsOfAlreadyShownItems(dataForGettingIdsOfAlreadyShownItems);
+    var stringifiedAlreadyShownCommentIds = cnStringify(alreadyShownCommentIds);
+
 
     var key_value_pairs = {
         read: "yes",
         rateable_item_id: rateableItemId,
-        earliest_el_date: earliestElDate
+        earliest_el_date: earliestElDate,
+        stringified_already_shown_comment_ids: stringifiedAlreadyShownCommentIds
     };
 
 

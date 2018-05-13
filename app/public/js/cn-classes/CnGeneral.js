@@ -19,4 +19,31 @@ class CnGeneral {
             return node;
         }
     }
+
+
+    /**
+     *
+     * @param data
+     * @returns {Array}
+     */
+    static getIdsOfAlreadyShownItems(data = {selector: null, attrNameOfUniqueId: null}) {
+
+        //
+        if (data.selector == null) { return []; }
+
+
+        //
+        var idsOfAlreadyShownItems = [];
+
+        var alreadyShownItems = $(data.selector);
+
+        for (i = 0; i < alreadyShownItems.length; i++) {
+            var currentItemId = $(alreadyShownItems[i]).attr(data.attrNameOfUniqueId);
+
+            idsOfAlreadyShownItems[i] = currentItemId;
+
+        }
+
+        return idsOfAlreadyShownItems;
+    }
 }

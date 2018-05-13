@@ -15,16 +15,18 @@
 <?php require_once(PUBLIC_PATH . "comments-plug-in/templates/read/comment-plug-in-item-template.php"); ?>
 
 
+<!--extentional views-->
+<?php //require_once(PUBLIC_PATH . "video-user-playlists-plug-in/read.php"); ?>
+
 
 <!--components / main-->
 <?php require_once(PUBLIC_PATH . "comments-plug-in/components/read/comments-plug-in.php"); ?>
 <?php require_once(PUBLIC_PATH . "comments-plug-in/components/read/main.php"); ?>
 
 
-<!--js / main-->
-<?php tryLoadingJsFilesFor("comments-plug-in", "read", ['tasks']); ?>
-
 <!--js / extentional-->
 <?php //tryLoadingJsFilesFor("rateable-item-user", "read", ['tasks', 'read', 'general_functions', 'update']); ?>
 
 
+<!--js / main-->
+<?php tryLoadingJsFilesFor("comments-plug-in", "read", ['tasks']); ?>
