@@ -61,6 +61,18 @@ function redirect_to($new_location)
     exit;
 }
 
+
+function tryLoadingSpecificJsFile($filePath = null) {
+
+    if ($filePath == null) { return; }
+
+    $doesFileExist = file_exists(JS_PATH . "{$filePath}.js");
+    if ($doesFileExist) {
+        $scriptTag = "<script src='" . PUBLIC_LOCAL . "js/" . $filePath . ".js'></script>";
+        echo $scriptTag;
+    }
+}
+
 function tryLoadingSpecificJsFilesFor($currentDir, $specificFiles = null)
 {
 

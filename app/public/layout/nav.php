@@ -108,17 +108,7 @@
 
 
             <!--Videos-->
-            <li class="nav-item"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Videos">
-                <a id="menu_my_videos" class='menus nav-link'
-                   href="<?= PUBLIC_LOCAL . "video/index.php" ?>">
-                    <i class="fa fa-youtube-play"></i>
-                    <span class="sr-only">(current)</span>
-                </a>
-
-            </li>
+            <?php require_once(PUBLIC_PATH . "layout/nav-videos.php"); ?>
 
 
             <!--Ads-->

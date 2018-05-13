@@ -138,6 +138,9 @@ function getModifiedMenuName($menu) {
         case 'category';
             $modifiedMenuName = "Category";
             break;
+        case 'video-manager';
+            $modifiedMenuName = "VideoManager";
+            break;
 
     }
 

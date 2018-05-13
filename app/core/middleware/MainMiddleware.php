@@ -280,6 +280,9 @@ class MainMiddleware extends CNMain
             case "MyPhoto":
                 $allowedUserTypes = self::getAllowedUserTypes(self::REGULAR_REQUEST_MY_PHOTO_TYPES_OF_ACTIONS, $action);
                 break;
+            case "video-manager":
+                $allowedUserTypes = self::getAllowedUserTypes(self::LOGGED_IN_TYPES_OF_ACTIONS, $action);
+                break;
             default:
                 $allowedUserTypes = array("unauthorized-user");
 

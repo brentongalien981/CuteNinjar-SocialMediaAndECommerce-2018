@@ -1,7 +1,8 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ops
- * Date: 2017-12-15
- * Time: 11:08
- */
+<!-- cn-errors -->
+<script src="<?= PUBLIC_LOCAL . "js/cn-errors/CnNullReferenceError.js"; ?>"></script>
+
+<!-- cn-classes -->
+<script src="<?= PUBLIC_LOCAL . "js/cn-classes/CnGeneral.js"; ?>"></script>
+<script src="<?= PUBLIC_LOCAL . "js/cn-classes/CnTemplate.js"; ?>"></script>
+<script src="<?= PUBLIC_LOCAL . "js/cn-classes/CnComponent.js"; ?>"></script>
+
