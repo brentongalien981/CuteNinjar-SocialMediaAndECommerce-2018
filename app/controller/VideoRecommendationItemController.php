@@ -95,6 +95,12 @@ class VideoRecommendationItemController extends MainController implements AjaxCr
         $rateableItem = \App\Model\RateableItem::readById($rateableItemData)[0];
         $referenceTags = $rateableItem->getTags();
 
+        //
+        if (count($referenceTags) == 0) {
+            $this->json['comments'][] = "No reference tags provided.";
+            return null;
+        }
+
         $queryData = [
             'itemXTypeId' => $rateableItem->item_x_type_id,
             'tags' => $referenceTags,

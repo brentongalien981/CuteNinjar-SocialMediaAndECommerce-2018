@@ -39,8 +39,14 @@ class RecommendationItemQueryProducer
             $stringifiedReferenceTags .= $tag->id . ",";
         }
 
-        // Remove the last comma.
-        $stringifiedReferenceTags = substr($stringifiedReferenceTags, 0, strlen($stringifiedReferenceTags) - 1);
+//        // Remove the last comma.
+//        $stringifiedReferenceTags = substr($stringifiedReferenceTags, 0, strlen($stringifiedReferenceTags) - 1);
+
+        // Remove the trailing comma.
+        $lastCharOfStringifiedReferenceTags = substr($stringifiedReferenceTags,strlen($stringifiedReferenceTags) - 1);
+        if ($lastCharOfStringifiedReferenceTags === ',') {
+            $stringifiedReferenceTags = substr($stringifiedReferenceTags,0,strlen($stringifiedReferenceTags) - 1);
+        }
 
 
         //
@@ -49,11 +55,19 @@ class RecommendationItemQueryProducer
         $query .= " INNER JOIN RateableItems ri ON rit.rateable_item_id = ri.id";
         $query .= " INNER JOIN Videos v ON ri.item_x_id = v.id";
 
-        $query .= " WHERE tag_id IN (";
-        $query .= $stringifiedReferenceTags;
-        $query .= ")";
+        //
+        if ($stringifiedReferenceTags !== "") {
 
-        $query .= " AND v.id NOT IN ({$stringifiedExemptedVideoIds})";
+            $query .= " WHERE tag_id IN (";
+            $query .= $stringifiedReferenceTags;
+            $query .= ")";
+
+            $query .= " AND v.id NOT IN ({$stringifiedExemptedVideoIds})";
+        }
+        else {
+            $query .= " WHERE v.id NOT IN ({$stringifiedExemptedVideoIds})";
+        }
+
 
         $query .= " AND item_x_type_id = {$itemXTypeId}";
 
