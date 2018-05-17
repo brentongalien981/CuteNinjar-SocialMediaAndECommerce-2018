@@ -20,7 +20,8 @@ class NotificationController extends MainController implements AjaxCrudHandlerIn
     }
 
 
-    protected function setSpecificQueryClauses($data = null) {
+    protected function setSpecificQueryClauses($data = null)
+    {
 
         $this->sanitizedFields['where_clause'] = "WHERE notified_user_id = {$this->session->actual_user_id}";
 
@@ -32,8 +33,9 @@ class NotificationController extends MainController implements AjaxCrudHandlerIn
 
     }
 
-    /** @deprecated  */
-    public function overrideSanitizedFields($value) {
+    /** @deprecated */
+    public function overrideSanitizedFields($value)
+    {
         $this->sanitizedFields = $value;
     }
 
@@ -44,7 +46,13 @@ class NotificationController extends MainController implements AjaxCrudHandlerIn
             case 'create':
             case 'update':
                 $this->menuObj->id = ($this->action == "create") ? null : $this->sanitizedFields['id'];
-                $this->menuObj->notified_user_id = $this->session->currently_viewed_user_id;
+
+                // ish: Set the notified_user_id
+                // $this->menuObj->notified_user_id = $this->session->currently_viewed_user_id;
+                $this->menuObj->notified_user_id = $this->getNotifiedUserId();
+
+
+
                 $this->menuObj->notifier_user_id = $this->session->actual_user_id;
                 $this->menuObj->notification_msg_id = $this->sanitizedFields['notification_msg_id'];
                 $this->menuObj->initiation_date = 'CURRENT_TIMESTAMP';
@@ -56,20 +64,55 @@ class NotificationController extends MainController implements AjaxCrudHandlerIn
         }
     }
 
-    public function read($data = null) {
+
+    private function getNotifiedUserId() {
+
+        // Default return-value.
+        $notifiedUserId = $this->session->currently_viewed_user_id;
+
+        switch ($this->sanitizedFields['notification_msg_id']) {
+            case "4":
+                // TODO: Set the notified_user_id when a user rates a post.
+                break;
+            case "6": // notification-msg-id for a video rateable-item
+
+                $rateableItemId = $this->sanitizedFields['rateable_item_id'];
+
+                // Reference the rateableItem-obj.
+                $rateableItem = \App\Model\RateableItem::readById(['id' => $rateableItemId])[0];
+
+                // Reference the video-obj based on the rateable-item-obj.
+                $video = $rateableItem->getXRateableItem(['doSimplifyReturndedObj' => false]);
+
+
+                // Actual return value.
+                $videoUploaderUserId = $video->user_id;
+
+                $notifiedUserId = $videoUploaderUserId;
+
+                break;
+        }
+
+
+        //
+        return $notifiedUserId;
+    }
+
+    public function read($data = null)
+    {
 
         $this->setSpecificQueryClauses($data);
 
         $objs = $this->menuObj->read_by_where_clause($this->sanitizedFields);
 
-        //ish
         $this->setDateForHumansAttrib("initiation_date", $objs);
 
         return $objs;
 
     }
 
-    public function fetch($data = null) {
+    public function fetch($data = null)
+    {
         return $this->read($data);
     }
 
@@ -81,13 +124,13 @@ class NotificationController extends MainController implements AjaxCrudHandlerIn
      * ...
      * @override
      */
-    protected function setMenuObject()
+    protected function setMenuObject($menu = null)
     {
         $this->menuObj = new \App\Model\Notification();
     }
 
     /** @override */
-    protected function setMenu()
+    protected function setMenu($menu = null)
     {
         $this->menu = "Notification";
     }
@@ -99,7 +142,8 @@ class NotificationController extends MainController implements AjaxCrudHandlerIn
     }
 
     /** @override */
-    protected function create() {
+    protected function create()
+    {
 
         $this->doSpecificAjaxCrudAction();
 
@@ -114,7 +158,8 @@ class NotificationController extends MainController implements AjaxCrudHandlerIn
     }
 
     /** @override */
-    protected function update() {
+    protected function update()
+    {
 
         $this->doSpecificAjaxCrudAction();
 

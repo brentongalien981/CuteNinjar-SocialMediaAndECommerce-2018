@@ -57,7 +57,7 @@ class RateableItem extends MainModel
         return $isCrudOk;
     }
 
-    public function getXRateableItem()
+    public function getXRateableItem($data = ['doSimplifyReturndedObj' => true])
     {
 
         //
@@ -77,21 +77,20 @@ class RateableItem extends MainModel
 
 
         //
-        $data = [
-            'id' => $this->item_x_id
-        ];
+        $data['id'] = $this->item_x_id;
 
         // Find
         $xRateableItem = $modelPath::readById($data)[0];
 
 
-        // Filter
-        $xRateableItem->filterInclude($this->getFieldsToBeIncludedForJson());
+        if ($data['doSimplifyReturndedObj']) {
+            // Filter
+            $xRateableItem->filterInclude($this->getFieldsToBeIncludedForJson());
 
 
-        // Refine
-        $xRateableItem->replaceFieldNamesForAjax($this->getFieldNamesAndReplacementsKeyValuePairsForJson());
-
+            // Refine
+            $xRateableItem->replaceFieldNamesForAjax($this->getFieldNamesAndReplacementsKeyValuePairsForJson());
+        }
 
         //
         return $xRateableItem;

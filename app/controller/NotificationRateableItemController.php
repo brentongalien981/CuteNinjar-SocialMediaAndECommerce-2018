@@ -29,6 +29,7 @@ class NotificationRateableItemController extends MainController implements AjaxC
 
         switch ($this->action) {
             case 'create':
+            case 'update':
 
                 $this->validator->fieldsToBeValidated['rateable_item_id'] = [
                     'required' => 1,
@@ -54,7 +55,6 @@ class NotificationRateableItemController extends MainController implements AjaxC
                     'numeric' => 1
                 ];
 
-            case 'update':
                 break;
             case 'read':
                 $this->validator->fieldsToBeValidated['earliestNotificationDate'] = [
@@ -312,6 +312,7 @@ class NotificationRateableItemController extends MainController implements AjaxC
 
                 //
                 $this->notificationData['notification_msg_id'] = $this->sanitizedFields['notification_msg_id'];
+                $this->notificationData['rateable_item_id'] = $this->sanitizedFields['rateable_item_id'];
 
 
                 // For update.
@@ -328,6 +329,7 @@ class NotificationRateableItemController extends MainController implements AjaxC
 
                 $this->menuObj->notification_id = $this->menuObj->getExistingRecordId();
                 $this->notificationData['id'] = $this->menuObj->notification_id;
+                $this->notificationData['rateable_item_id'] = $this->sanitizedFields['rateable_item_id'];
                 break;
             case 'read':
             case 'fetch':
