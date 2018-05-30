@@ -31,7 +31,7 @@ class ItemxManagingSectionPseudoBtnTemplate extends CnTemplate {
     setHrefPage(itemName) {
 
         if (itemName == "video") {
-            this.href += "video-manager/";
+            this.href += "video/";
         }
         else if (itemName == "playlist") {
             this.href += "video-playlist/";
