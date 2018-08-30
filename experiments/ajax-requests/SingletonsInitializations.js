@@ -1,1 +1,0 @@
-// const AjaxRequestConstantsSingleton = new AjaxRequestConstants();

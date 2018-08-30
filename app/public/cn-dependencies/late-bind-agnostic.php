@@ -6,3 +6,5 @@
 <script src="<?= PUBLIC_LOCAL . "js/cn-classes/CnTemplate.js"; ?>"></script>
 <script src="<?= PUBLIC_LOCAL . "js/cn-classes/CnComponent.js"; ?>"></script>
 
+<script src="<?= PUBLIC_LOCAL . "js/cn-classes/CnForm.js"; ?>"></script>
+

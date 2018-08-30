@@ -152,6 +152,12 @@ class VideoController extends MainController implements AjaxCrudHandlerInterface
 
     }
 
+
+    /** @override */
+    protected function create() {
+        return false;
+    }
+
     /** @override */
     protected function show()
     {

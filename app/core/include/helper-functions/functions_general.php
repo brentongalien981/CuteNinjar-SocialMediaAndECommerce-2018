@@ -91,6 +91,23 @@ function tryLoadingSpecificJsFilesFor($currentDir, $specificFiles = null)
 }
 
 
+function tryLoadingScriptFor($currentDir, $file = null, $isScriptTypeModulized = false)
+{
+
+    //
+    $doesFileExist = file_exists(JS_PATH . "{$currentDir}/{$file}.js");
+    if ($doesFileExist) {
+
+        if ($isScriptTypeModulized) { $scriptTag = "<script src='" . PUBLIC_LOCAL . "js/" . $currentDir . "/" . $file . ".js' type='module'></script>"; }
+        else { $scriptTag = "<script src='" . PUBLIC_LOCAL . "js/" . $currentDir . "/" . $file . ".js'></script>"; }
+
+        echo $scriptTag;
+    }
+
+
+}
+
+
 /**
  * @param $currentDir
  * @param null $requestAction

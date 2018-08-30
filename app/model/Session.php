@@ -2,9 +2,10 @@
 
 namespace App\Model;
 
+use App\Core\Main2\Singleton;
 use App\Model\User;
 
-class Session
+class Session extends Singleton
 {
 
 //    public $my_static_counter;

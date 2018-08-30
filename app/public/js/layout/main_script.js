@@ -446,7 +446,7 @@ function my_ajax(x_obj) {
             var response = xhr.responseText.trim();
 
             // Log before JSON parsing.
-            do_browser_ajax_pre_log(x_obj, response, url)
+            do_browser_ajax_pre_log(x_obj, response, url);
 
             //
             var json = tryParsingAjaxJson(response);
@@ -619,7 +619,7 @@ function showFormErrorCriteria(caller_class_name, errorField, criteria) {
 
             error_label = document.getElementById("error_my_photo_update_embed_code");
         }
-        
+
     }
 
 
@@ -699,7 +699,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "NotificationRateableItem":
+        case "Video":
             return true;
             break;
     }
@@ -794,4 +794,3 @@ function do_browser_ajax_post_log(x_obj, json) {
         }
     }
 }
-

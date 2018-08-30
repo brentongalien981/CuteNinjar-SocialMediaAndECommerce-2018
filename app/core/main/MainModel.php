@@ -11,7 +11,6 @@ use App\Core\Main\CNMain;
 use App\Model\User;
 use Carbon\Carbon;
 
-
 class MainModel extends CNMain
 {
     protected static $db_fields = array();
@@ -55,22 +54,18 @@ class MainModel extends CNMain
 
     public static function getPascalCasedNameOf($str)
     {
-
         $pascalCasedStr = "";
 
         $pascalCasedStr .= strtolower($str[0]);
 
         for ($i = 1; $i < strlen($str); $i++) {
-
             $currentChar = $str[$i];
 
             if (ctype_upper($currentChar)) {
                 $pascalCasedStr .= "_";
-
             }
 
             $pascalCasedStr .= strtolower($currentChar);
-
         }
 
         return $pascalCasedStr;
@@ -184,7 +179,6 @@ class MainModel extends CNMain
 
     public function updateByWhereClause($whereClause)
     {
-
         $dataForUpdate = ['whereClause' => $whereClause];
         return $this->update($dataForUpdate);
     }
@@ -264,7 +258,6 @@ class MainModel extends CNMain
 
         //
         return ($this->database->get_num_of_affected_rows() == 1) ? true : false;
-
     }
 
 
@@ -298,13 +291,11 @@ class MainModel extends CNMain
 
     public static function readById($data)
     {
-
         return static::readStatic($data);
     }
 
 
-    public
-    function read_by_id($data)
+    public function read_by_id($data)
     {
 //        $data['pk_name'] = $this->primary_key_id_name;
         return $this->read($data);
@@ -313,10 +304,8 @@ class MainModel extends CNMain
     /**
      * Delete by Primary Key
      */
-    public
-    function deleteByPk()
+    public function deleteByPk()
     {
-
         $pkName = $this->primary_key_id_name;
         $pk = $this->$pkName;
 
@@ -336,10 +325,8 @@ class MainModel extends CNMain
     /**
      *
      */
-    public
-    static function readByRawQuery($q = null, $instantiateObs = false)
+    public static function readByRawQuery($q = null, $instantiateObs = false)
     {
-
         $records = [];
 
         if ($q == null) {
@@ -356,18 +343,15 @@ class MainModel extends CNMain
         //
         global $database;
         while ($row = $database->fetch_array($resultSet)) {
-
             if ($instantiateObs) {
                 $records[] = static::instantiate($row);
             } else {
                 $records[] = static::staticCreatePseudoObj($row);
             }
-
         }
 
         //
         return $records;
-
     }
 
 
@@ -404,23 +388,18 @@ class MainModel extends CNMain
             }
 
             if ($count == 0) {
-
                 if (isset($field) &&
                     isset($comparisonOperator) &&
                     isset($value)) {
-
                     $data['whereClause'] = "";
 
                     //
                     if ($comparisonOperator === 'NOT IN') {
                         $data['whereClause'] .= "WHERE {$field} NOT IN(" . "{$value})";
-
-
                     } else {
                         $data['whereClause'] .= "WHERE {$field}" . " {$comparisonOperator}" . " '{$value}'";
                     }
                 }
-
             } else {
 
                 //
@@ -431,8 +410,6 @@ class MainModel extends CNMain
                     //
                     if ($comparisonOperator === 'NOT IN') {
                         $data['whereClause'] .= " AND {$field} NOT IN(" . "{$value})";
-
-
                     } else {
                         $data['whereClause'] .= " AND {$field}" . " {$comparisonOperator}" . " '{$value}'";
                     }
@@ -452,7 +429,6 @@ class MainModel extends CNMain
     /** TODO: Change this func name later when you completely got rid of func read(). */
     public static function readStatic($data = null)
     {
-
         $id = null;
         $pkName = null;
         $tableName = (isset($data['tableName']) ? $data['tableName'] : static::$table_name);
@@ -512,7 +488,6 @@ class MainModel extends CNMain
 
         global $database;
         while ($row = $database->fetch_array($resultSet)) {
-
             $obj = null;
 
             $obj = static::instantiate($row);
@@ -526,15 +501,13 @@ class MainModel extends CNMain
         return $objs;
     }
 
-    public
-    function show($data)
+    public function show($data)
     {
         $data['limit'] = 1;
         return $this->read($data);
     }
 
-    public
-    function read($data = null)
+    public function read($data = null)
     {
 //        //
 //        $this->init();
@@ -592,7 +565,6 @@ class MainModel extends CNMain
         $array_of_objs = array();
 
         while ($row = $this->database->fetch_array($result_set)) {
-
             $an_obj = null;
 
             if (isset($doNotInstantiate)) {
@@ -620,8 +592,7 @@ class MainModel extends CNMain
      * @param $record
      * @return array|null
      */
-    public
-    function createPseudoObj($data, $record)
+    public function createPseudoObj($data, $record)
     {
         $obj = null;
 
@@ -629,8 +600,7 @@ class MainModel extends CNMain
     }
 
 
-    public
-    static function staticCreatePseudoObj($record)
+    public static function staticCreatePseudoObj($record)
     {
         $pseudoObj = [];
 
@@ -657,8 +627,7 @@ class MainModel extends CNMain
     }
 
 
-    public
-    static function delete($data)
+    public static function delete($data)
     {
         global $database;
 
@@ -678,8 +647,7 @@ class MainModel extends CNMain
      * Modify the instantiated obj by appending properties
      * from the producer obj.
      */
-    public
-    function isProducedBy($producerType)
+    public function isProducedBy($producerType)
     {
         $producerTypeClass = "\\App\\Model\\" . $producerType;
 //        $producerObj = new $producerTypeClass;
@@ -691,8 +659,7 @@ class MainModel extends CNMain
         $this->updateMeAsPseudoObj($userObj);
     }
 
-    public
-    function isCreatedBy($creatorType)
+    public function isCreatedBy($creatorType)
     {
         $creatorTypeClass = "\\App\\Model\\" . $creatorType;
 
@@ -707,8 +674,7 @@ class MainModel extends CNMain
      * Modify the instantiated obj by appending properties
      * from the extentional obj.
      */
-    public
-    function isComposedOf($extentionClassName)
+    public function isComposedOf($extentionClassName)
     {
         $extentionalClass = "\\App\\Model\\" . $extentionClassName;
 
@@ -742,8 +708,7 @@ class MainModel extends CNMain
      * Modify the instantiated obj by appending properties
      * from the extentional obj.
      */
-    public
-    function isConnectedTo($extentionClassName)
+    public function isConnectedTo($extentionClassName)
     {
         $extentionalClass = "\\App\\Model\\" . $extentionClassName;
 
@@ -768,8 +733,7 @@ class MainModel extends CNMain
         $this->updateMeAsPseudoObj($extentionalObj);
     }
 
-    public
-    function to_string()
+    public function to_string()
     {
         $object_in_string = "";
 
@@ -785,8 +749,7 @@ class MainModel extends CNMain
 
 
     /** @deprecateds */
-    public
-    function old_update()
+    public function old_update()
     {
         // Don't forget your SQL syntax and good habits:
         // - UPDATE table SET key='value', key='value' WHERE condition
@@ -836,11 +799,9 @@ class MainModel extends CNMain
             //
             return false;
         }
-
     }
 
-    public
-    static function old_read($data)
+    public static function old_read($data)
     {
         //uki now
         $query = self::get_query_for_read($data);
@@ -886,8 +847,7 @@ class MainModel extends CNMain
      *      $this->user_id ...
      * @deprecated
      */
-    private
-    function updateMeAsPseudoObj($joiningObj)
+    private function updateMeAsPseudoObj($joiningObj)
     {
         foreach ($joiningObj as $key => $value) {
 
@@ -913,8 +873,7 @@ class MainModel extends CNMain
      *      $this->user_name
      *      $this->user_id ...
      */
-    public
-    function combineWithObj($joiningObj)
+    public function combineWithObj($joiningObj)
     {
         foreach ($joiningObj as $key => $value) {
             $this->$key = $value;
@@ -922,8 +881,7 @@ class MainModel extends CNMain
     }
 
     /** @deprecated */
-    public
-    function hasOne($producerType)
+    public function hasOne($producerType)
     {
         $producerTypeClass = "\\App\\Model\\" . $producerType;
 //        $producerObj = new $producerTypeClass;
@@ -936,11 +894,8 @@ class MainModel extends CNMain
     }
 
     /** TODO: Rename newHasOne(). */
-    public
-    function newHasOne($class, $fk)
+    public function newHasOne($class, $fk)
     {
-
-
         $path = "\\App\\Model\\" . $class;
         $extentionalObj = new $path;
 
@@ -950,12 +905,10 @@ class MainModel extends CNMain
         // we would like to read a table record using other key (probably a fk)
         // instead of reading by the pk id.
         if (is_array($fk)) {
-
             foreach ($fk as $field => $value) {
                 $data['where_clause'] = "WHERE {$field} = {$value}";
                 break;
             }
-
         } else {
             $data['id'] = $fk;
         }
@@ -968,8 +921,7 @@ class MainModel extends CNMain
     }
 
     /** TODO: Change this name later from hasOne2() to hasOne(). */
-    public
-    function hasOne2($class)
+    public function hasOne2($class)
     {
 
         //
@@ -990,8 +942,7 @@ class MainModel extends CNMain
      * @param $path
      * @return mixed
      */
-    private
-    function hasX($class, $path, $data = null)
+    private function hasX($class, $path, $data = null)
     {
 
         // Dynamically figure out the name of the field of the extentional
@@ -1011,8 +962,7 @@ class MainModel extends CNMain
     }
 
 
-    public
-    function belongsTo2($class)
+    public function belongsTo2($class)
     {
 
         //
@@ -1032,8 +982,7 @@ class MainModel extends CNMain
         return $obj;
     }
 
-    private
-    static function reWritePathForAnomalies(&$pivotPath)
+    private static function reWritePathForAnomalies(&$pivotPath)
     {
         if ($pivotPath == "\\App\\Model\\UserFriend") {
             $pivotPath = "\\App\\Model\\Friendship";
@@ -1042,11 +991,8 @@ class MainModel extends CNMain
     }
 
     /** @deprecated */
-    public
-    function hasMany($class, $fk, $data = null)
+    public function hasMany($class, $fk, $data = null)
     {
-
-
         $path = "\\App\\Model\\" . $class;
         $extentionalObj = new $path;
 
@@ -1055,12 +1001,10 @@ class MainModel extends CNMain
         // we would like to read a table record using other key (probably a fk)
         // instead of reading by the pk id.
         if (is_array($fk)) {
-
             foreach ($fk as $field => $value) {
                 $data['where_clause'] = "WHERE {$field} = {$value}";
                 break;
             }
-
         } else {
             $data['id'] = $fk;
         }
@@ -1072,8 +1016,7 @@ class MainModel extends CNMain
     }
 
     /** TODO: Change this name later: hasMany2(). */
-    public
-    function hasMany2($class, $data = null)
+    public function hasMany2($class, $data = null)
     {
 
         // Dynamically figure out the name of the pivot table/class by
@@ -1103,18 +1046,14 @@ class MainModel extends CNMain
 
         // Return the extentional objs.
         return $objs;
-
     }
 
-    private
-    function joinPivotFieldsToObj($pivotObj, $includedPivotFields, &$obj)
+    private function joinPivotFieldsToObj($pivotObj, $includedPivotFields, &$obj)
     {
 
         // Join some pivot-table-fields to the extentional-obj.
         if (isset($includedPivotFields)) {
-
             foreach ($includedPivotFields as $pivotField) {
-
                 $fieldName = $pivotField['fieldName'];
                 $replacementFieldName = $pivotField['toBeNamed'];
 
@@ -1125,20 +1064,15 @@ class MainModel extends CNMain
     }
 
     /** @deprecated */
-    public
-    function belongsTo($class, $pk)
+    public function belongsTo($class, $pk)
     {
-
         return $this->newHasOne($class, $pk);
     }
 
-    public
-    static function filterFieldsForReturn(&$objs, $fieldsAllowedForReturn)
+    public static function filterFieldsForReturn(&$objs, $fieldsAllowedForReturn)
     {
         foreach ($objs as $obj) {
-
             foreach ($obj as $field => $value) {
-
                 if (!in_array($field, $fieldsAllowedForReturn)) {
                     unset($obj->$field);
                 }
@@ -1151,34 +1085,26 @@ class MainModel extends CNMain
                 $obj::$className = null;
                 $obj::$searchable_fields = null;
             }
-
         }
     }
 
-    public
-    static function getMyCarbonDate($rawDatetime)
+    public static function getMyCarbonDate($rawDatetime)
     {
-
         $date = Carbon::createFromFormat('Y-m-d H:i:s', $rawDatetime, '-4');
         $date->setTimezone('UTC');
 
         return $date->diffForHumans();
     }
 
-    public
-    function addReadableDateField($rawDateTimeFieldName)
+    public function addReadableDateField($rawDateTimeFieldName)
     {
-
         $carbonDate = self::getMyCarbonDate($this->$rawDateTimeFieldName);
         $this->human_date = $carbonDate;
     }
 
-    public
-    function filterInclude($includedFields = [])
+    public function filterInclude($includedFields = [])
     {
-
         foreach ($this as $field => $value) {
-
             if (!in_array($field, $includedFields)) {
                 unset($this->$field);
             }
@@ -1187,8 +1113,7 @@ class MainModel extends CNMain
 //        $this->removeStaticFields();
     }
 
-    public
-    function filterExclude($excludedFields = [])
+    public function filterExclude($excludedFields = [])
     {
 
         // Other default excluded fields.
@@ -1198,7 +1123,6 @@ class MainModel extends CNMain
         array_push($excludedFields, 'database');
 
         foreach ($this as $field => $value) {
-
             if (in_array($field, $excludedFields)) {
                 unset($this->$field);
             }
@@ -1207,10 +1131,8 @@ class MainModel extends CNMain
 //        $this->removeStaticFields();
     }
 
-    public
-    function removeStaticFields()
+    public function removeStaticFields()
     {
-
         if (isset($this::$db_fields)) {
             $this::$db_fields = null;
             $this::$table_name = null;
@@ -1219,10 +1141,8 @@ class MainModel extends CNMain
         }
     }
 
-    public
-    function removeStaticFields2()
+    public function removeStaticFields2()
     {
-
         if (isset(static::$db_fields)) {
             static::$db_fields = null;
             static::$table_name = null;
@@ -1231,19 +1151,13 @@ class MainModel extends CNMain
         }
     }
 
-    public
-    function replaceFieldNamesForAjax($keyValuePairs)
+    public function replaceFieldNamesForAjax($keyValuePairs)
     {
-
         foreach ($keyValuePairs as $oldFieldName => $newFieldName) {
-
             if (isset($this->$oldFieldName)) {
-
                 $this->$newFieldName = $this->$oldFieldName;
                 unset($this->$oldFieldName);
             }
         }
     }
-
-
 }
